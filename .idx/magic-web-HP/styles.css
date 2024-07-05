@@ -118,6 +118,8 @@
     font-size: 24px;
     z-index: 9999;
     position: absolute;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
     
   }
   
@@ -127,6 +129,8 @@
     width: 300px;
     mask-image: linear-gradient(transparent, black -93%, transparent);
     filter: blur(2px);
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
   }
 
 
