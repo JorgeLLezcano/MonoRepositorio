@@ -48,6 +48,23 @@ if(prev.className==='selected'){
   prev.className='next'
 }
 
+//reversa
+// if(prevLeftSecond.className==='selected'){
+  
+//   nextRightSecond.className='hideRight'
+//   next.className='nextRightSecond'
+//   selected.className='next'
+//   prev.className='selected'
+//   prevLeftSecond.className='prev'
+// }else
+// if(prevLeftSecond.className='prev'){
+//    nextRightSecond.className='nextRightSecond'
+//    next.className='next'
+//    selected.className='selected'
+//    prev.className='prev'
+  
+// prevLeftSecond.className='prevLeftSecond'
+// }
 })
 
 prevBtn.addEventListener('click',function(){
@@ -91,13 +108,8 @@ if (nextRightSecond.className==='selected'){
   selected.className='next'
   prev.className='selected'
   prevLeftSecond.className='prev'
-
-}else{
-  prevLeftSecond.className='selected'
-  next.className='hideRight'
-  selected.className='nextRightSecond'
-  prevLeftSecond.className='selected'
 }
+
 
 }
 )
