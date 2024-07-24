@@ -43,9 +43,9 @@ if(nextRightSecond.className==='nextRightSecond' ){
 }
 
 if(prev.className==='selected'){
-  selected.className='selected'
+  selected.className='prev'
   nextRightSecond.className='next'
-  prev.className='prev'
+  prev.className='next'
 }
 
 })
@@ -58,6 +58,7 @@ prevBtn.addEventListener('click',function(){
     nextRightSecond.className='hideRight'
     prev.className='selected'
     prevLeftSecond.className='prev'
+
   }else if( selected.className==='next'){
     selected.className='nextRightSecond'
     next.className='hideRight'
@@ -68,14 +69,34 @@ prevBtn.addEventListener('click',function(){
     prev.className='hideRight'
   }
 
+///btnpreb
+
 if (nextRightSecond.className==='selected'){
     nextRightSecond.className='next'
     next.className='selected'
-    selected.className='next'
+    selected.className='prev'
+    prev.className='prevLeftSecond'
+    prevLeftSecond.className='hideLeft'
+    
 }else if(nextRightSecond.className==='next'){
   nextRightSecond.className='nextRightSecond'
   next.className='next'
- 
+  selected.className='selected'
+  prev.className='prev'
+  prevLeftSecond.className='prevLeftSecond'
+
+}else if(nextRightSecond.className==='nextRightSecond'){
+  nextRightSecond.className='hideRight'
+  next.className='nextRightSecond'
+  selected.className='next'
+  prev.className='selected'
+  prevLeftSecond.className='prev'
+
+}else{
+  prevLeftSecond.className='selected'
+  next.className='hideRight'
+  selected.className='nextRightSecond'
+  prevLeftSecond.className='selected'
 }
 
 }
