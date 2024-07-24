@@ -41,6 +41,13 @@ if(nextRightSecond.className==='nextRightSecond' ){
 }else{
   nextRightSecond.className='selected'
 }
+
+if(prev.className==='selected'){
+  selected.className='selected'
+  nextRightSecond.className='next'
+  prev.className='prev'
+}
+
 })
 
 prevBtn.addEventListener('click',function(){
@@ -60,5 +67,16 @@ prevBtn.addEventListener('click',function(){
     selected.className='hideRight'
     prev.className='hideRight'
   }
+
+if (nextRightSecond.className==='selected'){
+    nextRightSecond.className='next'
+    next.className='selected'
+    selected.className='next'
+}else if(nextRightSecond.className==='next'){
+  nextRightSecond.className='nextRightSecond'
+  next.className='next'
+ 
+}
+
 }
 )
