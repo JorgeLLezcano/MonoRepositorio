@@ -104,6 +104,7 @@ selected.className='prevLeftSecond'
  prev.className='hideLeft'
  next.className='prev'
  nextRightSecond.className='selected'
+ prevLeftSecond.className='hideLeft'
 })
 
 prev.addEventListener('click',function(){
