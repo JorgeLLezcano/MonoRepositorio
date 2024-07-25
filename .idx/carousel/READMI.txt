@@ -1,3 +1,11 @@
-https://codepen.io/dobladov/pen/ZOqOoa
 
-idea original
+
+idea original  https://codepen.io/dobladov/pen/ZOqOoa
+
+
+
+ const $ = el => document.querySelector(el)
+
+    // pongo delante de la variable un símbolo de $
+    // para indicar que es un elemento del DOM
+    const $form = $('form')
