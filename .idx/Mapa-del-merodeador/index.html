@@ -17,7 +17,12 @@
         }
         .container img {
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 3s ease;
+        }
+        form{
+        position: absolute;
+        z-index: 10;
+         transition: opacity 3s ease;
         }
     </style>
 </head>
@@ -35,12 +40,15 @@
     <script>
         const textarea = document.getElementById('mensaje');
         const imagen = document.getElementById('imagen');
+        const form=document.querySelector('form')
 
         textarea.addEventListener('input', function() {
             if (textarea.value.trim() !== '' && textarea.value.trim()==='juro solemnemente que mis intenciones no son buenas') {
                 imagen.style.opacity = 1;
+                form.style.opacity=0;
             } else {
                 imagen.style.opacity = 0;
+                
             }
         });
     </script>
