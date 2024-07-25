@@ -81,3 +81,44 @@ prevBtn.addEventListener('click',function(){
 }
 )
  
+//touch card
+selected.addEventListener('click', function(){
+  nextRightSecond.className='nextRightSecond'
+  next.className='next'
+  selected.className='selected'
+  prev.className='prev'
+  prevLeftSecond.className='prevLeftSecond'
+})
+
+next.addEventListener('click',function(){
+   nextRightSecond.className='next'
+    next.className='selected'
+    selected.className='prev'
+    prev.className='prevLeftSecond'
+    hideLeft.className='hideLeft'
+    prevLeftSecond.className='hideLeft'
+})
+
+nextRightSecond.addEventListener('click', function(){
+selected.className='prevLeftSecond'
+ prev.className='hideLeft'
+ next.className='prev'
+ nextRightSecond.className='selected'
+})
+
+prev.addEventListener('click',function(){
+ prevLeftSecond.className='prev'
+ prev.className='selected'
+ selected.className='next'
+ next.className='nextRightSecond'
+ nextRightSecond.className='hideRight'
+})
+
+prevLeftSecond.addEventListener('click', function(){
+prevLeftSecond.className='selected'
+ selected.className='nextRightSecond'
+ next.className='hideRight'
+ prev.className='next'
+ nextRightSecond.className='hideRight'
+  
+})
