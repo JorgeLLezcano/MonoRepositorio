@@ -83,7 +83,7 @@ textarea{
 const input = document.querySelector('input')
 input.addEventListener('input', function(){
     if((input.value==='' || input.value.length<5)){
-        
+        welcome.style.opacity=0
         welcome.innerText=''
         textarea.style.opacity=0
     }else if(input.value==='snape'){
