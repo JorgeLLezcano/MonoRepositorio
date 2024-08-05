@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.carousel-wrap {
+  margin: 90px auto;
+  padding: 0 5%;
+  width: 80%;
+  position: relative;
+}
+
+/* fix blank or flashing items on carousel */
+.owl-carousel .item {
+  position: relative;
+  z-index: 100; 
+  -webkit-backface-visibility: hidden; 
+}
+
+.carousel {
+  position: relative;
+  width: 500px; /* Set the width of the carousel */
+  height: 300px; /* Set the height of the carousel */
+  overflow: hidden;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+    </style>
+</head>
+<body>
+    <!-- The carousel container -->
+<div class="carousel">
+    <!-- The carousel images -->
+    <div class="carousel-inner">
+       <img src="https://picsum.photos/200" alt="Image 1">
+              <img src="https://picsum.photos/201" alt="Image 2">
+              <img src="https://picsum.photos/202" alt="Image 3">
+      <!-- Add more images here -->
+    </div>
+    <!-- The navigation buttons -->
+    <button class="prev">Previous</button>
+    <button class="next">Next</button>
+  </div>
+    <script>
+
+// Obtén la lista de imágenes y el botón
+const imagenes = document.querySelectorAll('img');
+const boton = document.querySelector('button');
+const next =document.querySelector('.next')
+// Inicializa el índice de la imagen actual
+let indiceImagen = 0;
+imagenes[indiceImagen].style.display = 'block';
+// Agrega un evento de clic al botón
+boton.addEventListener('click', () => {
+  // Oculta la imagen actual
+  imagenes[indiceImagen].style.display = 'none';
+
+  // Incrementa el índice y lo mantiene dentro del rango de la longitud de la lista
+  indiceImagen = (indiceImagen + 1) % imagenes.length;
+
+  // Muestra la siguiente imagen
+  imagenes[indiceImagen].style.display = 'block';
+});
+
+  next.addEventListener('click', function(){
+  imagenes[indiceImagen].style.display = 'none';
+  indiceImagen = (indiceImagen - 1+imagenes.length) % imagenes.length;
+  imagenes[indiceImagen].style.display = 'block';
+})
+// Muestra la primera imagen
+// imagenes[indiceImagen].style.display = 'block';
+    </script>
+</body>
+</html>
