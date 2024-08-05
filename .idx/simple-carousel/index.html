@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      body{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center
+      }
 .carousel-wrap {
   margin: 90px auto;
   padding: 0 5%;
@@ -30,7 +36,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
+  transition: opacity 2s ease;
 }
 
 .carousel-inner img {
@@ -38,6 +44,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 2s ease;
 }
 
 .prev, .next {
@@ -55,6 +62,7 @@
 .next {
   right: 10px;
 }
+
     </style>
 </head>
 <body>
@@ -75,30 +83,39 @@
 
 // Obtén la lista de imágenes y el botón
 const imagenes = document.querySelectorAll('img');
-const boton = document.querySelector('button');
+const prev = document.querySelector('.prev');
 const next =document.querySelector('.next')
 // Inicializa el índice de la imagen actual
 let indiceImagen = 0;
 imagenes[indiceImagen].style.display = 'block';
 // Agrega un evento de clic al botón
-boton.addEventListener('click', () => {
+prev.addEventListener('click', () => {
   // Oculta la imagen actual
+  
   imagenes[indiceImagen].style.display = 'none';
+  
 
   // Incrementa el índice y lo mantiene dentro del rango de la longitud de la lista
   indiceImagen = (indiceImagen + 1) % imagenes.length;
-
+  
   // Muestra la siguiente imagen
   imagenes[indiceImagen].style.display = 'block';
+ 
 });
 
   next.addEventListener('click', function(){
   imagenes[indiceImagen].style.display = 'none';
+ 
   indiceImagen = (indiceImagen - 1+imagenes.length) % imagenes.length;
+ 
   imagenes[indiceImagen].style.display = 'block';
+  
 })
 // Muestra la primera imagen
 // imagenes[indiceImagen].style.display = 'block';
+
+
+mostrarImg()
     </script>
 </body>
 </html>

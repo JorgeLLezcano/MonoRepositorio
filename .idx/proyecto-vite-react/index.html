@@ -43,7 +43,7 @@ body::before {
 }
 
 h1{
-
+  position: absolute;
   font-size: clamp(5rem, 40vmin, 20rem);
   font-family: 'Open Sans', sans-serif;
   color: transparent;
@@ -56,8 +56,8 @@ h1{
 h1 span{
   position: absolute;
   animation:move 5s ease infinite;
-  top: ;
-  left: 200px;
+  top: 0%;
+  left: 0%;
   filter: blur(1.5vmin);
   color: black;
 }
@@ -77,16 +77,25 @@ h1 span{
 
 @keyframes move {
   
+ 
   0%{
-   transform: rotate(10deg);
+   transform: translateY(50px) translateX(-100px) ;
+  }
+  25%{
+    
+    transform: translateX( 20px);
   }
   50%{
+   
+    transform:translateY(50px) translateX( +100px) ;
+  }
+  75%{
     
-    transform: rotate(-0deg);
+    transform: translateX( 20px);
   }
   100%{
    
-    transform: rotate(10deg);
+    transform:translateY(50px) translateX( -100px) ;
   }
 }
 
