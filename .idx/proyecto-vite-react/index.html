@@ -48,7 +48,8 @@ h1{
   font-family: 'Open Sans', sans-serif;
   color: transparent;
    letter-spacing: 1rem;
-    background: radial-gradient(#b1adad, #515255);
+    /* background: radial-gradient(#b1adad, #515255); */
+    background: radial-gradient(40% 40% at 50%, transparent, hsl(0 0% 2% / 0.94) 38vmax);
     -webkit-background-clip: text;
     transform: translate3d(0, 0, 0vmin);
      margin: 0;
@@ -75,6 +76,37 @@ h1 span{
   
    
 }*/
+.lumus{
+  height: 250vmax;
+  width: 250vmax;
+     background: radial-gradient(40% 40% at 50%, transparent, hsl(0 0% 2% / 0.94) 38vmax);
+  position: fixed;
+  animation:moveLumus 4s linear infinite;
+}
+@keyframes moveLumus {
+  
+ 
+ 
+  0%{
+   transform: translateY(-50px) translateX(100px) ;
+  }
+  25%{
+    
+    transform: translateX( -20px);
+  }
+  50%{
+   
+    transform:translateY(-50px) translateX( -100px) ;
+  }
+  75%{
+    
+    transform: translateX( 20px);
+  }
+  100%{
+   
+    transform:translateY(-50px) translateX( +100px) ;
+  }
+}
 
 @keyframes move {
   
@@ -107,6 +139,6 @@ h1 span{
     <h1>404
         <span>404</span>
       </h1>
-      
+      <div class="lumus"></div>
 </body>
 </html>
