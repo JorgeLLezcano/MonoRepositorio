@@ -89,23 +89,51 @@
     background-color: #333;
   }
   .lumus{
+    height:10px;
+    width: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position:fixed;
+    filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* animation: latencia 2s infinite; */
+  }
+  .lumus::after{
+    content: "";
     height: 50px;
     width: 50px;
     background-color: white;
     border-radius: 50%;
-    position:fixed;
     filter: blur(5px);
-     animation: latencia 2s infinite;
+     animation: latencia-opacity 2s linear infinite;
+     position: absolute;
   }
   @keyframes latencia{
     0%{
       transform: scale(1);
     }
     50%{
-      transform: scale(4);
+      transform: scale(2);
     }
     100%{
       transform: scale(1);
+    }
+  }
+
+  @keyframes latencia-opacity{
+      0%{
+      transform: scale(1);
+      opacity: 1;
+    }
+    50%{
+      transform: scale(2);
+      opacity: 0.5;
+    }
+    100%{
+      transform: scale(5);
+      opacity: 0;
     }
   }
   
@@ -115,13 +143,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 24px;
-    z-index: 9999;
+    font-size: 5rem;
+    /* z-index: 9999; */
     position: absolute;
-    filter: brightness(1.1);
-    mix-blend-mode: multiply;
+    /* filter: brightness(1.1);
+    mix-blend-mode: multiply; */
     
   }
+ 
   
   #loading-message img {
     display: flex;
@@ -129,9 +158,56 @@
     width: 300px;
     mask-image: linear-gradient(transparent, black -93%, transparent);
     filter: blur(2px);
-    filter: brightness(1.1);
-    mix-blend-mode: multiply;
+    /* filter: brightness(1.1);
+    mix-blend-mode: multiply; */
   }
 
 
+  circle, polygon, g, line {
+    fill-opacity:0;
+    stroke-dasharray:1300;
+    stroke-dashoffset:1300;
+    animation: desfum 5s linear both;
+  }
+  circle {
+    animation-delay: 100ms;
+    stroke-dasharray: 230;
+    animation:desfum 2s linear infinite, circle .2s linear infinite;
   
+  }
+  polygon {
+    animation-delay: 200ms;
+    animation-duration:2s;
+  }
+  line {
+    animation-delay: 50ms;
+  }
+  g {
+    animation-delay: 200ms;
+  }
+  @keyframes desfum{
+    0%{
+      fill-opacity:0;
+      stroke:rgba(81, 88, 86, 1);
+    }
+  
+    100%{
+        fill-opacity:100%;
+        stroke-dashoffset:0;
+        stroke-width:10;
+        
+    }
+  }
+
+  @keyframes reloades{
+    0%{
+          transform: translateZ(0deg);
+         
+         
+    }
+    100%{
+      transform: translateZ(180deg);
+      
+      
+    }
+  }
