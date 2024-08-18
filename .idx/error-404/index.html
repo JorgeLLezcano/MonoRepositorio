@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>404</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap');
 
@@ -53,13 +53,17 @@ h1{
     -webkit-background-clip: text;
     transform: translate3d(0, 0, 0vmin);
     letter-spacing: 1rem;
+    mask-image: linear-gradient(transparent, black 80%, transparent);
+    width: 100%;
+    display: flex;
+    justify-content: center;
   
 }
 h1 span{
   position: absolute;
   animation:move 5s ease infinite;
-  top: 0%;
-  left: 0%;
+  /* top: 0%;
+  left: 0%; */
   filter: blur(1.5vmin);
   color: black;
 }
