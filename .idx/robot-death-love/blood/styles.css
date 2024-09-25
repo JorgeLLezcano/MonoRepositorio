@@ -1,0 +1,140 @@
+body{
+    background: ;
+  }
+  
+  body{
+    font-family: sans-serif;
+    color: white;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+   font-size: 30px;
+   align-items: center;
+   background: linear-gradient(320deg, rgb(7 19 28 / 68%), rgb(12 12 12 / 31%));
+  }
+  .line{
+    
+    position: absolute;
+    fill-opacity:0;
+    stroke-dasharray:200;
+     stroke-dashoffset:1300;
+  animation: desfum 2s reverse infinite;
+  }
+  
+  
+  @keyframes desfum{
+    0%{
+      fill-opacity:0;
+      
+    }
+  
+    100%{
+        fill-opacity:100%;
+        stroke-dashoffset:0;
+        stroke-width:10
+    }
+  }
+  
+  /* conteiner{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  } */
+  
+  div{
+    display: flex;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
+    gap: 15px;
+    height: 100px;
+   /*width: 15px; */
+    /* transform: rotate(90deg); */
+     overflow: hidden;
+  }
+  conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .parr-uno{
+  
+   animation: move-rigth .2s linear forwards;
+   animation-timeline: scroll(root); 
+    animation-delay: 1s; 
+  }
+  .parr-dos{
+    
+    
+     animation: move .2s linear forwards;
+    animation-timeline: scroll(root); 
+    animation-delay: 1s;
+  }
+  .parr-tres{
+    
+  animation: move-left .2s linear forwards;
+  animation-timeline: scroll(root); 
+  animation-delay: 1s;
+  }
+  span{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    animation: move linear forwards;
+    animation-timeline: scroll(root);
+    animation-delay: 3s;
+  }
+  @keyframes move{
+    0%{
+      transform: translateY(0px);
+    }
+    25%{
+      transform: translateY(-100px);
+    }
+    50%{
+      transform: translateY(0px);
+    }
+    75%{
+       transform: translateY(100px);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes move-left{
+     0%{
+      transform: translateX(0px);
+    }
+    25%{
+      transform: translateX(-100px);
+    }
+    50%{
+      transform: translateX(0px);
+    }
+    75%{
+       transform: translateX(100px);
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes move-rigth{
+    0%{
+      transform: translateX(0px);
+    }
+    25%{
+      transform: translateX(-100px);
+    }
+    50%{
+      transform: translateX(0px);
+    }
+    75%{
+       transform: translateX(100px);
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
