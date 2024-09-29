@@ -15,12 +15,14 @@ body{
  font-size: 30px;
  align-items: center;
  background: linear-gradient(320deg, rgb(7 19 28 / 68%), rgb(12 12 12 / 31%));
+ overflow: hidden;
 }
 .contenedor{
+  position: relative;
   display: flex;
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr; */
-  gap: 15px;
+  gap: 60px;
   height: 100px;
  /*width: 15px; */
   /* transform: rotate(90deg); 
@@ -32,22 +34,29 @@ body{
   position: absolute;
   fill-opacity:0;
   stroke-dasharray:200;
-   stroke-dashoffset:1300;
-animation: desfum 2s reverse infinite;
+  stroke-dashoffset:1500;
+  animation: desfum 2s linear infinite;
+  animation-delay: 2s;
+
+
 }
 
 
 @keyframes desfum{
   0%{
     fill-opacity:0;
-   
+  
+
   }
 
+
   100%{
+       
       fill-opacity:100%;
-      stroke-dashoffset:0;
+      stroke-dashoffset:1900;
       stroke-width:50
   }
+
 }
 
 conteiner{
@@ -55,25 +64,22 @@ conteiner{
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
+   overflow: hidden;
 } 
 
 
 div{
   display: flex;
   justify-content: center;
-}
-conteiner{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+   
 }
 
 .parr-uno{
     display: flex;
     position: absolute;
-    animation: move 2s linear forwards;
-    animation-timeline: scroll(root);
+    animation: move .2s linear forwards;
+    /* animation-timeline: scroll(root); */
     animation-delay: 1s;
     align-items: center;
     justify-content: center;
@@ -84,17 +90,21 @@ conteiner{
 }
 .cont-robot{
     display: flex;
-    position: relative;
+    /* position: relative; */
 }
 .explocion{
-  height: 160px;
+  position: absolute;
+  height:100ch;
+  animation: explouder 1s linear both; 
+  animation-delay: 2s;
+  
 }
 .parr-dos{
   display: flex;
    flex-direction: column;
     justify-content: center;
-    animation: move 2s linear forwards;
-    animation-timeline: scroll(root);
+    animation: move .2s linear forwards;
+    /* animation-timeline: scroll(root); */
     animation-delay: 1s;
    
 }
@@ -108,8 +118,8 @@ conteiner{
   animation-delay: 3s;
 }
 .parr-tres{
-  animation: move 2s linear forwards;
-  animation-timeline: scroll(root); 
+  animation: move .2s linear forwards;
+  /* animation-timeline: scroll(root);  */
   animation-delay: 1s;
 }
 @keyframes move-shot{
@@ -216,5 +226,20 @@ span{
   }
   100%{
     transform: translateX(0);
+  }
+}
+
+@keyframes explouder{
+  0%{
+    opacity: 0;
+    
+  }
+  50%{
+    opacity: 1;
+    transform: rotate(0);
+  }
+  100%{
+    opacity: 0;
+    transform: rotate(360deg);
   }
 }
