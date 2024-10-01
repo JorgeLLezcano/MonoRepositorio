@@ -16,7 +16,7 @@ let prevLeftSecond=document.querySelector('.prevLeftSecond')
 let hideLeft=document.querySelector('.hideLeft')
 
 
-nextBtn.addEventListener('click', function(){
+nextBtn.addEventListener('click' , function(){
 
  if(selected.className==='selected'){
   selected.className='prev'
