@@ -1,0 +1,82 @@
+body{
+    background: #333;
+    font-size: 30px;
+  }
+  main{
+    height: 100vh;
+  }
+  
+  conteiner{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    gap: 50px;
+  }
+  .robot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .emoji-robot{
+     z-index: 1;
+  }
+  .explocion{
+    height: 100ch;
+      position: absolute;
+      display: flex;
+      /* align-items: center; */
+      justify-content: center;
+      opacity: 0;
+      animation: lazer 2s linear forwards;
+  }
+  @keyframes lazer{
+    0%{
+      transform: rotate(0);
+      opacity: 1;
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* 💀 */
+  .skull{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .emoji-skull{
+    z-index: 1;
+  }
+  .mancha{
+      height: 160px;
+      position: absolute;
+      display: flex;
+      /* align-items: center; */
+      justify-content: center;
+  }
+  #two-128, #two-0{
+   
+    position: absolute;
+  }
+  
+  /* 💔 */
+  .heart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .blood-line{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .line{
+    height: 150px;
+    position: absolute;
+  }
