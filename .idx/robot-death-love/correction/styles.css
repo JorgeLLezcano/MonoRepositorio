@@ -29,15 +29,17 @@ body{
       /* align-items: center; */
       justify-content: center;
       opacity: 0;
-      animation: lazer 2s linear forwards;
+      animation: lazer 2s linear forwards, hight .2s linear both;
+      animation-delay: 2s;
   }
+  
   @keyframes lazer{
     0%{
-      transform: rotate(0);
+      transform: rotate(360deg);
       opacity: 1;
     }
     100%{
-      transform: rotate(360deg);
+      transform: rotate(0);
     }
   }
   
@@ -57,12 +59,33 @@ body{
       display: flex;
       /* align-items: center; */
       justify-content: center;
+      animation: hight 2s linear both;
+      animation-delay: 3s;
   }
   #two-128, #two-0{
-   
-    position: absolute;
+    fill-opacity:0;
+   stroke-dasharray:200;
+   stroke-dashoffset:1300;
+   animation: desfum-mancha 2s linear both;
+   animation-delay: 3s;
   }
-  
+
+@keyframes desfum-mancha{
+  0%{
+    fill-opacity:0;
+    
+  }
+
+  100%{
+      fill-opacity:100%;
+      stroke-dashoffset:0;
+      stroke-width:10;
+      fill-rule: evenodd;
+    
+  }
+}
+
+
   /* 💔 */
   .heart{
     display: flex;
@@ -79,4 +102,34 @@ body{
   .line{
     height: 150px;
     position: absolute;
+    fill-opacity:0;
+    stroke-dasharray:200;
+    stroke-dashoffset:1300;
+    animation: blood 2s linear infinite;
+    
   }
+
+
+
+ @keyframes blood{
+  0%{
+    fill-opacity:0;
+    
+  }
+
+  100%{
+      fill-opacity:100%;
+      stroke-dashoffset:1900;
+      stroke-width:10;
+      
+  }
+}
+
+@keyframes hight {
+  0%{
+transform: scale(0.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
