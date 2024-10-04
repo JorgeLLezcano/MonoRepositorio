@@ -1,0 +1,43 @@
+ body{
+    height: 100vh;
+    color: white;
+}
+
+main{
+    height: 500px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(320deg, rgb(7 19 28 / 68%), rgb(12 12 12 / 31%));
+}
+
+ #form{
+    background: gray;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 8px;
+    justify-content: center;
+    box-sizing: border-box;
+ }
+input{
+    width: 100%;
+} 
+/* 
+#messages{
+    position: absolute;
+} */
+
+#messages{
+   height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

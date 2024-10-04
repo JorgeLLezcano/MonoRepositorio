@@ -15,3 +15,20 @@ socket.on('chat message', (msg) => {
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
 });
+// const messages = document.getElementById('messages');
+// const socket = io();
+// const messageInput = document.getElementById('message');
+// const form = document.getElementById('form'); // Referencia al formulario
+
+// form.addEventListener('submit', (event) => { // Escuchador de eventos
+//   event.preventDefault(); // Evita la recarga de la página
+//   const message = messageInput.value;
+//   if (message) {
+//     socket.emit('chat message', message);
+//     const item = document.createElement('li');
+//     item.textContent = message;
+//     item.classList.add('sent'); // Clase para mensajes enviados
+//     messages.appendChild(item);
+//     messageInput.value = '';
+//   }
+// });
