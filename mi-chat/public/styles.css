@@ -41,3 +41,11 @@ input{
     display: flex;
     flex-direction: column;
 }
+
+li:nth-child(odd){
+    background-color: rgb(66, 96, 66);
+color:white;
+text-align: right;
+font-style: italic;
+font-weight: 600;
+}
