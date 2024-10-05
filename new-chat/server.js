@@ -33,6 +33,8 @@ app.get('/', (req, res)=>{
 
     res.sendFile(`${__dirname}/public/index.html`)
 })
+const port = process.env.PORT || 3000;
+
 server.listen(3000,()=>{
-    console.log('servidor corriendo en http://localhost:3000')
+    console.log('Servidor corriendo en http://localhost:${port}')
 })
