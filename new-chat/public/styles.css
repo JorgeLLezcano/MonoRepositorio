@@ -34,10 +34,7 @@ input{
 input:focus{
     inset: none;
 }
-/* 
-#messages{
-    position: absolute;
-} */
+
 
 #messages{
    height: 100%;
