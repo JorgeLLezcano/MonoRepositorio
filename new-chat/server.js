@@ -9,9 +9,20 @@ const {Server}=require('socket.io')
 
 app.use(express.static('public'));
 
-const io=new Server(server)
 
-io.on('connection',(socket)=>{
+  
+
+const io=new Server(server,{
+    cors: {
+        origin: "*",  // Asegúrate de permitir la CORS en producción
+      },
+      transports: ['polling'] // Usa polling en lugar de websockets
+    }
+)
+
+io.on('connection',(socket
+    
+)=>{
     //console.log('un usuario conectado')
 
     // socket.on('diconnect', ()=>{

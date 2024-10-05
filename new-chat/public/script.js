@@ -1,5 +1,11 @@
-let socket=io()
+
+
+let socket = io({
+    transports: ['polling']  // Fuerza el uso de polling
+  });
+
 let myId = null;
+  
 
 const from =document.querySelector('form')
 const input=document.querySelector('input')
