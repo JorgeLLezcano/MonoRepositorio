@@ -46,6 +46,6 @@ app.get('/', (req, res)=>{
 })
 const port = process.env.PORT || 3000;
 
-server.listen(3000,()=>{
-    console.log('Servidor corriendo en http://localhost:${port}')
-})
+server.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
