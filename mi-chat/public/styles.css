@@ -30,6 +30,9 @@ main{
 input{
     width: 100%;
 } 
+input:focus{
+    inset: none;
+}
 /* 
 #messages{
     position: absolute;
@@ -40,6 +43,7 @@ input{
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 li:nth-child(odd){
@@ -49,3 +53,19 @@ text-align: right;
 font-style: italic;
 font-weight: 600;
 }
+
+.enviado {
+    background-color: black;
+    color: white;
+    text-align: right;
+    font-style: italic;
+    font-weight: 600;
+  }
+  
+  .recibido {
+    background-color: orange;
+    color: black;
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+  }

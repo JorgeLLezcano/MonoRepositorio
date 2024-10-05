@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>chta</title>
+</head>
+<style>
+    
+/* body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+form{
+    position: fixed;
+    bottom: 0px;
+    background-color: gray;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+input{
+    width: 100%;
+} */
+</style>
+<body>
+    <main>
+    <h1>chat</h1>
+    <div id="messages">
+    <ul></ul>
+</div>
+    <form action="">
+       
+        <input type="text" placeholder="escribe mensaje...">
+        <button type="submit">enviar</button>
+    </form>
+    </main>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="script.js" >
+//         let socket=io()
+
+// const from =document.querySelector('form')
+// const input=document.querySelector('input')
+// const mensaje=document.querySelector('ul')
+// from.addEventListener('submit',(e)=>{
+//     e.preventDefault()
+//     if(input.value){
+//         socket.emit('chat', input.value)
+//         input.value=''
+//     }
+// })
+
+// socket.on('chat', (msg)=>{
+//     const item=document.createElement('li')
+//     item.textContent=msg
+//     mensaje.appendChild(item)
+//     window.scrollTo(0, document.body.scrollHeight)
+// })
+    </script>
+</body>
+</html>
