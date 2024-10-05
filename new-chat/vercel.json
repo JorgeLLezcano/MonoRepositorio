@@ -1,0 +1,12 @@
+"builds":[
+    {
+        "src":"./server.js",
+        "use": "@vercerl/node"
+    }
+],
+"routes":[
+    {
+        "src":"/(.*)",
+        "dest": "/"
+    }
+]

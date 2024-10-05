@@ -23,7 +23,7 @@ io.on('connection',(socket)=>{
     // })
      
     socket.on('chat', (msg)=>{
-        const messageId = Date.now();
+        const messageId = socket.id;
         io.emit('chat', { id: messageId, msg: msg })
         // socket.emit('messageId', { id: messageId, msg: msg });
     })

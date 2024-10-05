@@ -1,6 +1,7 @@
 body{
     height: 100vh;
     color: white;
+    background: linear-gradient(320deg, rgba(13, 33, 49, 0.566), rgb(12 12 12 / 31%));
 }
 
 main{
@@ -17,7 +18,7 @@ main{
 }
 
  form{
-    background: gray;
+    background: #333;
     height: 50px;
     position: absolute;
     bottom: 0;
@@ -44,6 +45,7 @@ input:focus{
     display: flex;
     flex-direction: column;
     padding: 10px;
+   
 }
 
 /* li:nth-child(odd){
@@ -55,7 +57,7 @@ font-weight: 600;
 } */
 
 .enviado {
-    background-color: black;
+    background-color: red;
     color: white;
     text-align: right;
     font-style: italic;
@@ -68,4 +70,14 @@ font-weight: 600;
     text-align: left;
     font-style: normal;
     font-weight: 400;
+  
   }
+
+  ul {
+    display: flex;
+    flex-direction: column; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;s
+}
