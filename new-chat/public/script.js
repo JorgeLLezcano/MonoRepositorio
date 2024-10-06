@@ -1,5 +1,3 @@
-
-
 let socket = io({
     transports: ['polling']  // Fuerza el uso de polling
   });
@@ -13,8 +11,7 @@ const mensaje=document.querySelector('ul')
 
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
-});
-
+})
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
@@ -22,7 +19,6 @@ from.addEventListener('submit',(e)=>{
         input.value=''
     }
 })
-
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
     item.textContent=`ID: ${data.id===myId? 'Yo':'El otro'} - Mensaje: ${data.msg}`
