@@ -1,8 +1,8 @@
 // let name= prompt('cuale es tu nombre? :')
 
 let socket = io({
-    'https://pruebaidx-chat.onrender.com',
-    transports: ['websocket']  // Fuerza el uso de polling
+    // 'https://pruebaidx-chat.onrender.com',
+    transports: ['polling']  // Fuerza el uso de polling
   });
 
 let myId = null;
