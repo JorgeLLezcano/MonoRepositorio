@@ -1,10 +1,12 @@
+// let name= prompt('cuale es tu nombre? :')
+
 let socket = io({
     transports: ['polling']  // Fuerza el uso de polling
   });
 
 let myId = null;
   
-
+const main=document.querySelector('main')
 const from =document.querySelector('form')
 const input=document.querySelector('input')
 const mensaje=document.querySelector('ul')
@@ -21,7 +23,7 @@ from.addEventListener('submit',(e)=>{
 })
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
-    item.textContent=`ID: ${data.id===myId? 'Yo':'El otro'} - Mensaje: ${data.msg}`
+    item.textContent=`ID: ${data.id===myId? name :'El otro'} - Mensaje: ${data.msg}`
     mensaje.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
 

@@ -5,7 +5,7 @@ body{
 }
 
 main{
-    height: 500px;
+    height: 100vh;
     max-width: 500px;
     width: 100%;
     margin: auto;
@@ -14,7 +14,10 @@ main{
     justify-content: center;
     align-items: center;
     position: relative;
-    background: linear-gradient(320deg, rgb(7 19 28 / 68%), rgb(12 12 12 / 31%));
+   background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: -1px 0px 10px 2px #333;
 }
 
  form{
@@ -30,11 +33,18 @@ main{
  }
 input{
     width: 100%;
+    border-radius: 10px;
+    border: none;
 } 
 input:focus{
     inset: none;
+    outline: none;
 }
-
+button{
+  border: none;
+  background-color: transparent;
+  color: white;
+}
 
 #messages{
    height: 100%;
@@ -54,19 +64,23 @@ font-weight: 600;
 } */
 
 .enviado {
-    background-color: red;
+    background-color: #e90a0a29;
     color: white;
     text-align: right;
     font-style: italic;
     font-weight: 600;
+    padding: 5px;
+    box-sizing: border-box;
   }
   
   .recibido {
-    background-color: orange;
+    background-color: #ffa50078;
     color: black;
     text-align: left;
     font-style: normal;
     font-weight: 400;
+    padding: 5px;
+    box-sizing: border-box;
   
   }
 
