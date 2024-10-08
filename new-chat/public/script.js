@@ -2,7 +2,7 @@
 
 let socket = io({
     'https://pruebaidx-chat.onrender.com',
-    transports: ['polling']  // Fuerza el uso de polling
+    transports: ['websocket']  // Fuerza el uso de polling
   });
 
 let myId = null;
