@@ -14,6 +14,7 @@ const main=document.querySelector('main')
 const from =document.querySelector('form')
 const input=document.querySelector('input')
 const mensaje=document.querySelector('ul')
+const messagesContainer = document.getElementById('messages');
    
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
@@ -35,7 +36,8 @@ socket.on('chat', (data)=>{
 item.innerHTML+=chat
     // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
     mensaje.appendChild(item)
-    window.scrollTo(0, document.body.scrollHeight)
+    // window.scrollTo(0, document.body.scrollHeight)
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
   
     if(data.id===myId){
         item.classList.add('enviado')
