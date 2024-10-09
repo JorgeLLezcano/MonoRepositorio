@@ -12,7 +12,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     position: relative;
     background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
     border-radius: 15px;
@@ -24,7 +24,7 @@ main{
  form{
     background: #333;
     height: 50px;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -114,3 +114,22 @@ transform: scale(0);
     margin: 0;
     gap: 5px;
 }
+
+text{
+    fill-opacity:0;
+    stroke-dasharray:1300;
+    stroke-dashoffset:1300;
+    animation: desfum 5s linear both;
+  }
+  @keyframes desfum{
+    0%{
+      fill-opacity:0;
+      
+    }
+  
+    100%{
+        fill-opacity:100%;
+        stroke-dashoffset:0;
+        stroke-width:5
+    }
+  }
