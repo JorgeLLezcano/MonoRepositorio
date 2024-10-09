@@ -14,7 +14,7 @@ const main=document.querySelector('main')
 const from =document.querySelector('form')
 const input=document.querySelector('input')
 const mensaje=document.querySelector('ul')
-
+   
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
 })
@@ -30,13 +30,13 @@ from.addEventListener('submit',(e)=>{
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
     const chat=`
-<strong>${data.id===myId? name :data.name}</strong>: <p>${data.msg}</p>`
+<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
 
 item.innerHTML+=chat
     // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
     mensaje.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
-
+  
     if(data.id===myId){
         item.classList.add('enviado')
         item.classList.remove('recivido')
