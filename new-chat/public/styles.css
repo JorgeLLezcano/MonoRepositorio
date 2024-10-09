@@ -55,9 +55,12 @@ button{
     padding: 10px;
     height: calc(100% - 50px); 
     overflow-y: scroll;
-   
+    scrollbar-color: rgba(114, 84, 162, 0.507) #96998e;
 }
-
+#messages::-webkit-scrollbar-thumb {
+   
+    border-radius: 10px;    /* Bordes redondeados */
+  }
 /* li:nth-child(odd){
     background-color: rgb(66, 96, 66);
 color:white;
