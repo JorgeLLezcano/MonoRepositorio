@@ -1,5 +1,8 @@
-// let name= prompt('cuale es tu nombre? :')
-
+let name= prompt('cuale es tu nombre? :')
+if(!name){
+     prompt('cuale es tu nombre? :')
+  
+}
 let socket = io({
     // 'https://pruebaidx-chat.onrender.com',
     transports: ['polling']  // Fuerza el uso de polling
@@ -18,13 +21,19 @@ socket.on('connect', () => {
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
-        socket.emit('chat', input.value)
+        socket.emit('chat', { msg: input.value, name: name })
         input.value=''
     }
 })
+
+
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
-    item.textContent=`ID: ${data.id===myId? name :'El otro'} - Mensaje: ${data.msg}`
+    const chat=`
+<strong>${data.id===myId? name :data.name}</strong>: <p>${data.msg}</p>`
+
+item.innerHTML+=chat
+    // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
     mensaje.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
 

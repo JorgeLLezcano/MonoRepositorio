@@ -8,13 +8,15 @@ const io=new Server(server,{
     cors: {
         origin: "*",  
       },
-      transports: ['polling'] 
+      transports: ['polling'],
+     connectionStateRecovery:{}
     }
+    
 )
 io.on('connection',(socket)=>{
-    socket.on('chat', (msg)=>{
-        const messageId = socket.id;
-        io.emit('chat', { id: messageId, msg: msg })
+    socket.on('chat', (data)=>{
+        // const messageId = socket.id;
+        io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })
     })
 })
 app.get('/', (req, res)=>{
