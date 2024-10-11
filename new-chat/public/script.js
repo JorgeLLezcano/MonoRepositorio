@@ -1,9 +1,20 @@
 let name = localStorage.getItem('userName');
 
-if (!name && !localStorage.getItem('userName')) {
-  name = prompt('¿Cuál es tu nombre? :');
-  localStorage.setItem('userName', name); // Almacena el nombre si es nuevo
-}
+// Función para obtener el nombre del usuario
+function obtenerNombre() {
+    name = prompt('¿Cuál es tu nombre? :');
+    localStorage.setItem('userName', name);
+    return name;
+  }
+  
+  // Verificar si hay un nombre almacenado en localStorage
+  name = localStorage.getItem('userName');
+  
+  // Si no hay nombre, pedirlo al usuario
+  if (!name) {
+    name = obtenerNombre();
+  }
+  
 let socket = io({
     // 'https://pruebaidx-chat.onrender.com',
     transports: ['polling']  // Fuerza el uso de polling
