@@ -71,6 +71,7 @@ font-weight: 600;
 
 .enviado {
     background-color: #e90a0a29;
+    border-radius: 10px; 
     color: white;
     text-align: right;
     font-style: italic;
@@ -85,6 +86,7 @@ font-weight: 600;
   
   .recibido {
     background-color: #ffa50078;
+    border-radius: 10px; 
     color: black;
     text-align: left;
     font-style: normal;
