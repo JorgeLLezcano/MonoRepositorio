@@ -9,7 +9,11 @@ const io=new Server(server,{
         origin: "*",  
       },
       transports: ['polling'],
-     connectionStateRecovery:{}
+     connectionStateRecovery:{
+        ttl: 60000, // Tiempo máximo para intentar reconectar (ms)
+        minTimeout: 1000, // Tiempo mínimo entre intentos de reconexión (ms)
+        maxAttempts: 5 // Número máximo de intentos de reconexión
+     }
     }
     
 )
