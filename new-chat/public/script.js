@@ -1,7 +1,8 @@
-let name= prompt('cuale es tu nombre? :')
-if(!name){
-     prompt('cuale es tu nombre? :')
-  
+let name = localStorage.getItem('userName');
+
+if (!name && !localStorage.getItem('userName')) {
+  name = prompt('¿Cuál es tu nombre? :');
+  localStorage.setItem('userName', name); // Almacena el nombre si es nuevo
 }
 let socket = io({
     // 'https://pruebaidx-chat.onrender.com',
