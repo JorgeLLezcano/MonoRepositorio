@@ -1,0 +1,12 @@
+body{
+    background: linear-gradient(320deg, rgba(13, 33, 49, 0.566), rgb(12 12 12 / 31%));
+    color:white
+}
+
+header{
+    background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+} 
