@@ -71,10 +71,11 @@ body{
     backface-visibility: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: transform 0.25s linear;
+    overflow: hidden;
 }
 
 .card .front-view img{
-    width: 19px;
+    width: 100%;
 }
 .card .back-view img{
     max-width: 45px;

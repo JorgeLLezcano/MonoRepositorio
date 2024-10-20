@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <!-- transform="rotate(-45)" -->
+        <header>
         <svg viewBox="100 100 400 400" xmlns="http://www.w3.org/2000/svg"
         height="150px"
         >
@@ -27,15 +27,19 @@
             > 
            chat </text>
           </svg>
+        </header>
    
    
     <div id="messages">
-    <ul></ul>
+    <ul>
+    </ul>
+
 </div>
     <form action="">
        
         <input type="text" placeholder="escribe mensaje...">
         <button type="submit">enviar</button>
+        
     </form>
     </main>
     <script src="/socket.io/socket.io.js"></script>

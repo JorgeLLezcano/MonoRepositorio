@@ -1,11 +1,11 @@
 const wrapper= document.querySelector('.cards')
 
-const API= 'https://hp-api.onrender.com/api/characters'
+const API= 'https://hp-api.onrender.com/api/characters/'
 
 fetch(API)
   .then(response => response.json())
   .then(data => {
-    data.forEach(character => {
+    data.slice(0, 16).forEach(character => {
       tarjetas=`
       <li class="card">
                 <div class="view front-view">
