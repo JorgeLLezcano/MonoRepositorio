@@ -21,6 +21,8 @@ header{
        padding: 10px;
        background-color: rgb(11 67 105 / 93%);
        border-radius: 10px;
+       animation: move-background 2s linear forwards;
+       border-image: fill 0 linear-gradient(#0001, #000);
 }
 @keyframes rotate-background {
     from {
@@ -30,6 +32,13 @@ header{
       transform: rotate(360deg);
     }
   }
+  @keyframes move-background {
+    0%{
+        background-size: 97% 101%;
+    }100%{
+        background-size: 178% 199%;
+    }
+}
 
   /* background-size: cover;
     background-position: center;
@@ -66,6 +75,7 @@ div{
     box-sizing: border-box;
     background-color:  rgb(187 47 47 / 31%);
     transition: all 0.3s;
+    
 }
 div:nth-child(odd){
     background-color: rgb(11 64 105 / 68%);
@@ -78,7 +88,11 @@ background-position: center;
 background-size: cover;
 background-position: left top;
 background-size: 178% 199%;
+border-image: fill 0 linear-gradient(#0001, #000);
+
 }
+
+
 a {
     text-decoration: none; /* Elimina el subrayado */
     color: white; /* Hereda el color del texto del elemento padre */
