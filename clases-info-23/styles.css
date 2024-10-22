@@ -3,13 +3,37 @@ body{
     color:white;
     font-family: system-ui, sans-serif;
 }
-
-header{
-    background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
+ /* background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
+    background-image: url("react.svg");
+  
     display: flex;
     flex-direction: column;
-    padding: 10px
-} 
+    padding: 10px */
+    /* background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%)); */
+header{
+   
+       
+       background-image: url(react.svg);
+       background-position: left top;
+       background-size: 178% 199%;
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       background-color: rgb(11 67 105 / 93%);
+       border-radius: 10px;
+}
+@keyframes rotate-background {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
 header h1{
  display: flex;
  justify-content: center;
@@ -22,6 +46,7 @@ main{
     display: flex;
     justify-content: center;
     flex-direction: column;
+     
 }
 
 main h1{
@@ -47,6 +72,12 @@ div:nth-child(odd){
 color:white;
 font-style: italic;
 font-weight: 600;
+background-image: url(react.svg);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background-position: left top;
+background-size: 178% 199%;
 }
 a {
     text-decoration: none; /* Elimina el subrayado */
