@@ -34,7 +34,7 @@ header{
   }
   @keyframes move-background {
     0%{
-        background-size: 97% 101%;
+       background-size: 50% 199%;
     }100%{
         background-size: 178% 199%;
     }
@@ -73,8 +73,9 @@ div{
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
-    background-color:  rgb(187 47 47 / 31%);
+    /* background-color:  rgb(187 47 47 / 31%); */
     transition: all 0.3s;
+    background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 50%));
     
 }
 div:nth-child(odd){
