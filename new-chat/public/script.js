@@ -47,7 +47,7 @@ socket.emit('new-user', name);
 // Escuchar el evento cuando un nuevo usuario se conecta
 socket.on('user-connected', (data) => {
     const item = document.createElement('li');
-    if(data.id!==myId){
+    if(data.id !== myId){
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;}
@@ -59,7 +59,9 @@ socket.on('chat', (data)=>{
 <strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
  item.innerHTML+=chat
 
- data.id===myId? document.title='chat': 'chamensaje nuevot'
+ if (data.id !== myId) {
+    document.title = 'Mensaje nuevo';
+}
 
 window.addEventListener('focus', () => {
     document.title = 'chat';
