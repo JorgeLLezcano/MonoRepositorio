@@ -65,7 +65,7 @@ main h1{
 }
 #wrapp{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap:5px;
     
 }
@@ -98,18 +98,41 @@ a {
     text-decoration: none; /* Elimina el subrayado */
     color: white; /* Hereda el color del texto del elemento padre */
 }
+
+.card-clase:hover{
+   /* filter: brightness(1.1);
+    mix-blend-mode: multiply; */
+    /* transform:translateY(-20px) skewX(5deg) scale(1.1); 
+    border: solid 1px white;
+    z-index: 1; */
+   /* filter: blur(1px);
+   transform: scale(1.1);
+   
+   */
+  
+} 
+
+  
 .card-clase{
     overflow: hidden;
     transition: all 0.3s;
 }
 .card-clase h2{
-   
     transition: all 0.3s;
 }
-a:hover div{
-    /* filter: brightness(1.1);
-    mix-blend-mode: multiply;
-    transform: skewX(4deg); */
-   filter: blur(1px);
-   transform: scale(1.1);
+
+
+.iconify{
+    color: #000;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate{
+
+    0%{
+      transform: rotate(0deg);
+    }
+      100%{
+        transform: rotate(350deg);
+      }
 }
