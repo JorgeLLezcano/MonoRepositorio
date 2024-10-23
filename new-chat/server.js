@@ -18,6 +18,11 @@ const io=new Server(server,{
     
 )
 io.on('connection',(socket)=>{
+socket.on('new-user', (name)=>{
+    io.emit('user-connected', {id: socket.id, name})
+})
+
+
     socket.on('chat', (data)=>{
         // const messageId = socket.id;
         io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })

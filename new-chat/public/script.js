@@ -40,7 +40,15 @@ from.addEventListener('submit',(e)=>{
         input.value=''
     }
 })
+socket.emit('new-user', name);
 
+// Escuchar el evento cuando un nuevo usuario se conecta
+socket.on('user-connected', (data) => {
+    const item = document.createElement('li');
+    item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+    mensaje.appendChild(item);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+});
 
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
