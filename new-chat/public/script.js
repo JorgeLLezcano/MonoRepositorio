@@ -57,8 +57,8 @@ socket.on('chat', (data)=>{
     const chat=`
 <strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
  item.innerHTML+=chat
- 
- data.id===myId? document.title='mensaje nuevo': 'chat'
+
+ data.id===myId? document.title='chat': 'chamensaje nuevot'
 
 window.addEventListener('focus', () => {
     document.title = 'chat';
