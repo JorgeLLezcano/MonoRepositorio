@@ -45,20 +45,22 @@ from.addEventListener('submit',(e)=>{
 socket.emit('new-user', name);
 
 // Escuchar el evento cuando un nuevo usuario se conecta
+
 socket.on('user-connected', (data) => {
     const item = document.createElement('li');
+    item.classList('itemConected')
+    const itemConected=document.querySelector('.itemConected')
     if(data.id !== myId){
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
     setTimeout(() => {
-        mensaje.style.transition='all 2s linear'
-        mensaje.style.opacity=0
-        mensaje.removeChild(item);
+        itemConected.removeChild(item);
     }, 5000);
     document.title=`${data.name} se ha conectado.`
     window.addEventListener('focus', () => {
     document.title = 'chat';
-});
+}
+);
     }
 });
 
