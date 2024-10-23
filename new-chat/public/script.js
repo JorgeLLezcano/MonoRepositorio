@@ -50,7 +50,13 @@ socket.on('user-connected', (data) => {
     if(data.id !== myId){
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
+    setTimeout(() => {
+        mensaje.removeChild(item);
+    }, 5000);
     document.title=`${data.name} se ha conectado.`
+    window.addEventListener('focus', () => {
+    document.title = 'chat';
+});
     }
 });
 
