@@ -51,15 +51,17 @@ socket.on('user-connected', (data) => {
     item.classList('itemConected')
     const itemConected=document.querySelector('.itemConected')
     if(data.id !== myId){
-    item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
     setTimeout(() => {
         itemConected.removeChild(item);
     }, 5000);
+
     document.title=`${data.name} se ha conectado.`
+
     window.addEventListener('focus', () => {
-    document.title = 'chat';
-}
+       document.title = 'chat';
+    }
 );
     }
 });
