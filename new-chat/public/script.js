@@ -62,6 +62,7 @@ socket.on('user-connected', (data) => {
 
         userConected.innerHTML=`${data.name}  esta conectado`
         header.appendChild(userConected)
+        
     window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';

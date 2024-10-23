@@ -5,6 +5,7 @@ body{
 }
 header{
   position: absolute;
+  height: 150px;
   top: 0;
 }
 main{
