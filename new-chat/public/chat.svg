@@ -1,6 +1,7 @@
 <svg viewBox="100 100 400 400" xmlns="http://www.w3.org/2000/svg"
         height="150px"
         >
+       <circle cx="300" cy="300" r="200" fill="red" />
             <text
               text-anchor="middle"
               dominant-baseline="middle"
