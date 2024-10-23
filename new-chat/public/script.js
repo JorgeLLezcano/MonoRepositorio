@@ -47,22 +47,23 @@ socket.emit('new-user', name);
 // Escuchar el evento cuando un nuevo usuario se conecta
 
 socket.on('user-connected', (data) => {
-    const item = document.createElement('li');
-    item.classList.add('itemConected'); 
-    const itemConected=document.querySelector('.itemConected')
-    mensaje.appendChild(item);
-    if(data.id !== myId){
-        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
-    setTimeout(() => {
-        mensaje.removeChild(itemConected);
-    }, 5000);
-
     document.title=`${data.name} se ha conectado.`
 
     window.addEventListener('focus', () => {
        document.title = 'chat';
     }
 );
+    const item = document.createElement('li');
+    item.classList.add('itemConected'); 
+    const itemConected=document.querySelector('.itemConected')
+    mensaje.appendChild(item);
+    if(data.id !== myId){
+        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+
+    setTimeout(() => {
+        mensaje.removeChild(itemConected);
+    }, 5000);
+   
     }
 });
 
