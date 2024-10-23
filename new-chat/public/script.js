@@ -50,9 +50,9 @@ socket.on('user-connected', (data) => {
     const item = document.createElement('li');
     item.classList.add('itemConected'); 
     const itemConected=document.querySelector('.itemConected')
+    mensaje.appendChild(item);
     if(data.id !== myId){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
-    mensaje.appendChild(item);
     setTimeout(() => {
         mensaje.removeChild(itemConected);
     }, 5000);
