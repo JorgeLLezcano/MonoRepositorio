@@ -49,10 +49,7 @@ socket.emit('new-user', name);
 socket.on('user-connected', (data) => {
     document.title=`${data.name} se ha conectado.`
 
-    window.addEventListener('focus', () => {
-       document.title = 'chat';
-    }
-);
+
     const item = document.createElement('li');
     item.classList.add('itemConected'); 
     const itemConected=document.querySelector('.itemConected')
@@ -60,9 +57,14 @@ socket.on('user-connected', (data) => {
     if(data.id !== myId){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
 
-    setTimeout(() => {
-        mensaje.removeChild(itemConected);
-    }, 5000);
+   
+    window.addEventListener('focus', () => {
+        document.title = 'chat';
+        setTimeout(() => {
+            mensaje.removeChild(itemConected);
+        }, 5000);
+     }
+ );
    
     }
 });
