@@ -50,7 +50,7 @@ socket.on('user-connected', (data) => {
     if(data.id !== myId){
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;}
+    }
 });
 
 socket.on('chat', (data)=>{
