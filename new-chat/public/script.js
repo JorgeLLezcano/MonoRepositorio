@@ -51,6 +51,8 @@ socket.on('user-connected', (data) => {
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
     setTimeout(() => {
+        mensaje.style.transition='all 2s linear'
+        mensaje.style.opacity=0
         mensaje.removeChild(item);
     }, 5000);
     document.title=`${data.name} se ha conectado.`
