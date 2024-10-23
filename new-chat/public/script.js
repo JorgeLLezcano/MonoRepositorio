@@ -21,7 +21,8 @@ let socket = io({
   });
 
 let myId = null;
-  
+
+const header=document.querySelector('header')
 const main=document.querySelector('main')
 const from =document.querySelector('form')
 const input=document.querySelector('input')
@@ -56,7 +57,7 @@ socket.on('user-connected', (data) => {
     mensaje.appendChild(item);
     if(data.id !== myId){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
-
+        header.innerHTML=`${data.name}  esta conectado`
    
     window.addEventListener('focus', () => {
         setTimeout(() => {
