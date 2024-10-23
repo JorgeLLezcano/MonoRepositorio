@@ -56,8 +56,13 @@ socket.on('chat', (data)=>{
     const item=document.createElement('li')
     const chat=`
 <strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
-item.innerHTML+=chat
-document.title='mensaje nuevo'
+ item.innerHTML+=chat
+ 
+ data.id===myId? document.title='mensaje nuevo': 'chat'
+
+window.addEventListener('focus', () => {
+    document.title = 'chat';
+});
     // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
     mensaje.appendChild(item)
     // window.scrollTo(0, document.body.scrollHeight)
@@ -70,5 +75,6 @@ document.title='mensaje nuevo'
     }else{
         item.classList.add('recibido')
         item.classList.remove('enviado')
+        
     }
 })
