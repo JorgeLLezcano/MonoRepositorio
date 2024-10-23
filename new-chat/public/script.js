@@ -50,7 +50,7 @@ socket.on('user-connected', (data) => {
     if(data.id !== myId){
     item.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
-    document.title=`<strong>${data.name}</strong> se ha conectado.`
+    document.title=`${data.name} se ha conectado.`
     }
 });
 
