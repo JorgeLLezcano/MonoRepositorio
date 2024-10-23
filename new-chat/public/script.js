@@ -54,7 +54,7 @@ socket.on('user-connected', (data) => {
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     mensaje.appendChild(item);
     setTimeout(() => {
-        itemConected.removeChild(item);
+        mensaje.removeChild(itemConected);
     }, 5000);
 
     document.title=`${data.name} se ha conectado.`
