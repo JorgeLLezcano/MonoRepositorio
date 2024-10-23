@@ -48,7 +48,7 @@ socket.emit('new-user', name);
 
 socket.on('user-connected', (data) => {
     const item = document.createElement('li');
-    item.classList('itemConected')
+    item.classList.add('itemConected'); 
     const itemConected=document.querySelector('.itemConected')
     if(data.id !== myId){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
