@@ -54,6 +54,11 @@ function actualizarListaUsuarios(usuariosConectados) {
       header.appendChild(elementoUsuario);
     });
   }
+
+  socket.on('connected-users', (usuariosConectados) => {
+    actualizarListaUsuarios(usuariosConectados);
+  });
+
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
@@ -68,7 +73,7 @@ socket.emit('new-user', name);
 
 
 socket.on('user-connected', (data) => {
-    actualizarListaUsuarios(data.users);
+    
     document.title=`${data.name} se ha conectado.`
 
     const userConected=document.createElement('div')
