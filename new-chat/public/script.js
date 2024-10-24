@@ -44,7 +44,16 @@ from.addEventListener('submit',(e)=>{
 })
 
 socket.emit('new-user', name);
+// Mostrar la lista de usuarios conectados cuando el cliente recibe los datos
 
+socket.on('connected-users', (users) => {
+    Object.values(users).forEach(user => {
+        const item = document.createElement('li');
+        item.classList.add('itemConected');
+        item.innerHTML = `<strong>${user}</strong> está conectado.`;
+        mensaje.appendChild(item);
+    });
+});
 // Escuchar el evento cuando un nuevo usuario se conecta
 
 socket.on('user-connected', (data) => {
@@ -101,3 +110,10 @@ window.addEventListener('focus', () => {
         
     }
 })
+
+// Escuchar cuando un usuario se desconecta
+socket.on('user-disconnected', (data) => {
+    const item = document.createElement('li');
+    item.innerHTML = `<strong>${data.name}</strong> se ha desconectado.`;
+    mensaje.appendChild(item);
+});
