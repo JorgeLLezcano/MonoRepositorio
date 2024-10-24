@@ -74,6 +74,7 @@ socket.emit('new-user', name);
 
 socket.on('user-connected', (data) => {
     
+    socket.emit('user-connected', { name });
     document.title=`${data.name} se ha conectado.`
 
     const userConected=document.createElement('div')
