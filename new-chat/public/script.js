@@ -1,74 +1,110 @@
 let name = localStorage.getItem('userName');
 
-// Function to get user name (unchanged)
+// Función para obtener el nombre del usuario
 function obtenerNombre() {
-  name = prompt('¿Cuál es tu nombre? :');
-  localStorage.setItem('userName', name);
-  return name;
-}
-
-// Check for stored username (unchanged)
-name = localStorage.getItem('userName');
-
-// If no name, prompt for it (unchanged)
-if (!name) {
-  name = obtenerNombre();
-}
-
+    name = prompt('¿Cuál es tu nombre? :');
+    localStorage.setItem('userName', name);
+    return name;
+  }
+  
+  // Verificar si hay un nombre almacenado en localStorage
+  name = localStorage.getItem('userName');
+  
+  // Si no hay nombre, pedirlo al usuario
+  if (!name) {
+    name = obtenerNombre();
+  }
+  
 let socket = io({
-  transports: ['polling'] // Force polling
-});
+    // 'https://pruebaidx-chat.onrender.com',
+    transports: ['polling']  // Fuerza el uso de polling
+  });
 
 let myId = null;
 
-const header = document.getElementById('header');
-const connectedUsersContainer = document.getElementById('connected-users');
+const header=document.querySelector('header')
+const main=document.querySelector('main')
+const from =document.querySelector('form')
+const input=document.querySelector('input')
+const mensaje=document.querySelector('ul')
 const messagesContainer = document.getElementById('messages');
-const messageInput = document.getElementById('message-input');
-const sendButton = document.getElementById('send-button');
+const sent=document.querySelector('.sent')
+const received=document.querySelector('.received')
 
+   
 socket.on('connect', () => {
-  myId = socket.id;
-  socket.emit('get-connected-users'); // Request connected users on connection
+    myId = socket.id;  // Almacena el ID del cliente actual
+
+    socket.emit('get-connected-users');//solicita usuarios conectados
+
+})
+
+  
+from.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    if(input.value){
+        socket.emit('chat', { msg: input.value, name: name })
+        input.value=''
+    }
+})
+
+socket.emit('new-user', name);
+
+// Escuchar el evento cuando un nuevo usuario se conecta
+
+
+socket.on('user-connected', (data) => {
+   
+    document.title=`${data.name} se ha conectado.`
+
+    const userConected=document.createElement('p')
+    userConected.innerHTML=`${data.name}  esta conectado`
+    header.appendChild(userConected)
+
+
+    const item = document.createElement('li');
+    item.classList.add('itemConected'); 
+    const itemConected=document.querySelector('.itemConected')
+    mensaje.appendChild(item);
+    if(data.id !== myId){
+        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+    
+    window.addEventListener('focus', () => {
+        setTimeout(() => {
+            document.title = 'chat';
+            mensaje.removeChild(itemConected);
+        }, 5000);
+     }
+ );
+   
+    }
 });
 
-function updateConnectedUsers(userList) {
-  connectedUsersContainer.innerHTML = ''; // Clear existing list
+socket.on('chat', (data)=>{
+    const item=document.createElement('li')
+    const chat=`
+<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
+ item.innerHTML+=chat
 
-  // Update title based on user count
-  document.title = userList.length > 1 ? 'Usuarios conectados' : 'Chat';
-
-  // Add elements for each connected user
-  userList.forEach(user => {
-    const userElement = document.createElement('span');
-    userElement.textContent = `${user} está conectado`;
-    connectedUsersContainer.appendChild(userElement);
-  });
+ if (data.id !== myId) {
+    document.title = 'Mensaje nuevo';
 }
 
-socket.on('connected-users', (data) => {
-  updateConnectedUsers(data.users);
+window.addEventListener('focus', () => {
+    document.title = 'chat';
 });
-
-const sendMessage = () => {
-  const message = messageInput.value.trim();
-  if (message) {
-    socket.emit('chat', { msg: message, name: name });
-    messageInput.value = '';
-  }
-};
-
-sendButton.addEventListener('click', sendMessage);
-messageInput.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    sendMessage();
-  }
-});
-
-socket.on('new-user', (data) => {
-  document.title = `${data.name} se ha conectado.`;
-
-  const userElement = document.createElement('span');
-  userElement.textContent = `${data.name} está conectado`;
-  connectedUsersContainer.appendChild(userElement);
+    // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
+    mensaje.appendChild(item)
+    // window.scrollTo(0, document.body.scrollHeight)
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  
+    if(data.id===myId){
+        item.classList.add('enviado')
+        item.classList.remove('recivido')
+       
+    }else{
+        item.classList.add('recibido')
+        item.classList.remove('enviado')
+        
+    }
 })
