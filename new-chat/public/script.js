@@ -44,10 +44,10 @@ function actualizarListaUsuarios(usuariosConectados) {
   
     // Limpiar la lista de usuarios conectados existente (opcional)
     const usuariosConectadosExistentes = header.querySelectorAll('.connected-user');
-    usuariosConectadosExistentes.forEach(usuario => usuario.remove());
+   header.forEach(usuario => usuario.remove());
   
     // Crear y agregar elementos de usuarios conectados
-    usuariosConectados.forEach(usuario => {
+    header.forEach(usuario => {
       const elementoUsuario = document.createElement('p');
       elementoUsuario.classList.add('connected-user');
       elementoUsuario.textContent = `${usuario} está conectado`;
