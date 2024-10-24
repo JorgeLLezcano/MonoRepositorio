@@ -44,21 +44,21 @@ function actualizarListaUsuarios(usuariosConectados) {
   
     // Limpiar la lista de usuarios conectados existente (opcional)
     const usuariosConectadosExistentes = header.querySelectorAll('.connected-user');
-   header.forEach(usuario => usuario.remove());
+    usuariosConectadosExistentes.forEach(usuario => usuario.remove());
   
     // Crear y agregar elementos de usuarios conectados
-    header.forEach(usuario => {
-      const elementoUsuario = document.createElement('p');
+    usuariosConectados.forEach(usuario => {
+      const elementoUsuario = document.createElement('div');
       elementoUsuario.classList.add('connected-user');
       elementoUsuario.textContent = `${usuario} está conectado`;
       header.appendChild(elementoUsuario);
     });
   }
 
-  socket.on('connected-users', (usuariosConectados) => {
-    actualizarListaUsuarios(usuariosConectados);
+  socket.on('connected-users', (data) => {
+    actualizarListaUsuarios(data.users);
   });
-
+  
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
@@ -73,8 +73,7 @@ socket.emit('new-user', name);
 
 
 socket.on('user-connected', (data) => {
-    
-    socket.emit('user-connected', { name });
+   
     document.title=`${data.name} se ha conectado.`
 
     const userConected=document.createElement('div')
