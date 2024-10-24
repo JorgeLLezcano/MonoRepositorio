@@ -17,7 +17,18 @@ const io=new Server(server,{
     }
     
 )
+let connectedUsers = [];
 io.on('connection',(socket)=>{
+    connectedUsers.push({ id: socket.id, name: socket.handshake.auth.name })
+
+    socket.on('disconnect', () => {
+        connectedUsers = connectedUsers.filter(user => user.id !== socket.id); // Remove user on disconnect
+      });
+      socket.on('get-connected-users', () => {
+        const usernames = connectedUsers.map(user => user.name); // Extract usernames
+        socket.emit('connected-users', { users: usernames });
+      });
+      
 socket.on('new-user', (name)=>{
     io.emit('user-connected', {id: socket.id, name})
 })

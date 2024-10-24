@@ -34,7 +34,26 @@ const received=document.querySelector('.received')
    
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
+
+    socket.emit('get-connected-users');//solicita usuarios conectados
+
 })
+function actualizarListaUsuarios(usuariosConectados) {
+    // Actualizar título del documento
+    document.title = usuariosConectados.length > 1 ? 'Usuarios conectados' : 'Chat';
+  
+    // Limpiar la lista de usuarios conectados existente (opcional)
+    const usuariosConectadosExistentes = header.querySelectorAll('.connected-user');
+    usuariosConectadosExistentes.forEach(usuario => usuario.remove());
+  
+    // Crear y agregar elementos de usuarios conectados
+    usuariosConectados.forEach(usuario => {
+      const elementoUsuario = document.createElement('div');
+      elementoUsuario.classList.add('connected-user');
+      elementoUsuario.textContent = `${usuario} está conectado`;
+      header.appendChild(elementoUsuario);
+    });
+  }
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
@@ -47,7 +66,9 @@ socket.emit('new-user', name);
 
 // Escuchar el evento cuando un nuevo usuario se conecta
 
+
 socket.on('user-connected', (data) => {
+    actualizarListaUsuarios(data.users);
     document.title=`${data.name} se ha conectado.`
 
     const userConected=document.createElement('div')
