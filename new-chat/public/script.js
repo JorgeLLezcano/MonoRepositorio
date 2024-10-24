@@ -76,7 +76,7 @@ socket.on('user-connected', (data) => {
    
     document.title=`${data.name} se ha conectado.`
 
-    const userConected=document.createElement('div')
+    const userConected=document.createElement('p')
     userConected.innerHTML=`${data.name}  esta conectado`
     header.appendChild(userConected)
 
