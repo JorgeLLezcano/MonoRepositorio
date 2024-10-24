@@ -48,7 +48,7 @@ function actualizarListaUsuarios(usuariosConectados) {
   
     // Crear y agregar elementos de usuarios conectados
     usuariosConectados.forEach(usuario => {
-      const elementoUsuario = document.createElement('div');
+      const elementoUsuario = document.createElement('p');
       elementoUsuario.classList.add('connected-user');
       elementoUsuario.textContent = `${usuario} está conectado`;
       header.appendChild(elementoUsuario);
