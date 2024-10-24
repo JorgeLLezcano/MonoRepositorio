@@ -48,39 +48,60 @@ socket.emit('new-user', name);
 
 socket.on('connected-users', (users) => {
     Object.values(users).forEach(user => {
+//aviso de conexion en el title
+        document.title=`${data.name} se ha conectado.`
+
+//muestra la conexion activa de los usurios en header
+        const userConected=document.createElement('div')
+        userConected.innerHTML=`${data.name}  conectado`
+        header.appendChild(userConected)
+
+//crea un div temporal avisndo de la conexion        
         const item = document.createElement('li');
         item.classList.add('itemConected');
         item.innerHTML = `<strong>${user}</strong> está conectado.`;
         mensaje.appendChild(item);
+        if(data.id !== myId){
+            itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+        
+        window.addEventListener('focus', () => {
+            setTimeout(() => {
+                document.title = 'chat';
+                mensaje.removeChild(itemConected);
+            }, 5000);
+         }
+     );
+       
+        }
     });
 });
 // Escuchar el evento cuando un nuevo usuario se conecta
 
-socket.on('user-connected', (data) => {
-    document.title=`${data.name} se ha conectado.`
+// socket.on('user-connected', (data) => {
+//     document.title=`${data.name} se ha conectado.`
 
-    const userConected=document.createElement('div')
-    userConected.innerHTML=`${data.name}  esta conectado`
-    header.appendChild(userConected)
+//     const userConected=document.createElement('div')
+//     userConected.innerHTML=`${data.name}  esta conectado`
+//     header.appendChild(userConected)
 
 
-    const item = document.createElement('li');
-    item.classList.add('itemConected'); 
-    const itemConected=document.querySelector('.itemConected')
-    mensaje.appendChild(item);
-    if(data.id !== myId){
-        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
+//     const item = document.createElement('li');
+//     item.classList.add('itemConected'); 
+//     const itemConected=document.querySelector('.itemConected')
+//     mensaje.appendChild(item);
+//     if(data.id !== myId){
+//         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     
-    window.addEventListener('focus', () => {
-        setTimeout(() => {
-            document.title = 'chat';
-            mensaje.removeChild(itemConected);
-        }, 5000);
-     }
- );
+//     window.addEventListener('focus', () => {
+//         setTimeout(() => {
+//             document.title = 'chat';
+//             mensaje.removeChild(itemConected);
+//         }, 5000);
+//      }
+//  );
    
-    }
-});
+//     }
+// });
 
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
