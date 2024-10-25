@@ -85,11 +85,12 @@ socket.on('user-connected', (data) => {
 
 socket.on('connected-users', (data) => {
     console.log('Usuarios conectados:', data);
-    
+
     const connectedUsersElement = document.getElementById('connected-users');
     connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
   
     data.users.forEach((user) => {
+         console.log('Usuario:', user);
       if (user !== name) { // No mostrar el nombre del usuario actual
         const userElement = document.createElement('span');
         userElement.textContent = user;
