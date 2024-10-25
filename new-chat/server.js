@@ -20,7 +20,13 @@ const io=new Server(server,{
 let connectedUsers = [];
 
 io.on('connection',(socket)=>{
-    connectedUsers.push({ id: socket.id, name: socket.handshake.auth.name })
+
+    let userName;
+
+    socket.on('set-user-name', (name) => {
+    userName = name;
+    connectedUsers.push({ id: socket.id, name });
+  });
 
   
 

@@ -34,7 +34,7 @@ const received=document.querySelector('.received')
    
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
-
+    socket.emit('set-user-name', name); 
     socket.emit('get-connected-users');//solicita usuarios conectados
 
 })
