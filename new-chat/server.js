@@ -22,6 +22,8 @@ let connectedUsers = [];
 io.on('connection',(socket)=>{
     connectedUsers.push({ id: socket.id, name: socket.handshake.auth.name })
 
+  
+
     socket.on('disconnect', () => {
         connectedUsers = connectedUsers.filter(user => user.id !== socket.id); // Remove user on disconnect
       });

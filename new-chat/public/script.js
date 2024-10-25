@@ -16,7 +16,7 @@ function obtenerNombre() {
   }
   
 let socket = io({
-    // 'https://pruebaidx-chat.onrender.com',
+    
     transports: ['polling']  // Fuerza el uso de polling
   });
 
@@ -83,6 +83,19 @@ socket.on('user-connected', (data) => {
       }
 });
 
+socket.on('connected-users', (data) => {
+    const connectedUsersElement = document.getElementById('connected-users');
+    connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
+  
+    data.users.forEach((user) => {
+      if (user !== name) { // No mostrar el nombre del usuario actual
+        const userElement = document.createElement('span');
+        userElement.textContent = user;
+        connectedUsersElement.appendChild(userElement);
+      }
+    });
+  });
+
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
     const chat=`
@@ -96,9 +109,9 @@ socket.on('chat', (data)=>{
 window.addEventListener('focus', () => {
     document.title = 'chat';
 });
-    // item.textContent=`ID: ${data.id===myId? name :data.name} - Mensaje: ${data.msg}`
+   
     mensaje.appendChild(item)
-    // window.scrollTo(0, document.body.scrollHeight)
+   
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   
     if(data.id===myId){
