@@ -21,7 +21,7 @@ let socket = io({
   });
 
 let myId = null;
-
+const body=document.querySelector('body')
 const header=document.querySelector('header')
 const main=document.querySelector('main')
 const from =document.querySelector('form')
@@ -57,10 +57,13 @@ socket.on('user-connected', (data) => {
    
     document.title=`${data.name} se ha conectado.`
 
-   
+
+   const modal=document.createElement('div')
+   modal.classList.add('modal')
+body.appendChild(modal)
     const userConected=document.createElement('p')
     userConected.innerHTML=`${data.name}  esta conectado`
-    header.appendChild(userConected)
+    modal.appendChild(userConected)
    
 
   
@@ -75,7 +78,9 @@ socket.on('user-connected', (data) => {
         setTimeout(() => {
             document.title = 'chat';
             mensaje.removeChild(itemConected);
-        }, 5000);
+            body.removeChild(modal)
+            itemConected.innerHTML = '';
+        }, 3000);
      }
  );}else {
         // User is connecting themselves, just update title
