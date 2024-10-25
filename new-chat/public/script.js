@@ -94,7 +94,7 @@ socket.on('connected-users', (data) => {
          console.log('Usuario:', user);
       if (user !== name) { // No mostrar el nombre del usuario actual
         const userElement = document.createElement('span');
-        userElement.textContent = user;
+        userElement.textContent = user +'🟢';
         connectedUsersElement.appendChild(userElement);
       }
     });
