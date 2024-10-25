@@ -70,7 +70,7 @@ socket.on('user-connected', (data) => {
     item.classList.add('itemConected'); 
     const itemConected=document.querySelector('.itemConected')
     mensaje.appendChild(item);
-    if(data.id !== myId &&  ){
+    if(data.id !== myId){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     
     window.addEventListener('focus', () => {
