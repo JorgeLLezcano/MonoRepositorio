@@ -84,6 +84,8 @@ socket.on('user-connected', (data) => {
 });
 
 socket.on('connected-users', (data) => {
+    console.log('Usuarios conectados:', data);
+    
     const connectedUsersElement = document.getElementById('connected-users');
     connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
   
