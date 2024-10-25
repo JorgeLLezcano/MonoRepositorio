@@ -57,16 +57,20 @@ socket.on('user-connected', (data) => {
    
     document.title=`${data.name} se ha conectado.`
 
+    const existingUser = header.querySelector(`p:contains(${data.name})`);
+    if (!existingUser) {
     const userConected=document.createElement('p')
     userConected.innerHTML=`${data.name}  esta conectado`
     header.appendChild(userConected)
+    }
 
-
+    const existingItem = mensaje.querySelector(`.itemConected:contains(${data.name})`);
+    if (!existingItem) {
     const item = document.createElement('li');
     item.classList.add('itemConected'); 
     const itemConected=document.querySelector('.itemConected')
     mensaje.appendChild(item);
-    if(data.id !== myId ){
+    if(data.id !== myId &&  ){
         itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
     
     window.addEventListener('focus', () => {
@@ -75,12 +79,11 @@ socket.on('user-connected', (data) => {
             mensaje.removeChild(itemConected);
         }, 5000);
      }
- );
-   
-    }else {
+ );}else {
         // User is connecting themselves, just update title
         itemConected.innerHTML = 'Estás conectado';
       }
+    }
 });
 
 socket.on('connected-users', (data) => {
