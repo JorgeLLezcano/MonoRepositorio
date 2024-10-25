@@ -79,7 +79,7 @@ socket.on('user-connected', (data) => {
    
     }else {
         // User is connecting themselves, just update title
-        itemConected.innerHTML = 'Estás conectado';
+        itemConected.innerText = 'Estás conectado';
       }
 });
 
