@@ -79,7 +79,7 @@ socket.on('user-connected', (data) => {
    
     }else {
         // User is connecting themselves, just update title
-        itemConected.innerText = 'Estás conectado';
+        itemConected.innerHTML = 'Estás conectado';
       }
 });
 
@@ -87,7 +87,7 @@ socket.on('connected-users', (data) => {
     console.log('Usuarios conectados:', data);
 
     const connectedUsersElement = document.getElementById('connected-users');
-    connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
+    // connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
   
     data.users.forEach((user) => {
          console.log('Usuario:', user);
