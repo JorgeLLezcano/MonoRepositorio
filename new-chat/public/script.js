@@ -86,16 +86,21 @@ socket.on('user-connected', (data) => {
 
 socket.on('connected-users', (data) => {
     console.log('Usuarios conectados:', data);
-
+  
     const connectedUsersElement = document.getElementById('connected-users');
     // connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
   
+    const userCounts = {}; // Objeto para contar ocurrencias
+  
     data.users.forEach((user) => {
-         console.log('Usuario:', user);
-      if (user !== name) { // No mostrar el nombre del usuario actual
-        const userElement = document.createElement('span');
-        userElement.textContent = user +'🟢';
-        connectedUsersElement.appendChild(userElement);
+      if (user !== name) {
+        userCounts[user] = (userCounts[user] || 0) + 1;
+  
+        if (userCounts[user] <= 2) {
+          const userElement = document.createElement('span');
+          userElement.textContent = user + ' ';
+          connectedUsersElement.appendChild(userElement);
+        }
       }
     });
   });
