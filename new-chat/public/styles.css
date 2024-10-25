@@ -7,6 +7,7 @@ header{
   position: absolute;
   height: 150px;
   top: 0;
+  padding: 5px;
 }
 main{
     height: 100vh;
@@ -52,16 +53,6 @@ button{
 }
 
 #messages{
-   /* height: 100%; */
-    /* width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* padding: 10px; */
-    /* height: calc(100% - 50px); 
-    overflow-y: scroll;
-    scrollbar-color: rgba(114, 84, 162, 0.507) #96998e;
-    scrollbar-width: none;
--ms-overflow-style: none; */ 
 display: flex;
 flex-direction: column;
 gap: 10px;
