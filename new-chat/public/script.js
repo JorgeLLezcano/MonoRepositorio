@@ -65,7 +65,7 @@ socket.on('user-connected', (data) => {
    
     const userConected=document.createElement('li')
     if(data.id !== myId){
-      userConected.innerHTML=`${data.name}  esta conectado`
+      userConected.innerHTML=`${data.name}  se ha conectado`
       
    }else {
         userConected.innerHTML = 'Estás conectado';
@@ -95,7 +95,7 @@ socket.on('connected-users', (data) => {
         modal.classList.add('modal')
         notificador.appendChild(modal)
         const userConected=document.createElement('li')
-        
+
         userCounts[user] = (userCounts[user] || 0) + 1;
   
 if (userCounts[user] <= 2) {
@@ -103,7 +103,7 @@ if (userCounts[user] <= 2) {
                             userElement.textContent = user + '🟢';
                             
                             connectedUsersElement.appendChild(userElement);
-                            userConected.innerHTML=user  +'esta conectado';
+                            userConected.innerHTML=user  + 'Ya esta coneccion';
                             
                             modal.appendChild(userConected)
                             setTimeout(() => {
