@@ -179,7 +179,6 @@ text{
     left: 0;
     right: 0;
     width: 100%;
-    align-items: center;
     z-index: 1000;
 }
   .modal{
