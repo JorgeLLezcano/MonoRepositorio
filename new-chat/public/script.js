@@ -58,10 +58,10 @@ socket.on('user-connected', (data) => {
     document.title=`${data.name} se ha conectado.`
 
   
-   const modal=document.createElement('div')
+   const modal=document.createElement('ul')
    modal.classList.add('modal')
    body.appendChild(modal)
-    const userConected=document.createElement('p')
+    const userConected=document.createElement('li')
     if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
       modal.appendChild(userConected)
@@ -82,8 +82,8 @@ socket.on('user-connected', (data) => {
 socket.on('connected-users', (data) => {
     console.log('Usuarios conectados:', data);
   
-    const connectedUsersElement = document.getElementById('connected-users');
-    // connectedUsersElement.innerHTML = ''; // Limpia la lista anterior
+    const connectedUsersElement = document.getElementById('user-online');
+   
   
     const userCounts = {}; // Objeto para contar ocurrencias
   
