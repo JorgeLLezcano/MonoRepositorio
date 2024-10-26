@@ -57,14 +57,11 @@ socket.on('user-connected', (data) => {
    
     document.title=`${data.name} se ha conectado.`
 
-
+    if(data.id !== myId){
    const modal=document.createElement('div')
    modal.classList.add('modal')
    body.appendChild(modal)
     const userConected=document.createElement('p')
-   
-
-    if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
       modal.appendChild(userConected)
     window.addEventListener('focus', () => {
@@ -72,12 +69,11 @@ socket.on('user-connected', (data) => {
             document.title = 'chat';
             mensaje.removeChild(itemConected);
             body.removeChild(modal)
-            itemConected.innerHTML = '';
         }, 3000);
      }
  );}else {
         // User is connecting themselves, just update title
-        itemConected.innerHTML = 'Estás conectado';
+        userConected.innerHTML = 'Estás conectado';
       }
    
 });
