@@ -30,6 +30,7 @@ const mensaje=document.querySelector('ul')
 const messagesContainer = document.getElementById('messages');
 const sent=document.querySelector('.sent')
 const received=document.querySelector('.received')
+const notificador=document.querySelector('.notificaciones')
 
    
 socket.on('connect', () => {
@@ -60,31 +61,24 @@ socket.on('user-connected', (data) => {
   
    const modal=document.createElement('ul')
    modal.classList.add('modal')
-   body.appendChild(modal)
+   notificador.appendChild(modal)
+   
     const userConected=document.createElement('li')
     if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
+      
+   }else {
+        userConected.innerHTML = 'Estás conectado';
+       
+      }
       modal.appendChild(userConected)
-
-    window.addEventListener('focus', () => {
+      window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';
-            body.removeChild(modal)
+            notificador.removeChild(modal)
         }, 3000);
      }
- );}else {
-      
-        userConected.innerHTML = 'Estás conectado';
-        modal.appendChild(userConected)
-
-        window.addEventListener('focus', () => {
-        setTimeout(() => {
-            document.title = 'chat';
-            body.removeChild(modal)
-        }, 3000);
-      })
-      }
-    
+ );    
 });
 
 socket.on('connected-users', (data) => {
