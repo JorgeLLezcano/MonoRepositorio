@@ -74,11 +74,11 @@ socket.on('user-connected', (data) => {
  );}else {
         // User is connecting themselves, just update title
         userConected.innerHTML = 'Estás conectado';
-        modal.appendChild(userConected)
+        // modal.appendChild(userConected)
         window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';
-            // body.removeChild(modal)
+            body.removeChild(modal)
         }, 3000);
       })
       }
