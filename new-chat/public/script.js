@@ -58,10 +58,10 @@ socket.on('user-connected', (data) => {
     document.title=`${data.name} se ha conectado.`
 
   
-   const modal=document.createElement('ul')
+   const modal=document.createElement('div')
    modal.classList.add('modal')
    body.appendChild(modal)
-    const userConected=document.createElement('li')
+    const userConected=document.createElement('p')
     if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
       modal.appendChild(userConected)
