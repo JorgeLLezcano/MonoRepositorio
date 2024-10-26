@@ -138,6 +138,7 @@ socket.on('user-typing', (data) => {
     typingIndicator = document.createElement('li');
     typingIndicator.innerHTML = `<i>${data.name} está escribiendo...</i>`;
     mensaje.appendChild(typingIndicator);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 });
 
@@ -149,7 +150,7 @@ socket.on('user-stop-typing', () => {
 });
 
 socket.on('chat', (data)=>{
-  
+  typing = false;
   // Eliminar indicador de escritura
   if (typingIndicator) {
     mensaje.removeChild(typingIndicator);
