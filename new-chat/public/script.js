@@ -58,10 +58,10 @@ socket.on('user-connected', (data) => {
     document.title=`${data.name} se ha conectado.`
 
   
-   const modal=document.createElement('div')
+   const modal=document.createElement('ul')
    modal.classList.add('modal')
    body.appendChild(modal)
-    const userConected=document.createElement('p')
+    const userConected=document.createElement('li')
     if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
       modal.appendChild(userConected)
@@ -75,6 +75,12 @@ socket.on('user-connected', (data) => {
         // User is connecting themselves, just update title
         userConected.innerHTML = 'Estás conectado';
         modal.appendChild(userConected)
+        window.addEventListener('focus', () => {
+        setTimeout(() => {
+            document.title = 'chat';
+            body.removeChild(modal)
+        }, 3000);
+      })
       }
     
 });
