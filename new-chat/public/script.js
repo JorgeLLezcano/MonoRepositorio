@@ -113,6 +113,8 @@ socket.on('connected-users', (data) => {
       }
     });
   });
+
+   //funcion para saber cuando esta escribiendo
   let typing = false;
   let timeout;
 
@@ -129,8 +131,6 @@ socket.on('connected-users', (data) => {
   }, 2000); // 2 segundos sin escribir
   });
 
-  //funcion para saber cuando esta escribiendo
-  
   let typingIndicator;
 
 socket.on('user-typing', (data) => {
@@ -149,6 +149,12 @@ socket.on('user-stop-typing', () => {
 });
 
 socket.on('chat', (data)=>{
+  
+  // Eliminar indicador de escritura
+  if (typingIndicator) {
+    mensaje.removeChild(typingIndicator);
+    typingIndicator = null;
+  }
     const item=document.createElement('li')
     const chat=`
 <strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
