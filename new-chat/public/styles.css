@@ -184,13 +184,11 @@ text{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
     top: 30%;
     left: 0;
     width: auto;
     height: auto;
     background-color: rgba(240, 224, 224, 0.5);
-    z-index: 1000;
     border-radius: 15px;
     color: black;
   }
