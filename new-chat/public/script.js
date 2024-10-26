@@ -64,7 +64,7 @@ socket.on('user-connected', (data) => {
     const userConected=document.createElement('li')
     if(data.id !== myId){
       userConected.innerHTML=`${data.name}  esta conectado`
-      modal.appendChild(userConected)
+      // modal.appendChild(userConected)
     window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';
