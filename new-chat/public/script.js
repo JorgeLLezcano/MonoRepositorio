@@ -67,7 +67,6 @@ socket.on('user-connected', (data) => {
     window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';
-            mensaje.removeChild(itemConected);
             body.removeChild(modal)
         }, 3000);
      }
