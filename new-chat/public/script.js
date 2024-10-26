@@ -94,19 +94,22 @@ socket.on('connected-users', (data) => {
         const modal=document.createElement('ul')
         modal.classList.add('modal')
         notificador.appendChild(modal)
-
+        const userConected=document.createElement('li')
+        
         userCounts[user] = (userCounts[user] || 0) + 1;
   
-        if (userCounts[user] <= 2) {
-          const userElement = document.createElement('span');
-          userElement.textContent = user + '🟢';
-          connectedUsersElement.appendChild(userElement);
-          userConected.innerHTML=user  +'esta conectado';
-          modal.appendChild(userConected)
-          setTimeout(() => {
-            notificador.removeChild(modal);
-        }, 3000);
-        }
+if (userCounts[user] <= 2) {
+                            const userElement = document.createElement('span');
+                            userElement.textContent = user + '🟢';
+                            
+                            connectedUsersElement.appendChild(userElement);
+                            userConected.innerHTML=user  +'esta conectado';
+                            
+                            modal.appendChild(userConected)
+                            setTimeout(() => {
+                              notificador.removeChild(modal);
+                          }, 3000);
+                         }
       }
     });
   });
