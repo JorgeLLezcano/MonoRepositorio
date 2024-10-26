@@ -60,20 +60,13 @@ socket.on('user-connected', (data) => {
 
    const modal=document.createElement('div')
    modal.classList.add('modal')
-body.appendChild(modal)
+   body.appendChild(modal)
     const userConected=document.createElement('p')
-    userConected.innerHTML=`${data.name}  esta conectado`
-    modal.appendChild(userConected)
    
 
-  
-    const item = document.createElement('li');
-    item.classList.add('itemConected'); 
-    const itemConected=document.querySelector('.itemConected')
-    mensaje.appendChild(item);
     if(data.id !== myId){
-        itemConected.innerHTML = `<strong>${data.name}</strong> se ha conectado.`;
-    
+      userConected.innerHTML=`${data.name}  esta conectado`
+      modal.appendChild(userConected)
     window.addEventListener('focus', () => {
         setTimeout(() => {
             document.title = 'chat';
