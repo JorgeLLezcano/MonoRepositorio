@@ -103,7 +103,7 @@ if (userCounts[user] <= 2) {
                             userElement.textContent = user + '🟢';
                             
                             connectedUsersElement.appendChild(userElement);
-                            userConected.innerHTML=user  + '  ya esta coneccion';
+                            userConected.innerHTML=user  + '  ya esta en coneccion';
                             
                             modal.appendChild(userConected)
                             setTimeout(() => {
