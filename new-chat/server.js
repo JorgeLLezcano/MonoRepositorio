@@ -21,12 +21,12 @@ let connectedUsers = [];
 
 io.on('connection',(socket)=>{
 
-    let userName;
+    let userName;                     
 
     socket.on('set-user-name', (name) => {
     userName = name;
     connectedUsers.push({ id: socket.id, name });
-  });
+  });           
 
   
 
@@ -41,8 +41,14 @@ io.on('connection',(socket)=>{
 socket.on('new-user', (name)=>{
     io.emit('user-connected', {id: socket.id, name})
 })
-
-
+///evento de tipeo
+socket.on('typing', (data) => {
+  socket.broadcast.emit('user-typing', data);
+});
+//stop tipeo
+socket.on('stop-typing', () => {
+  socket.broadcast.emit('user-stop-typing');
+});
     socket.on('chat', (data)=>{
         // const messageId = socket.id;
         io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })

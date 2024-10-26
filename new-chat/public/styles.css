@@ -164,22 +164,25 @@ text{
     }
   }
 
-  #connected-users{
+  #user-online{
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
+   
   }
 .notificaciones{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: fixed;
+    padding: 5px;
     gap:10px;
-    top: 30%;
+    top: 10%;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000;
+    
 }
   .modal{
     display: flex;

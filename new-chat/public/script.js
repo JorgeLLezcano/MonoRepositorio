@@ -98,21 +98,55 @@ socket.on('connected-users', (data) => {
 
         userCounts[user] = (userCounts[user] || 0) + 1;
   
-if (userCounts[user] <= 2) {
-                            const userElement = document.createElement('span');
-                            userElement.textContent = user + '🟢';
-                            
-                            connectedUsersElement.appendChild(userElement);
-                            userConected.innerHTML=user  + '  ya esta en coneccion';
-                            
-                            modal.appendChild(userConected)
-                            setTimeout(() => {
-                              notificador.removeChild(modal);
-                          }, 3000);
-                         }
+        if (userCounts[user] <= 2) {
+        const userElement = document.createElement('span');
+        userElement.textContent = user + '🗯';
+        
+        connectedUsersElement.appendChild(userElement);
+        userConected.innerHTML=user  + '  ya esta en coneccion';
+        
+        modal.appendChild(userConected)
+        setTimeout(() => {
+          notificador.removeChild(modal);
+      }, 3000);
+      }
       }
     });
   });
+  let typing = false;
+  let timeout;
+
+  input.addEventListener('input', () => {
+    if (!typing){
+    socket.emit('typing', { name: name });
+    typing=true
+  }
+
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    socket.emit('stop-typing');
+    typing = false;
+  }, 2000); // 2 segundos sin escribir
+  });
+
+  //funcion para saber cuando esta escribiendo
+  
+  let typingIndicator;
+
+socket.on('user-typing', (data) => {
+  if (!typingIndicator) {
+    typingIndicator = document.createElement('li');
+    typingIndicator.innerHTML = `<i>${data.name} está escribiendo...</i>`;
+    mensaje.appendChild(typingIndicator);
+  }
+});
+
+socket.on('user-stop-typing', () => {
+  if (typingIndicator) {
+    mensaje.removeChild(typingIndicator);
+    typingIndicator = null;
+  }
+});
 
 socket.on('chat', (data)=>{
     const item=document.createElement('li')
