@@ -97,7 +97,7 @@ socket.on('connected-users', (data) => {
           const userElement = document.createElement('span');
           userElement.textContent = user + '🟢';
           connectedUsersElement.appendChild(userElement);
-          userConected.innerHTML=`${data.name}  esta conectado`
+          userConected.innerHTML=user  +'esta conectado';
           modal.appendChild(userConected)
         }
       }
