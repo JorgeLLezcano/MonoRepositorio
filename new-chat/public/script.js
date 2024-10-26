@@ -91,6 +91,10 @@ socket.on('connected-users', (data) => {
   
     data.users.forEach((user) => {
       if (user !== name) {
+        const modal=document.createElement('ul')
+        modal.classList.add('modal')
+        notificador.appendChild(modal)
+
         userCounts[user] = (userCounts[user] || 0) + 1;
   
         if (userCounts[user] <= 2) {
@@ -99,6 +103,9 @@ socket.on('connected-users', (data) => {
           connectedUsersElement.appendChild(userElement);
           userConected.innerHTML=user  +'esta conectado';
           modal.appendChild(userConected)
+          setTimeout(() => {
+            notificador.removeChild(modal);
+        }, 3000);
         }
       }
     });
