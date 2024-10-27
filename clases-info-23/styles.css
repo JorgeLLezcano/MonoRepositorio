@@ -54,6 +54,8 @@ header h2{
 .octicon{
     position: absolute;
     border-radius: 100%;
+    top:0;
+    transition: all 0.3s;
 }
 .octicon:hover{
     
@@ -103,8 +105,10 @@ border-image: fill 0 linear-gradient(#0001, #000);
 
 
 a {
-    text-decoration: none; /* Elimina el subrayado */
-    color: white; /* Hereda el color del texto del elemento padre */
+    position: absolute;
+    top: auto;
+    text-decoration: none;
+    color: white;
 }
 
 .card-clase:hover{
