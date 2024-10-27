@@ -50,6 +50,16 @@ header h2{
     display: flex;
     justify-content: center;
 }
+
+.octicon{
+    position: absolute;
+    border-radius: 100%;
+}
+.octicon:hover{
+    
+    box-shadow: 1px 1px 8px 7px, inset 1px 1px 8px 7px;
+   
+}
 main{
     display: flex;
     justify-content: center;
