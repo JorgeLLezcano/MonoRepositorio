@@ -21,7 +21,7 @@ header{
     border-radius: 10px;
     animation: move-background 2s linear forwards;
     border-image: fill 0 linear-gradient(#0001, #000);
-    transform: translate3d(0px, 0px, 0px);
+    transform-style: preserve-3d;
 }
 @keyframes rotate-background {
     from {
