@@ -207,5 +207,6 @@ text{
     padding:5px;
     height: auto;
     border-radius:5px;
+    box-shadow: 2px 2px 2px 0px #333;
   }
   
