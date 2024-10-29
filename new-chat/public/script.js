@@ -100,7 +100,7 @@ socket.on('connected-users', (data) => {
   
         if (userCounts[user] <= 2) {
         const userElement = document.createElement('span');
-        userElement.textContent = user + '🗯';
+        userElement.textContent = user;
         
         connectedUsersElement.appendChild(userElement);
         userConected.innerHTML=user  + '  ya esta en coneccion';
