@@ -105,8 +105,8 @@ border-image: fill 0 linear-gradient(#0001, #000);
 
 
 a {
-    position: absolute;
-    top: auto;
+    /* position: absolute;
+    top: auto; */
     text-decoration: none;
     color: white;
 }
@@ -129,7 +129,7 @@ a {
     overflow: hidden;
     transition: all 0.3s;
     box-sizing: border-box;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/0;
 
     /* animation: move 2s linear infinite; */
 
