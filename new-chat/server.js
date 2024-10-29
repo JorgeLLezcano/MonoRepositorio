@@ -49,9 +49,12 @@ socket.on('typing', (data) => {
 socket.on('stop-typing', () => {
   socket.broadcast.emit('user-stop-typing');
 });
+
     socket.on('chat', (data)=>{
+  
         // const messageId = socket.id;
         io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })
+        
     })
 })
 app.get('/', (req, res)=>{

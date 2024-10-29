@@ -186,20 +186,4 @@ window.addEventListener('focus', () => {
     }
 })
 
-let write=false
-
-socket.on('write', (data)=>{
-  window.addEventListener('focus', () => {
-    if(data.id!==myId){
-write=true
-} 
-  })
-})
-
-
-if(write==='true'){
-const mensajeLeido= document.createElement('div')
-mensajeLeido.innerHTML=`<p> mensaje leido..</p>`
-mensaje.appendChild(mensajeLeido)
-}
 

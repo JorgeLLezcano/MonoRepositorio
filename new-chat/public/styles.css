@@ -202,4 +202,10 @@ text{
     box-shadow: 2px 2px 2px 0px #333;
   }
   
+  span{
+    background-color: green;
+    padding:5px;
+    height: auto;
+    border-radius:5px;
+  }
   
