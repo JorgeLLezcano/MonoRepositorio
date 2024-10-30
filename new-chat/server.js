@@ -32,6 +32,7 @@ io.on('connection',(socket)=>{
 
     socket.on('disconnect', () => {
         connectedUsers = connectedUsers.filter(user => user.id !== socket.id); // Remove user on disconnect
+        readMessages = {};
       });
       socket.on('get-connected-users', () => {
         const usernames = connectedUsers.map(user => user.name); // Extract usernames
@@ -56,6 +57,10 @@ socket.on('stop-typing', () => {
         io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })
         
     })
+
+    socket.on('message-read', (receiverId) => {
+      io.to(receiverId).emit('message-read-confirmation', { id: socket.id, name: userName });
+  });
 })
 app.get('/', (req, res)=>{
     res.sendFile(`${__dirname}/public/index.html`)

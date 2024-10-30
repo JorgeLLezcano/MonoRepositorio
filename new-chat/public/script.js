@@ -148,10 +148,11 @@ socket.on('user-stop-typing', () => {
     typingIndicator = null;
   }
 });
-
-
+let newMenssges=0
+let readMessages = {};
 ///funcion chat
 socket.on('chat', (data)=>{
+  newMenssges++
   typing = false;
   // Eliminar indicador de escritura
   if (typingIndicator) {
@@ -164,10 +165,19 @@ socket.on('chat', (data)=>{
  item.innerHTML+=chat
 
  if (data.id !== myId) {
-    document.title = 'Mensaje nuevo';
+    document.title = newMenssges  +'  Mensaje nuevo';
+
+    window.addEventListener('focus', () => {
+     
+      if (!readMessages[data.id]) {
+    socket.emit('message-read', data.id);
+    readMessages[data.id] = true;
+      }
+  })
 }
 
 window.addEventListener('focus', () => {
+    newMenssges=0
     document.title = 'chat';
 });
    
@@ -185,5 +195,21 @@ window.addEventListener('focus', () => {
         
     }
 })
+
+socket.on('message-read-confirmation', (data) => {
+  
+  const readIndicator = document.createElement('li');
+  readIndicator.innerHTML = `<i>${data.name} ha leído el mensaje.</i>`;
+  mensaje.appendChild(readIndicator);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+
+  window.addEventListener('focus', () => {
+setTimeout(() => {
+    mensaje.removeChild(readIndicator);
+},2000)
+  })
+});
+
 
 
