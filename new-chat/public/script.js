@@ -136,7 +136,8 @@ socket.on('connected-users', (data) => {
 socket.on('user-typing', (data) => {
   if (!typingIndicator) {
     typingIndicator = document.createElement('li');
-    typingIndicator.innerHTML = `<i>${data.name} está escribiendo...</i>`;
+    typingIndicator.innerHTML = `<i>${data.name} está escribiendo...<span></span> <span></span> <span></span></i>`;
+    // ${data.name} está escribiendo
     mensaje.appendChild(typingIndicator);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
@@ -199,7 +200,7 @@ window.addEventListener('focus', () => {
 socket.on('message-read-confirmation', (data) => {
   
   const readIndicator = document.createElement('li');
-  readIndicator.innerHTML = `<i>${data.name} ha leído el mensaje.</i>`;
+  readIndicator.innerHTML = `<i>${data.name} ha leído el mensaje . </i>`;
   mensaje.appendChild(readIndicator);
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 

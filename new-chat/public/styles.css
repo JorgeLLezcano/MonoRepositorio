@@ -27,7 +27,7 @@ main{
     background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 31%));
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: -1px 0px 10px 2px #333;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     font-style: italic;
 }
 
@@ -92,7 +92,7 @@ font-weight: 600;
   align-self: flex-end; /* Alinea a la derecha */
   text-align: right;
   color: white;
-  box-shadow: 2px 2px 2px 0px #333;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
     /* 
     border-radius: 10px; 
@@ -113,7 +113,7 @@ font-weight: 600;
   align-self: flex-start; /* Alinea a la izquierda */
   text-align: left;
   color: black;
-  box-shadow: 2px 2px 2px 0px #333;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     /* 
     border-radius: 10px; 
     
@@ -199,7 +199,7 @@ text{
     background-color: rgba(240, 224, 224, 0.5);
     border-radius: 15px;
     color: black;
-    box-shadow: 2px 2px 2px 0px #333;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
   
   span{
@@ -207,6 +207,46 @@ text{
     padding:5px;
     height: auto;
     border-radius:5px;
-    box-shadow: 2px 2px 2px 0px #333;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
+  
+  /* i{
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(11 64 105 );
+  box-shadow: 2px 2px 2px 0px #333;
+  font-size: 30px;
+  animation: opaciti .5s ease infinite;
+  } */
+/* i span{
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  
+  animation: opaciti .5s ease infinite;
+  
+}
+i span:nth-child(odd){
+  animation: opaciti .5s ease infinite;
+  animation-delay: 0.2s;
+}
+i span:nth-child(even){
+  animation: opaciti .5s ease infinite;
+  animation-delay: 0.4s ;
+} 
+  @keyframes opaciti {
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 0.5;
+    }
+    100%{
+      opacity: 1;
+    }
+  } */
+  
+  
   
