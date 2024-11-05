@@ -109,7 +109,7 @@ socket.on('connected-users', (data) => {
         setTimeout(() => {
           notificador.removeChild(modal);
       }, 3000);
-      }
+        }
       }
     });
   });
@@ -136,7 +136,7 @@ socket.on('connected-users', (data) => {
 socket.on('user-typing', (data) => {
   if (!typingIndicator) {
     typingIndicator = document.createElement('li');
-    typingIndicator.innerHTML = `<i>${data.name} está escribiendo...<span></span> <span></span> <span></span></i>`;
+    typingIndicator.innerHTML = `<i>${data.name} está escribiendo...</i>`;
     // ${data.name} está escribiendo
     mensaje.appendChild(typingIndicator);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
