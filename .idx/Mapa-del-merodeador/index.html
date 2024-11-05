@@ -46,7 +46,7 @@
     position: relative;
     top: 71%;
     left: -1%;
-    opacity: 0;
+    opacity: 1;
     
    
         }
@@ -69,7 +69,7 @@
         .container img {
             height: 100vh;
             position: absolute;
-            opacity: 0;
+            opacity: 1;
             transition: opacity 3s ease;
         }
 form{
@@ -102,6 +102,47 @@ textarea{
     opacity: 0;
     transition: opacity 2s ease;
 }
+
+.tapa-2, .tapa-1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background-color: #e4cbab;
+}
+
+.tapa-1{
+ animation: move-left 2s both
+}
+@keyframes move-left {
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+.tapa-2{
+    animation: move-right 2s both;
+}
+@keyframes move-right {
+    100%{
+        transform:translateX(100%);
+    }
+}
+@keyframes move-up {
+    100%{
+        transform:translateY(-100%);
+    }
+}
+@keyframes move-down {
+    100%{
+        transform:translateY(100%) ;
+    }
+}
     </style>
 </head>
 <body>
@@ -115,7 +156,12 @@ textarea{
             <textarea id="mensaje" name="mensaje" rows="5" cols="30"></textarea>
         </form>
         
+        
         <div class="container">
+            <section>
+            <div class="tapa-1"> tapa uno</div>
+            <div class="tapa-2"> tapa dos</div>
+           </section>
             <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
                 <rect
                   transform="translate(0 0) rotate(45) skewX(0) skewY(0) scale(1)"
@@ -170,7 +216,7 @@ input.addEventListener('input', function(){
                 imagen.style.opacity = 0;
                 
             }
-        });
+        }); 
     </script>
 </body>
 </html>
