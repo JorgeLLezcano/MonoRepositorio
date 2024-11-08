@@ -22,6 +22,7 @@ header{
     animation: move-background 2s linear forwards;
     border-image: fill 0 linear-gradient(#0001, #000);
     transform-style: preserve-3d;
+    background-attachment: fixed;
 }
 @keyframes rotate-background {
     from {
@@ -93,9 +94,12 @@ div{
     transition: all 0.3s;
     background: linear-gradient(320deg, rgb(11 64 105 / 68%), rgb(187 47 47 / 50%));
     aspect-ratio: 1/1;
+    /* background-image: url(react.svg);
+    background-attachment: fixed;
+    background-size: 178% 199%;   */
 }
 div:nth-child(odd){
-    background-color: rgb(11 64 105 / 68%);
+background-color: rgb(11 64 105 / 68%);
 color:white;
 font-style: italic;
 font-weight: 600;
@@ -106,6 +110,8 @@ background-size: cover;
 background-position: left top;
 background-size: 178% 199%;
 border-image: fill 0 linear-gradient(#0001, #000);
+background-attachment: fixed;
+box-sizing: border-box;
 
 }
 
@@ -117,17 +123,19 @@ a {
     color: white;
 }
 
-.card-clase:hover{
+#wrapp:hover :not(:hover){
    /* filter: brightness(1.1);
     mix-blend-mode: multiply; */
     /* transform:translateY(-20px) skewX(5deg) scale(1.1); 
     border: solid 1px white;
     z-index: 1; */
-   /* filter: blur(1px);
-   transform: scale(1.1);
+  filter: blur(1px);
+  opacity: 0.9;
+    /* transform: scale(1.1);
+    
    
    */
-   border: solid 1px white;
+  /* transform: scale(0.9);  */
 } 
 
   
