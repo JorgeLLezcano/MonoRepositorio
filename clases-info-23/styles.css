@@ -129,8 +129,8 @@ a {
     /* transform:translateY(-20px) skewX(5deg) scale(1.1); 
     border: solid 1px white;
     z-index: 1; */
-  filter: blur(1px);
-  opacity: 0.9;
+  /* filter: blur(1px);
+  opacity: 0.9; */
     /* transform: scale(1.1);
     
    
