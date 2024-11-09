@@ -123,7 +123,7 @@ a {
     color: white;
 }
 
-#wrapp:hover :not(:hover){
+div:hover :not(:hover){
    /* filter: brightness(1.1);
     mix-blend-mode: multiply; */
     /* transform:translateY(-20px) skewX(5deg) scale(1.1); 
@@ -144,6 +144,7 @@ a {
     transition: all 0.3s;
     box-sizing: border-box;
     aspect-ratio: 1/0;
+    transition: opacity 0.3s ease;
 
     /* animation: move 2s linear infinite; */
 
@@ -153,6 +154,25 @@ a {
     /* position: absolute; */
 }
 
+/* .card-clase:hover {
+    opacity: 0.5;
+} */
+
+/* .card-clase a:hover {
+    opacity: 1;
+}
+*/
+.card-clase a:hover ~ * {
+    opacity: 0.5;
+} 
+.ver-clase:hover ~ a {
+    opacity: 0.5;
+  }
+  
+  .ver-clase:hover {
+    opacity: 1;
+    z-index: 1;
+  } */
 
 .iconify{
     color: #000;

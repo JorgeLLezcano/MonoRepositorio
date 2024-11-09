@@ -1,0 +1,65 @@
+let name = localStorage.getItem('userName');
+
+// ... existing code for getting/storing username
+
+let socket = io({
+  transports: ['polling']
+});
+
+let myId = null;
+const messagesContainer = document.getElementById('messages');
+const privateMessagesContainer = document.getElementById('private-messages');
+const messageForm = document.getElementById('message-form');
+const privateMessageForm = document.getElementById('private-message-form');
+const closePrivateChatButton = document.getElementById('close-private-chat');
+
+// ... existing code for connecting and handling basic chat functionality
+
+socket.on('connected-users', (data) => {
+  // ... existing code
+  
+  // Add click event listener to user list items
+  const userList = document.getElementById('user-online');
+  userList.addEventListener('click', (event) => {
+    if (event.target.tagName === 'LI') {
+      const recipientId = event.target.dataset.userId; // Assuming user ID stored in data-userId attribute
+      openPrivateChat(recipientId);
+    }
+  });
+});
+
+function openPrivateChat(recipientId) {
+  const privateChat = document.getElementById('private-chat');
+  privateChat.classList.remove('hidden');
+
+  // ... Logic to display private messages history (optional)
+}
+
+closePrivateChatButton.addEventListener('click', () => {
+  const privateChat = document.getElementById('private-chat');
+  privateChat.classList.add('hidden');
+});
+
+messageForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const message = document.getElementById('message-input').value;
+  if (message) {
+    socket.emit('chat', { msg: message, name: name });
+    document.getElementById('message-input').value = '';
+  }
+});
+
+
+
+  <div id="private-chat" class="hidden">
+        <h2>Chat Privado</h2>
+        <div id="private-messages">
+          <ul>
+            </ul>
+        </div>
+        <form id="private-message-form" action="">
+          <input type="text" id="private-message-input" placeholder="escribe mensaje privado...">
+          <button type="submit">enviar</button>
+        </form>
+        <button id="close-private-chat">Cerrar Chat Privado</button>
+      </div>
