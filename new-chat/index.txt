@@ -63,3 +63,9 @@ messageForm.addEventListener('submit', (event) => {
         </form>
         <button id="close-private-chat">Cerrar Chat Privado</button>
       </div>
+
+
+
+       userElement.addEventListener('click', () => {
+        notificador.removeChild(modal)
+        });

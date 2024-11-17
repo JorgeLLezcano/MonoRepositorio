@@ -35,7 +35,7 @@ const notificador=document.querySelector('.notificaciones')
    
 socket.on('connect', () => {
     myId = socket.id;  // Almacena el ID del cliente actual
-    socket.emit('set-user-name', name); 
+    socket.emit('set-user-name', name); //Informe su nombre al servidor
     socket.emit('get-connected-users');//solicita usuarios conectados
 
 })
@@ -44,14 +44,12 @@ socket.on('connect', () => {
 from.addEventListener('submit',(e)=>{
     e.preventDefault()
     if(input.value){
-        socket.emit('chat', { msg: input.value, name: name })
+        socket.emit('chat', { msg: input.value, name: name })///propiedades del mensaje
         input.value=''
     }
 })
 
-socket.emit('new-user', name);
-
-// Escuchar el evento cuando un nuevo usuario se conecta
+socket.emit('new-user', name);// Escuchar el evento cuando un nuevo usuario se conecta
 
 
 socket.on('user-connected', (data) => {
@@ -106,12 +104,16 @@ socket.on('connected-users', (data) => {
         userConected.innerHTML=user  + '  ya esta en coneccion';
         
         modal.appendChild(userConected)
-        setTimeout(() => {
-          notificador.removeChild(modal);
-      }, 3000);
+
+                  setTimeout(() => {
+                    notificador.removeChild(modal);
+                }, 3000);
         }
       }
     });
+
+   
+  
   });
 
    //funcion para saber cuando esta escribiendo
