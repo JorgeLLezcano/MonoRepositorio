@@ -144,13 +144,14 @@ div:hover :not(:hover){
     transition: all 0.3s;
     box-sizing: border-box;
     aspect-ratio: 1/0;
-    transition: opacity 0.3s ease;
-
+    transition: all 0.3s ease;
+    z-index: 9999;
     /* animation: move 2s linear infinite; */
 
 }
 .card-clase h2{
     transition: all 0.3s;
+    transform: translateZ(10vmin);
     /* position: absolute; */
 }
 

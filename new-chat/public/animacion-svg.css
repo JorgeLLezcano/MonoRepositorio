@@ -1,0 +1,36 @@
+.loader {
+    user-select: none;
+  }
+  
+  .star {
+    opacity: 0;
+    fill: #f2f3f4;
+    animation: loader 2s infinite alternate;
+  }
+  
+  .star2 {
+    height: 20px;
+    margin-left: -10px;
+    animation-delay: 0.25s;
+  }
+  
+  .star3 {
+    height: 16px;
+    margin-left: -15px;
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes loader {
+    0% {
+      opacity: 0;
+      transform: translateY(0) translateX(50px) rotate (0deg);
+    }
+    10% {
+      opacity: 0;
+      transform: translateY(0) translateX(50px) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-20px) translateX(0) rotate(360deg);
+    }
+  }
