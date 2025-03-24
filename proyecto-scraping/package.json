@@ -1,0 +1,15 @@
+{
+  "name": "proyecto-scraping",
+  "version": "1.0.0",
+  "description": "web scraping",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "author": "jorge",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0"
+  }
+}
