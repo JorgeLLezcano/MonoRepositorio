@@ -1,0 +1,84 @@
+body{
+    /* background: #333; */
+    background: red 
+    /* background: rgb(30,227,19);
+  background: linear-gradient(90deg, rgba(30,227,19,1) 0%, rgba(21,121,9,1) 35%, rgba(0,255,115,1) 100%) */
+  }
+  
+  #sprite{
+  height: 150px;
+  width: 110px;
+   background-image: url('https://preview.redd.it/walk-running-animations-i-made-for-my-mario-sprites-v0-586uoyan0fgb1.png?width=540&format=png&auto=webp&s=d94d0310bbbd5675a6a36d46a7a5625ecdfd866b');
+  background-size: cover;
+  position: absolute;
+  /* animation: walk .2s steps(3) infinite; */
+  }
+  
+  
+  .walk {
+      animation: walk .2s steps(3) infinite;
+  }
+  
+  @keyframes walk {
+      0% {
+          background-position: 0px 0px;
+      }
+  
+      100% {
+          background-position: -350px 0px;
+      }
+  }
+  
+  .jump {
+      animation: jump .2s steps(3) infinite;
+  }
+  
+  @keyframes jump {
+      0% {
+          transform: translateY(0px);
+      }
+  
+      50% {
+          transform: translateY(-50px);
+      }
+  
+      100% {
+          transform: translateY(-0px);
+      }
+  }
+  .colicion{
+    animation: colicion 1s ease-in 5;
+  }
+  
+  @keyframes colicion{
+  
+    0%{
+      background-color:white ;
+    }
+    100%{
+      background-color: red;
+    }
+  }
+  
+  .goomba{
+  
+    background-image: url('https://smallimg.pngkey.com/png/small/187-1876196_smb1-goomba-sprites-super-mario-bros-goomba-sprite.png');
+  height: 80px;
+  width: 95px;
+   animation: walk-gp .7s steps(2) infinite;
+   
+   position: absolute;
+   mix-blend-mode: multiply;
+  }
+  
+  @keyframes walk-gp {
+      0% {
+          background-position: 0px 0px;
+      }
+  
+      100% {
+          background-position:-230px 0px;
+      } 
+   
+  }
+  
