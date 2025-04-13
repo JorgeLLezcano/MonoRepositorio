@@ -1,0 +1,199 @@
+body {
+    background: #c8bfe4;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
+  
+  :root {
+    --position-piker: 70px;
+  }
+  
+  #pika {
+    background-image: url('https://art.ngfiles.com/thumbnails/3862000/3862427_full.webp?f1713513889');
+    height: var(--position-piker);
+    width: var(--position-piker);
+    animation: move 6s linear infinite;
+  }
+  
+  /* Animación con frames más fraccionados */
+  @keyframes move {
+    /* Bajando - Mostrando frente */
+    0% {
+      transform: translateY(0);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    5% {
+      transform: translateY(30px);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    10% {
+      transform: translateY(60px);
+      background-position: -70px -130px; /* Frente frame 2 */
+      animation-timing-function: steps(1);
+    }
+    15% {
+      transform: translateY(90px);
+      background-position: -70px -130px; /* Frente frame 2 */
+      animation-timing-function: steps(1);
+    }
+    20% {
+      transform: translateY(120px);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    25% {
+      transform: translateY(150px);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    30% {
+      transform: translateY(180px);
+      background-position: -70px -130px; /* Frente frame 2 */
+      animation-timing-function: steps(1);
+    }
+    35% {
+      transform: translateY(210px);
+      background-position: -70px -130px; /* Frente frame 2 */
+      animation-timing-function: steps(1);
+    }
+    40% {
+      transform: translateY(240px);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    45% {
+      transform: translateY(270px);
+      background-position: 0px -130px; /* Frente frame 1 */
+      animation-timing-function: steps(1);
+    }
+    50% {
+      transform: translateY(300px);
+      background-position: -70px -130px; /* Frente frame 2 */
+      animation-timing-function: steps(1);
+    }
+    
+    /* Subiendo - Mostrando espalda */
+    50.1% {
+      transform: translateY(300px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    55% {
+      transform: translateY(270px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    60% {
+      transform: translateY(240px);
+      background-position: -70px -210px; /* Espalda frame 2 */
+      animation-timing-function: steps(1);
+    }
+    65% {
+      transform: translateY(210px);
+      background-position: -70px -210px; /* Espalda frame 2 */
+      animation-timing-function: steps(1);
+    }
+    70% {
+      transform: translateY(180px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    75% {
+      transform: translateY(150px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    80% {
+      transform: translateY(120px);
+      background-position: -70px -210px; /* Espalda frame 2 */
+      animation-timing-function: steps(1);
+    }
+    85% {
+      transform: translateY(90px);
+      background-position: -70px -210px; /* Espalda frame 2 */
+      animation-timing-function: steps(1);
+    }
+    90% {
+      transform: translateY(60px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    95% {
+      transform: translateY(30px);
+      background-position: 0px -210px; /* Espalda frame 1 */
+      animation-timing-function: steps(1);
+    }
+    100% {
+      transform: translateY(0);
+      background-position: -70px -210px; /* Espalda frame 2 */
+      animation-timing-function: steps(1);
+    }
+  }
+  
+  /* styles from master poke*/
+  
+  
+  #master-poke{
+    position: absolute;
+  background-image: url('https://i.sstatic.net/AjFP5.png');
+  height: 65px;
+  width: 55px;
+  /*background-position: 0px -65px;
+  animation:  walk-left 1s steps(4) infinite;*/
+  }
+  .walk-front{
+  animation:  walk-front 1s steps(4) infinite;
+  
+  }
+  @keyframes walk-front{
+  
+    to{
+  
+      background-position: -256px 0px;
+    }
+  }
+  
+  .walk-left{
+  background-position: 0px -65px;
+  animation:  walk-left 1s steps(4) infinite;
+  
+  }
+  @keyframes walk-left{
+  
+    to{
+  
+      background-position: -256px -65px;
+    }
+  }
+  
+  .walk-right{
+  background-position: 0px -130px;
+  animation:  walk-right 1s steps(4) infinite;
+  
+  }
+  @keyframes walk-right{
+  
+    to{
+  
+      background-position: -256px -130px;
+    }
+  }
+  
+  .walk-up{
+  background-position: 0px -195px;
+  animation:  walk-up 1s steps(4) infinite;
+  
+  }
+  @keyframes walk-up{
+  
+    to{
+  
+      background-position: -256px -195px;
+    }
+  }
+  
+  
+  
