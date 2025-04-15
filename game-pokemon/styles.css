@@ -15,6 +15,16 @@ body {
     width: var(--position-piker);
     animation: move 6s linear infinite;
   }
+  #pika::after{
+    content: '';
+    background-color: rgba(0, 0, 0, 0.527);
+    width: 100%;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5%;
+    filter: blur(5px);
+    }
   
   /* Animación con frames más fraccionados */
   @keyframes move {
@@ -78,57 +88,57 @@ body {
     /* Subiendo - Mostrando espalda */
     50.1% {
       transform: translateY(300px);
-      background-position: 0px -210px; /* Espalda frame 1 */
+      background-position: 0px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     55% {
       transform: translateY(270px);
-      background-position: -70px -210px; /* Espalda frame 1 */
+      background-position: -70px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     60% {
       transform: translateY(240px);
-      background-position: -0px -210px; /* Espalda frame 2 */
+      background-position: -0px -200px; /* Espalda frame 2 */
       animation-timing-function: steps(1);
     }
     65% {
       transform: translateY(210px);
-      background-position: -70px -210px; /* Espalda frame 2 */
+      background-position: -70px -200px; /* Espalda frame 2 */
       animation-timing-function: steps(1);
     }
     70% {
       transform: translateY(180px);
-      background-position: -0px -210px; /* Espalda frame 1 */
+      background-position: -0px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     75% {
       transform: translateY(150px);
-      background-position: -70px -210px; /* Espalda frame 1 */
+      background-position: -70px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     80% {
       transform: translateY(120px);
-      background-position: -0px -210px; /* Espalda frame 2 */
+      background-position: -0px -200px; /* Espalda frame 2 */
       animation-timing-function: steps(1);
     }
     85% {
       transform: translateY(90px);
-      background-position: -70px -210px; /* Espalda frame 2 */
+      background-position: -70px -200px; /* Espalda frame 2 */
       animation-timing-function: steps(1);
     }
     90% {
       transform: translateY(60px);
-      background-position: -0px -210px; /* Espalda frame 1 */
+      background-position: -0px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     95% {
       transform: translateY(30px);
-      background-position: -70px -210px; /* Espalda frame 1 */
+      background-position: -70px -200px; /* Espalda frame 1 */
       animation-timing-function: steps(1);
     }
     100% {
       transform: translateY(0);
-      background-position: -0px -210px; /* Espalda frame 2 */
+      background-position: -0px -200px; /* Espalda frame 2 */
       animation-timing-function: steps(1);
     }
   }
@@ -145,6 +155,16 @@ body {
   /*background-position: 0px -65px;
   animation:  walk-left 1s steps(4) infinite;*/
   }
+  #master-poke::after{
+    content: '';
+    background-color: rgba(0, 0, 0, 0.527);
+    width: 100%;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5%;
+    filter: blur(5px);
+    }
   .walk-front{
   animation:  walk-front 1s steps(4) infinite;
   
@@ -212,4 +232,19 @@ body {
     background-position: 0px -195px;
   }
   
-  
+  .colision{
+    background-color: red;
+    animation: colision .1s both;
+   
+   }
+   @keyframes colision{
+     0%{
+     background-color: red;
+     
+   }
+   100%{
+     background-color: rgb(208, 255, 0);
+   }
+   
+   
+   }
