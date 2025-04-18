@@ -92,10 +92,13 @@ window.addEventListener('keyup', ()=>{
    mario.classList.remove('walk')
 
 })
+let header=document.querySelector('header')
+let p=document.createElement('p')
 
+header.appendChild(p)
 const maxGoombas = 5;
 const goombas = []; // Almacena los Goombas
-let pointer=0;
+let points=0;
 function crearGoomba() {
     if (goombas.length >= maxGoombas) return;
 
@@ -104,10 +107,17 @@ function crearGoomba() {
     document.body.appendChild(goomba);
     //ataque a goombas
     goomba.addEventListener('click', () => {
-        pointer+=10
+        points+=10
 let contador= document.createElement('div')
-contador.innerText=`${pointer}`
+contador.innerText=`${points}`
+contador.classList.add('points')
+
 goomba.appendChild(contador)
+
+p.innerText=`Puntos: ${points}`
+p.classList.add('points')
+//let puntos=`<p>Puntos: ${points}</p>`
+//header.innerHTML=puntos
        //goomba.classList.remove('goomba')
         goomba.classList.add('dead')
         //goomba.style.backgroundPosition='91px  0px ';
