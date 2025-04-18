@@ -71,13 +71,13 @@ window.addEventListener('keydown',(event)=>{
       case ' ':
       mario.classList.remove('walk')        
       
-                  // USA LA DIRECCIÓN GUARDADA
+                  // USA LA DIRECCIÓN GUARDADA 'rotateY(180deg)' 'rotateY(0deg)'
             if (direccion === 'izquierda') {
-                mario.style.transform = 'rotateY(180deg)';
+                mario.style.transform = 'scale(-1 1)';
             } else {
-                mario.style.transform = 'rotateY(0deg)';
+                mario.style.transform = 'scale(1 1)' ;
             }
-mario.classList.add('jump')
+         mario.classList.add('jump')
       break
 
   }
@@ -95,22 +95,38 @@ window.addEventListener('keyup', ()=>{
 
 const maxGoombas = 5;
 const goombas = []; // Almacena los Goombas
-
+let pointer=0;
 function crearGoomba() {
     if (goombas.length >= maxGoombas) return;
 
     const goomba = document.createElement("div");
     goomba.classList.add("goomba"); // Aplica el CSS
     document.body.appendChild(goomba);
+    //ataque a goombas
+    goomba.addEventListener('click', () => {
+        pointer+=10
+let contador= document.createElement('div')
+contador.innerText=`${pointer}`
+goomba.appendChild(contador)
+       //goomba.classList.remove('goomba')
+        goomba.classList.add('dead')
+        //goomba.style.backgroundPosition='91px  0px ';
 
+  
+        setTimeout(() => {
+            goomba.style.display = 'none';
+        },1000);
+        
+    });
     // Posiciona al Goomba en un borde aleatorio
     let side = Math.floor(Math.random() * 4); // 0=arriba, 1=abajo, 2=izquierda, 3=derecha
     let x, y;
-
+console.log(side)
     switch (side) {
         case 0: // Arriba
             x = Math.random() * window.innerWidth;
             y = -50;
+            console.log(x)
             break;
         case 1: // Abajo
             x = Math.random() * window.innerWidth;
@@ -142,17 +158,20 @@ function crearGoomba() {
 
         goomba.style.left = `${x}px`;
         goomba.style.top = `${y}px`;
+
+
+
 // Verificar colisión con Mario
         if (checkCollision(mario, goomba)) {
-          mario.style.mixBlendMode='difference';
-            mario.style.background = "red";
+          //mario.style.mixBlendMode='difference';
+           // mario.style.background = "red";
             // mario.classList.remove('walk')
-            //  mario.classList.remove('colicion');
+             mario.classList.add('colicion');
             //  void mario.offsetWidth;
             // mario.classList.add('colicion');
             setTimeout(() => {
-              mario.style.mixBlendMode='';
-                mario.style.background = ""; // Restaurar color
+              //mario.style.mixBlendMode='';
+              mario.classList.remove('colicion');// Restaurar color
               // mario.classList.remove('colicion');
             }, 500);
         }
@@ -188,3 +207,5 @@ function checkCollision(obj1, obj2) {
 for (let i = 0; i < maxGoombas; i++) {
     setTimeout(crearGoomba, i * 500); // Se crean progresivamente
 }
+
+

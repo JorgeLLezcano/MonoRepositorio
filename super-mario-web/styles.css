@@ -1,6 +1,6 @@
 body{
     /* background: #333; */
-    background: red 
+    /*background: red 
     /* background: rgb(30,227,19);
   background: linear-gradient(90deg, rgba(30,227,19,1) 0%, rgba(21,121,9,1) 35%, rgba(0,255,115,1) 100%) */
   }
@@ -10,10 +10,24 @@ body{
   width: 110px;
    background-image: url('https://preview.redd.it/walk-running-animations-i-made-for-my-mario-sprites-v0-586uoyan0fgb1.png?width=540&format=png&auto=webp&s=d94d0310bbbd5675a6a36d46a7a5625ecdfd866b');
   background-size: cover;
-  position: absolute;
+  position: fixed;
+  pointer-events: none;
+  transition: transform .5s ease-in-out;
+ 
   /* animation: walk .2s steps(3) infinite; */
   }
-  
+  #sprite::after{
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    border-radius:  50%;
+    background-color: #33333380;
+    filter: blur(5px);
+    bottom: -13%;
+    z-index: -999;
+  }
   
   .walk {
       animation: walk .2s steps(3) infinite;
@@ -30,7 +44,8 @@ body{
   }
   
   .jump {
-      animation: jump .2s steps(3) infinite;
+       background-position: -110px 0;
+      animation: jump .5s steps(3) infinite;
   }
   
   @keyframes jump {
@@ -47,6 +62,7 @@ body{
       }
   }
   .colicion{
+    background-position: -225px 0;
     animation: colicion 1s ease-in 5;
   }
   
@@ -69,6 +85,10 @@ body{
    
    position: absolute;
    mix-blend-mode: multiply;
+  }
+  .goomba.dead{
+    background-position:91px 0px;
+    animation: none;
   }
   
   @keyframes walk-gp {
