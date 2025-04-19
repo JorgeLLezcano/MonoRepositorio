@@ -1,6 +1,6 @@
 const masterPoke=document.getElementById('master-poke')
 const pika=document.getElementById('pika')
-
+const pokeball=document.getElementById('pokeball')
 
 let position= getComputedStyle(masterPoke)
 let positionY= parseInt(position.top);
@@ -60,6 +60,10 @@ masterPoke.classList.remove('face-front', 'face-up', 'face-left', 'face-right');
 
   masterPoke.style.top=`${positionY}px`;
   masterPoke.style.left=`${positionX}px`;
+
+  pokeball.style.top=`${positionY}px`;
+  pokeball.style.left=`${positionX}px`;
+
 })
 
 window.addEventListener('keyup', () => {
@@ -83,3 +87,11 @@ function gameLoop() {
 
 // Iniciar el bucle de juego
 gameLoop()
+
+pika.addEventListener('click',()=>{
+  pokeball.classList.add('launch')
+ if(checkColittion(pokeball,pika )){
+console.log('colision')
+  pokeball.classList.add('open')
+ }
+})

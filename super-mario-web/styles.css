@@ -87,6 +87,18 @@ body{
    position: absolute;
    mix-blend-mode: multiply;
   }
+  .goomba::after{
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    border-radius:  50%;
+    background-color: #33333380;
+    filter: blur(5px);
+    bottom: -13%;
+    z-index: -999;
+  }
   .goomba.dead{
     background-position:91px 0px;
     animation: none;
@@ -120,7 +132,7 @@ body{
 
 
 
-header{
+  header{
     position: fixed;
     padding: 20px;
 }

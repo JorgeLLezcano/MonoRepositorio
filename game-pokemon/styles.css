@@ -148,10 +148,10 @@ body {
   
   div#master-poke{
     position: absolute;
-  background-image: url('https://i.sstatic.net/AjFP5.png');
+  background-image: url('https://github.com/JorgeLLezcano/asset-utiles/blob/main/AjFP5.png?raw=true');
   height: 65px;
   width: 55px;
-  background-color:red;
+  /*-background-color:red;
   /*background-position: 0px -65px;
   animation:  walk-left 1s steps(4) infinite;*/
   }
@@ -247,4 +247,41 @@ body {
    }
    
    
+   }
+
+   #pokeball{
+/*background-image: url('https://banner2.cleanpng.com/20180802/exw/5e047b2bfebc3266e89100ff7c5c05d2.webp');*/
+background-image: url('https://github.com/JorgeLLezcano/asset-utiles/blob/main/image-removebg-preview%20(1).png?raw=true');
+position: absolute;
+height: 31px;
+width: 26px;
+background-size: 85px;
+/*animation: open 1s steps(3) infinite;*/
+ /*animation: launch 1s linear infinite;*/
+   }
+   .launch{
+    animation: launch 2s linear both;
+
+   }
+   @keyframes launch{
+    0%{
+      transform: translateY(0px) translateX(0px);
+    }
+    50%{
+ transform: translateY(-50px) translateX(100px)
+    }
+    100%{
+      transform: translateY(30px) translateX(150px)
+    }
+
+   }
+#pokeball.open{
+  animation: open 1s steps(3) infinite;
+
+}
+   @keyframes open{
+to{
+  background-position:-170px 0px ;
+}
+
    }
