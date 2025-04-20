@@ -6,6 +6,7 @@ body {
   }
   
   :root {
+    --pokeball-rotation: 0deg; 
     --position-piker: 70px;
   }
   
@@ -258,30 +259,46 @@ width: 26px;
 background-size: 85px;
 /*animation: open 1s steps(3) infinite;*/
  /*animation: launch 1s linear infinite;*/
+ transform: rotate(var(--pokeball-rotation));
+ transition: transform 0.2s ease-in-out;
    }
-   .launch{
-    animation: launch 2s linear both;
+   #pokeball.launch{
+    animation: launch 1s linear both;
 
    }
    @keyframes launch{
     0%{
-      transform: translateY(0px) translateX(0px);
+      transform: translateY(0px) translateX(0px) rotate(0);
     }
     50%{
- transform: translateY(-50px) translateX(100px)
+ transform: translateY(-50px) translateX(100px) rotate(0)
     }
     100%{
-      transform: translateY(30px) translateX(150px)
+      transform: translateY(30px) translateX(150px) rotate(360deg)
     }
 
    }
 #pokeball.open{
-  animation: open 1s steps(3) infinite;
+  transform: rotate(var(--pokeball-rotation));
+  animation: open 1s steps(3) both;
 
 }
    @keyframes open{
-to{
-  background-position:-170px 0px ;
+    0%{
+      background-position:-0px 0px ;
+      animation-timing-function: steps(1);
+    }
+    25%{
+      background-position:-26px 0px ;
+      animation-timing-function: steps(1);
+    }
+    50%{
+      background-position:-170px 0px ;
+      animation-timing-function: steps(1);
+    }
+100%{
+  background-position: -229px 0px;
+  animation-timing-function: steps(1);
 }
 
    }
