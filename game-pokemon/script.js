@@ -106,7 +106,18 @@ gameLoop();
 
 pika.addEventListener('click', () => {
   pokeball.classList.remove('open')
+  if (masterPoke.classList.contains('face-front')){
     pokeball.classList.add('launch');
+  }else if(masterPoke.classList.contains('face-up')){
+    pokeball.classList.add('launch-up');
+  }else if(masterPoke.classList.contains('face-left')){
+    pokeball.classList.add('launch-left');
+  }else if(masterPoke.classList.contains('face-right')){
+    pokeball.classList.add('launch-right');
+  }
+  
+  
+    
   
     ballLaunched = true; // Indica que la pokeball ha sido lanzada
    
@@ -120,7 +131,7 @@ pika.addEventListener('click', () => {
 });
 
 pokeball.addEventListener('click',()=>{
-pokeball.classList.remove('launch')
+pokeball.classList.remove('launch', 'launch-up', 'launch-left', 'launch-right')
 pokeball.classList.remove('open')
 pokeball.style.transform = 'translate(0px, 0px)'
 })

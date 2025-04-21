@@ -263,7 +263,7 @@ background-size: 85px;
  transition: transform 0.2s ease-in-out;
    }
    #pokeball.launch{
-    animation: launch 1s linear both;
+    animation: launch .5s linear both;
 
    }
    @keyframes launch{
@@ -278,6 +278,85 @@ background-size: 85px;
     }
 
    }
+   #pokeball.launch {
+    animation: launch-forward .5s linear both; /* Animación base hacia adelante */
+}
+
+@keyframes launch-forward {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0);
+    }
+    50% {
+        transform: translateY(50px) translateX(20px) rotate(180deg); /* Ajusta estos valores */
+    }
+    100% {
+        transform: translateY(100px) translateX(40px) rotate(360deg); /* Ajusta estos valores */
+    }
+}
+
+/* Modificaciones de la animación según la dirección */
+#pokeball.launch-up {
+  animation: launch-up .5s linear both;
+    animation-name: launch-up;
+}
+
+@keyframes launch-up {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0);
+    }
+    50% {
+        transform: translateY(-50px) translateX(20px) rotate(-180deg); /* Valores negativos en translateY */
+    }
+    100% {
+        transform: translateY(-100px) translateX(40px) rotate(-360deg); /* Valores negativos en translateY */
+    }
+}
+
+#pokeball.launch-left {
+  animation: launch-left .5s linear both;
+    animation-name: launch-left;
+}
+
+@keyframes launch-left {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0);
+    }
+    50% {
+        transform: translateY(20px) translateX(-50px) rotate(-180deg); /* Valores negativos en translateX */
+    }
+    100% {
+        transform: translateY(40px) translateX(-100px) rotate(-360deg); /* Valores negativos en translateX */
+    }
+}
+
+#pokeball.launch-right {
+  animation: launch-right .5s linear both;
+    animation-name: launch-right;
+}
+
+@keyframes launch-right {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0);
+    }
+    50% {
+        transform: translateY(20px) translateX(50px) rotate(180deg); /* Valores positivos en translateX */
+    }
+    100% {
+        transform: translateY(40px) translateX(100px) rotate(360deg); /* Valores positivos en translateX */
+    }
+}
+
+#pokeball.open {
+    animation: open 1s steps(3) infinite;
+}
+
+@keyframes open {
+    to {
+        background-position: -170px 0px;
+    }
+}
+
+
 #pokeball.open{
   transform: rotate(var(--pokeball-rotation));
   animation: open 1s steps(3) both;
