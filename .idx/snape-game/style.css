@@ -1,0 +1,51 @@
+body{
+    background:#333 ;
+  }
+  
+  #cubo{
+   background-color: red;
+   height: 50px;
+   width: 50px;
+   position: absolute;
+  
+  }
+  
+  .cubo-random{
+     background-color: yellow;
+   height: 50px;
+   width: 50px;
+   position: absolute;
+  }
+  .follower{
+  
+       background-color: green;
+   height: 50px;
+   width: 50px;
+   position: absolute;
+  }
+
+
+  .spin{
+    animation: spin-left .2s linear infinite;
+  }
+
+  
+@keyframes spin-left{
+
+to{
+  transform: rotate(-180deg);
+}
+}
+
+
+.spin-rigth{
+    animation: spin-rigth .2s linear infinite;
+  }
+
+
+@keyframes spin-rigth{
+
+to{
+  transform: rotate(-180deg);
+}
+}
