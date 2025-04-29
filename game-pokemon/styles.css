@@ -6,7 +6,7 @@ body {
   }
   
   :root {
-    --pokeball-rotation: 0deg; 
+    
     --position-piker: 70px;
   }
   
@@ -15,6 +15,8 @@ body {
     height: var(--position-piker);
     width: var(--position-piker);
     animation: move 6s linear infinite;
+    position: absolute;
+    /*transition: top 0.1s ease-in-out, left 0.1s ease-in-out;*/
   }
   #pika::after{
     content: '';
@@ -143,7 +145,13 @@ body {
       animation-timing-function: steps(1);
     }
   }
-  
+  .div-pika{
+position: absolute;
+height: 100%;
+width: 100%;
+background-color: white;
+
+  }
   /* styles from master poke*/
   
   
@@ -152,6 +160,7 @@ body {
   background-image: url('https://github.com/JorgeLLezcano/asset-utiles/blob/main/AjFP5.png?raw=true');
   height: 65px;
   width: 55px;
+ 
   /*-background-color:red;
   /*background-position: 0px -65px;
   animation:  walk-left 1s steps(4) infinite;*/
@@ -165,6 +174,7 @@ body {
     position: absolute;
     bottom: 5%;
     filter: blur(5px);
+    
     }
   .walk-front{
   animation:  walk-front 1s steps(4) infinite;
@@ -257,12 +267,13 @@ position: absolute;
 height: 31px;
 width: 26px;
 background-size: 85px;
+transition: transform 2s ease;
 /*animation: open 1s steps(3) infinite;*/
  /*animation: launch 1s linear infinite;*/
- transform: rotate(var(--pokeball-rotation));
- transition: transform 0.2s ease-in-out;
+
    }
    #pokeball.launch{
+   
     animation: launch .5s linear both;
 
    }
@@ -283,15 +294,19 @@ background-size: 85px;
 }
 
 @keyframes launch-forward {
-    0% {
-        transform: translateY(0px) translateX(0px) rotate(0);
-    }
-    50% {
-        transform: translateY(50px) translateX(20px) rotate(180deg); /* Ajusta estos valores */
-    }
-    100% {
-        transform: translateY(100px) translateX(40px) rotate(360deg); /* Ajusta estos valores */
-    }
+  0% {
+      transform: translateY(0px) translateX(0px) rotate(0);
+  }
+
+50% {
+    transform: translateY(100px) translateX(-20px) rotate(180deg);
+}
+100% {
+    transform: translateY(200px) translateX(40px) rotate(360deg);
+  }
+}
+.launch-up, .launch-front, .launch-left,.launch-right{
+ opacity: 1;
 }
 
 /* Modificaciones de la animación según la dirección */
@@ -322,10 +337,10 @@ background-size: 85px;
         transform: translateY(0px) translateX(0px) rotate(0);
     }
     50% {
-        transform: translateY(20px) translateX(-50px) rotate(-180deg); /* Valores negativos en translateX */
+        transform: translateY(-20px) translateX(-100px) rotate(-180deg); /* Valores negativos en translateX */
     }
     100% {
-        transform: translateY(40px) translateX(-100px) rotate(-360deg); /* Valores negativos en translateX */
+        transform: translateY(40px) translateX(-200px) rotate(-360deg); /* Valores negativos en translateX */
     }
 }
 
@@ -339,10 +354,10 @@ background-size: 85px;
         transform: translateY(0px) translateX(0px) rotate(0);
     }
     50% {
-        transform: translateY(20px) translateX(50px) rotate(180deg); /* Valores positivos en translateX */
+        transform: translateY(-20px) translateX(100px) rotate(180deg); /* Valores positivos en translateX */
     }
     100% {
-        transform: translateY(40px) translateX(100px) rotate(360deg); /* Valores positivos en translateX */
+        transform: translateY(40px) translateX(200px) rotate(360deg); /* Valores positivos en translateX */
     }
 }
 

@@ -7,6 +7,7 @@ let positionY= parseInt(position.top);
 let positionX= parseInt(position.left);
 
 
+
 function checkColittion(element1, element2){
   let rect1=element1.getBoundingClientRect();
   let rect2=element2.getBoundingClientRect();
@@ -24,7 +25,7 @@ function checkColittion(element1, element2){
     if(checkColittion(masterPoke,pika )){
   
     // masterPoke.style.backgroundColor='red'
-    masterPoke.classList.add('colision')
+    //masterPoke.classList.add('colision')
   //ifColision= true
     setTimeout(()=>{
       // masterPoke.style.backgroundColor=''
@@ -40,25 +41,25 @@ masterPoke.classList.remove('walk-front', 'walk-up', 'walk-left', 'walk-right');
 masterPoke.classList.remove('face-front', 'face-up', 'face-left', 'face-right');
 let rotation = '0deg';
   if(e.key==='ArrowDown'){
-    positionY+=10
+    positionY+=15
     masterPoke.classList.add('walk-front')
     masterPoke.classList.add('face-front');
   }else if(e.key==='ArrowUp'){
 
-    positionY-=10
+    positionY-=15
     masterPoke.classList.add('walk-up')
-    rotation = '-90deg';
+   
     masterPoke.classList.add('face-up');
   }else if(e.key==='ArrowLeft'){
     
-    positionX-=10
+    positionX-=15
     masterPoke.classList.add('walk-left')
-    rotation = '-180deg';
+    
     masterPoke.classList.add('face-left');
   }else if(e.key==='ArrowRight'){
-    positionX+=10
+    positionX+=15
     masterPoke.classList.add('walk-right')
-    rotation = '90deg';
+   
     masterPoke.classList.add('face-right');
   }
 
@@ -68,36 +69,44 @@ let rotation = '0deg';
   pokeball.style.top=`${positionY}px`;
   pokeball.style.left=`${positionX}px`;
 
-  pokeball.style.setProperty('--pokeball-rotation', rotation);
+  
 })
 
 window.addEventListener('keyup', () => {
   masterPoke.classList.remove('walk-front', 'walk-up', 'walk-left', 'walk-right');
 
-  // if (e.key === 'ArrowDown') {
-  //   masterPoke.classList.add('face-front');
-  // } else if (e.key === 'ArrowUp') {
-  //   masterPoke.classList.add('face-up');
-  // } else if (e.key === 'ArrowLeft') {
-  //   masterPoke.classList.add('face-left');
-  // } else if (e.key === 'ArrowRight') {
-  //   masterPoke.classList.add('face-right');
-  // }
+
 });
 
 let ballLaunched = false; // Nueva variable para controlar si la pokeball fue lanzada
-
+let trapped=false
 function gameLoop() {
     hadlerColision();
 
     if (ballLaunched && checkColittion(pokeball, pika)) {
         console.log('¡Pokeball atrapó a Pika!');
+        trapped=true
         const finalTransform = getComputedStyle(pokeball).transform;
         pokeball.style.transform = finalTransform;
+        
         pokeball.classList.add('open');
         ballLaunched = false; // Evita que se abra múltiples veces
-    }
 
+        let div=document.createElement('div')
+        div.classList.add('div-pika')
+        pika.appendChild(div)
+        pika.style.display='none'
+        setTimeout(() => {
+            div.remove()
+            pika.style.display = 'block';
+            div.style.backgroundColor = '';
+        }, 1000);
+    }
+    if(trapped){
+      pika.style.animation='none'
+      pika.style.top=`${positionY}px`;
+      pika.style.left=`${positionX}px`;
+    }
     requestAnimationFrame(gameLoop);
 }
 
@@ -105,6 +114,7 @@ function gameLoop() {
 gameLoop();
 
 pika.addEventListener('click', () => {
+  
   pokeball.classList.remove('open')
   if (masterPoke.classList.contains('face-front')){
     pokeball.classList.add('launch');
