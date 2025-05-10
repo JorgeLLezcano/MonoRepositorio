@@ -40,15 +40,8 @@ let velX=2
 function moveDisk(){
 
    if (checkCollision(pad1, disk) || checkCollision(pad2, disk)) {
-    //velX = -velX;
-   const rectDisk = disk.getBoundingClientRect();
-    const rectPad1 = pad1.getBoundingClientRect();
-    const rectPad2 = pad2.getBoundingClientRect();
-
-    if ((rectDisk.top >= rectPad1.top && rectDisk.bottom <= rectPad1.bottom) || 
-        (rectDisk.top >= rectPad2.top && rectDisk.bottom <= rectPad2.bottom)) {
-      velX = -velX;
-    }
+    velX = -velX;
+ 
   }
 
  x += velX;
