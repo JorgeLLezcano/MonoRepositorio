@@ -1,0 +1,135 @@
+body {
+    background-color: #8FBC8F; /* Verde césped suave */
+    margin: 0;
+    overflow: hidden;
+    position: relative; /* Necesario para posicionar ::before y ::after */
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  body::before,
+  body::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-size: 10px 10px; /* Tamaño de la "celda" del patrón */
+    pointer-events: none; /* Para que no interfieran con los clics */
+    z-index: -1; /* Colocarlos detrás del contenido principal */
+  }
+  
+  body::before {
+    /* Patrón de puntos pequeños y dispersos */
+    background-image: repeating-conic-gradient(
+      from 0deg,
+      #66BB6A 0%,      /* Verde más oscuro */
+      #66BB6A 10deg,
+      transparent 10deg,
+      transparent 40deg
+    ),
+    repeating-conic-gradient(
+      from 90deg,
+      #66BB6A 0%,
+      #66BB6A 10deg,
+      transparent 10deg,
+      transparent 50deg
+    );
+    background-position: 0 0, 5px 5px; /* Desfase para "aleatorizar" un poco */
+  }
+  
+  body::after {
+    /* Variación con puntos más grandes y menos opacos */
+    background-image: repeating-conic-gradient(
+      from 45deg,
+      #558B2F 0%,  /* Verde aún más oscuro */
+      #558B2F 15deg,
+      transparent 15deg,
+      transparent 60deg
+    ),
+    repeating-conic-gradient(
+      from 135deg,
+      #558B2F 0%,
+      #558B2F 15deg,
+      transparent 15deg,
+      transparent 70deg
+    );
+    background-size: 15px 15px;
+    opacity: 0.4; /* Un poco más transparente */
+    background-position: 2px 2px, 8px 8px;
+  }
+  
+  #personaje {
+      background-image: url('https://github.com/JorgeLLezcano/asset-utiles/blob/main/AjFP5.png?raw=true');
+    height: 65px;
+    width: 55px;
+              /*width: 50px;  Ancho del personaje */
+              /*height: 50px;  Alto del personaje */
+              /*background-color: #007BFF;  Color azul */
+              border-radius: 50%; /* Hace que sea un círculo */
+              position: absolute; /* Posicionamiento absoluto para control total */
+              /* El centrado inicial lo hará el body, esto asegura que se quede ahí */
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 2;
+          }
+          #game-area {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 2000px;  /* Ejemplo de área de juego más grande que el viewport */
+              height: 2000px;
+              background-color: rgba(255, 255, 255, 0.1); /* Área de juego casi transparente */
+              z-index: 1;
+          }
+  .walk-front{
+    animation:  walk-front 1s steps(4) infinite;
+    
+    }
+    @keyframes walk-front{
+    
+      to{
+    
+        background-position: -256px 0px;
+      }
+    }
+    
+    .walk-left{
+    background-position: 0px -65px;
+    animation:  walk-left 1s steps(4) infinite;
+    
+    }
+    @keyframes walk-left{
+    
+      to{
+    
+        background-position: -256px -65px;
+      }
+    }
+    
+    .walk-right{
+    background-position: 0px -130px;
+    animation:  walk-right 1s steps(4) infinite;
+    
+    }
+    @keyframes walk-right{
+    
+      to{
+    
+        background-position: -256px -130px;
+      }
+    }
+    
+    .walk-up{
+    background-position: 0px -195px;
+    animation:  walk-up 1s steps(4) infinite;
+    
+    }
+    @keyframes walk-up{
+    
+      to{
+    
+        background-position: -256px -195px;
+      }
+    }

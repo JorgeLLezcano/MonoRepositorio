@@ -1,4 +1,5 @@
 body{
+  background-color: #4CAF50;
     font-family: monospace;
     /* background: #333; */
     /*background: red 
@@ -45,6 +46,7 @@ body{
   }
   
   .jump {
+    position: absolute;
        background-position: -110px 0;
       animation: jump .5s steps(3) infinite;
   }
@@ -55,7 +57,7 @@ body{
       }
   
       50% {
-          transform: translateY(-50px);
+          transform: translateY(-100px);
       }
   
       100% {

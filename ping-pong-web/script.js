@@ -1,3 +1,5 @@
+const e = require("express")
+
 const table=document.getElementById('table')
 const pad1=document.getElementById('pad1')
 const pad2=document.getElementById('pad2')
@@ -23,6 +25,8 @@ if(e.key==='ArrowDown' && positionY < recTable.height - pad1.offsetHeight){
 pad1.style.top=`${positionY}px`
 pad2.style.top=`${positionY}px`
 })
+
+
 
 function checkCollision(obj1, obj2) {
     let rect1 = obj1.getBoundingClientRect();

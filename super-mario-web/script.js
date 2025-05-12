@@ -71,13 +71,8 @@ window.addEventListener('keydown',(event)=>{
       case ' ':
       mario.classList.remove('walk')        
       
-                  // USA LA DIRECCIÓN GUARDADA 'rotateY(180deg)' 'rotateY(0deg)'
-            if (direccion === 'izquierda') {
-                mario.style.transform = 'scale(-1 1)';
-            } else {
-                mario.style.transform = 'scale(1 1)' ;
-            }
-         mario.classList.add('jump')
+          
+         
       break
 
   }
@@ -88,7 +83,7 @@ window.addEventListener('keydown',(event)=>{
 })
 
 window.addEventListener('keyup', ()=>{
-   mario.classList.remove('jump')
+ 
    mario.classList.remove('walk')
 
 })
@@ -128,6 +123,29 @@ p.classList.add('points')
         },1000);
         
     });
+
+
+    let jump=false
+    document.addEventListener('mousedown', () => {
+                // USA LA DIRECCIÓN GUARDADA 'rotateY(180deg)' 'rotateY(0deg)'
+                if (direccion === 'izquierda') {
+                    mario.style.transform = 'rotateY(-180deg)';
+                } else {
+                    mario.style.transform = 'scale(1 1)' ;
+                }
+                if(!jump){
+        mario.classList.add('jump');
+        console.log('jump')
+        jump=true
+    }
+      });
+      
+      document.addEventListener('mouseup', () => {
+        mario.classList.remove('jump');
+        jump=false
+      });
+      
+
     // Posiciona al Goomba en un borde aleatorio
     let side = Math.floor(Math.random() * 4); // 0=arriba, 1=abajo, 2=izquierda, 3=derecha
     let x, y;
@@ -172,7 +190,7 @@ console.log(side)
 
 
 // Verificar colisión con Mario
-        if (checkCollision(mario, goomba)) {
+        if (checkCollision(mario, goomba) && !jump) {
           //mario.style.mixBlendMode='difference';
            // mario.style.background = "red";
             // mario.classList.remove('walk')
