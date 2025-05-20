@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden; /* Oculta el scrollbar si las estrellas se salen */
+    background-color: #000; /* Fondo negro para el espacio */
+    position: relative; /* Necesario para posicionar pseudo-elementos */
+
+    /* Estrellas grandes y más lentas (en el body mismo) */
+    background-image:
+        radial-gradient(1.5px 1.5px at 50% 50%, #bbb, transparent); /* Un punto central */
+    background-size: 250px 250px; /* Tamaño del patrón de repetición */
+    background-repeat: repeat;
+    animation: moveStars 120s linear infinite; /* Animación de movimiento */
+    z-index: 1; /* Para controlar el orden de las capas */
+}
+
+/* Pseudo-elemento ::before para estrellas medianas */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 20% 80%, #ccc, transparent),
+        radial-gradient(1px 1px at 70% 30%, #ccc, transparent),
+        radial-gradient(1px 1px at 40% 10%, #ccc, transparent);
+    background-size: 150px 150px;
+    background-repeat: repeat;
+    animation: moveStars 80s linear infinite; /* Velocidad intermedia */
+    z-index: 2;
+    pointer-events: none; /* Asegura que no bloquee clics */
+}
+
+/* Pseudo-elemento ::after para estrellas pequeñas */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(0.5px 0.5px at 10% 20%, #eee, transparent),
+        radial-gradient(0.5px 0.5px at 90% 50%, #eee, transparent),
+        radial-gradient(0.5px 0.5px at 30% 90%, #eee, transparent),
+        radial-gradient(0.5px 0.5px at 60% 40%, #eee, transparent);
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    animation: moveStars 50s linear infinite; /* Velocidad más rápida */
+    z-index: 3;
+    pointer-events: none; /* Asegura que no bloquee clics */
+}
+
+/* Keyframes para la animación de las estrellas (común a todas las capas) */
+@keyframes moveStars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        /* Mueve el fondo 100% de la altura del viewport hacia abajo */
+        background-position: 0 100vh;
+    }
+}
+
+
+
+#nave{
+  background-color: green;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 5px;
+}
+
+.shoter{
+  position: absolute;
+  height: 20px;
+  width: 5px;
+   background-color: red;
+  box-shadow: 1px 1px 10px red;
+ /* animation:  fire 2s both, opacity 2s both; */
+}
+
+ .enemy {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            background-color: purple; /* Color para los enemigos */
+            border-radius: 5px;
+            z-index: 8; /* Enemigos debajo de la nave y disparos */
+            animation: fire 1s both;
+            
+        }
+         .enemy-shot {
+            position: absolute;
+            height: 15px; /* Un poco más pequeño */
+            width: 5px;
+            background-color: yellow; /* Color diferente */
+            z-index: 7; /* Debajo de los disparos del jugador */
+        }
+        /* Estilos del contador de vidas */
+        #live {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex; /* Para que los spans se muestren en línea */
+            gap: 5px; /* Espacio entre los spans */
+            z-index: 100; /* Asegura que esté por encima de todo */
+        }
+
+        #live span {
+            width: 20px; /* Ancho de cada vida/span */
+            height: 20px; /* Altura de cada vida/span */
+            background-color: limegreen; /* Color de una vida activa */
+            border: 1px solid white;
+            border-radius: 3px;
+        }
+
+        /* Estilo para un span "perdido" (opcional) */
+        #live span.lost-life {
+            background-color: gray; /* Color de una vida perdida */
+            border-color: darkgray;
+        }
+
+        #game-over-screen {
+            display: none; /* Oculto por defecto */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            color: white;
+            font-size: 3em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 200; /* Por encima de todo */
+        }
+
+        #game-over-screen button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 0.6em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+@keyframes fire{
+
+  to{
+    transform: translateY(100px);
+  }
+}
+
+@keyframes opacity{
+  from{
+    opacity: 0,5;
+  }
+  to{
+    opacity: 0;
+  }
+}
