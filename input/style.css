@@ -42,6 +42,7 @@ body{
     color: black;
     font-size: 30px;
     font-family: monospace;
+    pointer-events: none;
   }
   
   
