@@ -1,0 +1,51 @@
+body{
+    background: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+        align-items: center;
+  }
+  input{
+    transform: rotate(-90deg);
+  }
+  
+  input[type="range"] {
+    /* width: 300px;            Opcional: cambia el ancho del slider */
+    /* height: 30px;            /* Altura total del input */
+    -webkit-appearance: none; /* Quitar el estilo por defecto en Chrome/Safari */
+        background-image: linear-gradient(45deg, #e95110, #e168686b);; /* Quitar fondo para que no bloquee el track */
+        border-radius: 5px;
+        overflow: hidden;
+  }
+  
+  /* Estilo de la línea (track) en WebKit (Chrome, Safari) */
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 50px;             /* Grosor de la línea */
+     /* background:#28a745;   Color de la línea */
+    border-radius: px;
+  }
+  
+  /* Estilo del "thumb" (botón deslizable) en WebKit */
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 100%;
+    background: white;
+    
+    /*background: #f02b08;
+    /*border-radius: 50%;*/
+    margin-top: px; /* Alinear verticalmente con el track */
+  }
+  
+  #valorRango{
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    font-family: monospace;
+  }
+  
+  
+  
+  
+  
+  
