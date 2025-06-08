@@ -2,6 +2,9 @@ body{
     height: 100vh;
     color: white;
     background: linear-gradient(320deg, rgba(13, 33, 49, 0.566), rgb(12 12 12 / 31%));
+    display: flex;
+    justify-content: center;
+    margin: 0;
 }
 header{
   display: flex;
@@ -18,7 +21,7 @@ main{
     height: 100vh;
     max-width: 500px;
     width: 100%;
-    margin: auto;
+    /* margin: auto; */
     display: flex;
     flex-direction: column;
     justify-content: center;
