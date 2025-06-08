@@ -96,7 +96,7 @@ socket.on('connected-users', (data) => {
 
         userCounts[user] = (userCounts[user] || 0) + 1;
   
-        if (userCounts[user] <= 2) {
+        if (userCounts[user] <= 1) {
         const userElement = document.createElement('span');
         userElement.textContent = user;
         
