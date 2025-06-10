@@ -113,7 +113,7 @@ socket.on('connected-users', (data) => {
                   setTimeout(() => {
                     notificador.removeChild(modal);
                 }, 3000);
-     
+              }
       }
     });
 
