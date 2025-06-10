@@ -1,9 +1,10 @@
 body{
+  display: flex;
+  justify-content:center;
     height: 100vh;
     color: white;
     background: linear-gradient(320deg, rgba(13, 33, 49, 0.566), rgb(12 12 12 / 31%));
-    display: flex;
-    justify-content: center;
+
     margin: 0;
 }
 header{
@@ -33,7 +34,16 @@ main{
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     font-style: italic;
 }
-
+  main::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: inherit; 
+  filter: blur(10px); 
+  z-index: -1; 
+  border-radius: 10px;
+  } 
  form{
     background: #333;
     height: 50px;
@@ -96,39 +106,41 @@ font-weight: 600;
   text-align: right;
   color: white;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
-    /* 
-    border-radius: 10px; 
-   
-    text-align: right;
-    font-style: italic;
-    font-weight: 600;
-    padding: 5px;
-    box-sizing: border-box;
-     */
-    /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 91% 75%, 96% 95%, 84% 75%, 0% 75%);
-    margin-right: 15px;
-    margin-left: 15px; */
   }
-  
+  .enviado::after{
+    content:'';
+    background-color: transparent;
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    top: 100%;
+    right: 0;
+    border-top-right-radius: .5rem;
+    box-shadow: 0 -1rem 0 #5b435b;
+    z-index: -1;
+    border-top: solid 1px #3f363c;
+  }
   .recibido {
     background-color: #ffa50078;
   align-self: flex-start; /* Alinea a la izquierda */
   text-align: left;
   color: black;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-    /* 
-    border-radius: 10px; 
-    
-    text-align: left;
-    font-style: normal;
-    font-weight: 400;
-    padding: 5px;
-    box-sizing: border-box;
-    animation: effect-scale .2s linear both; */
-    /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 19% 78%, 0 97%, 8% 76%, 0% 75%);
-    margin-right: 15px;
-    margin-left: 15px; */
+ 
+  
+  }
+  .recibido::before{
+    content:'';
+    background-color: transparent;
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    top: 100%;
+    left: 0;
+    border-top-left-radius: .5rem;
+    box-shadow: 0 -1rem 0 #b87e38;
+    z-index: -1;
+    border-top: solid 1px #553e1f;
   }
 
   @keyframes effect-scale {
