@@ -31,7 +31,40 @@ const messagesContainer = document.getElementById('messages');
 const sent=document.querySelector('.sent')
 const received=document.querySelector('.received')
 const notificador=document.querySelector('.notificaciones')
+const emojiButton = document.getElementById('emoji-button');
+const emojiPicker = document.getElementById('emoji-picker');
 
+const emojis = ['😀', '😂', '😍', '😎', '😢', '👍', '🔥', '❤️', '🎉', '🚀'];
+
+//Mostrar el selector de emojis
+emojiButton.addEventListener('click', (e) => {
+  e.stopPropagation(); 
+    emojiPicker.classList.toggle('hidden');
+    emojiPicker.innerHTML = ''; // Limpiar antes de agregar emojis
+   
+
+    emojis.forEach(emoji => {
+        const emojiElement = document.createElement('button');
+        emojiElement.textContent = emoji;
+        emojiElement.classList.add('emoji-item');
+         emojiElement.type = 'button'
+
+        emojiElement.addEventListener('click', (e) => {
+          e.stopPropagation();
+            input.value += emoji; // Agregar emoji al input
+           // emojiPicker.classList.add('hidden'); // Ocultar después de seleccionar
+            input.focus();
+        });
+        emojiPicker.appendChild(emojiElement);
+    });
+});
+
+// Ocultar el selector si el usuario hace clic fuera
+document.addEventListener('click', (event) => {
+    if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
+        emojiPicker.classList.add('hidden');
+    }
+});
    
 socket.on('connect', () => {
     myId = socket.id;                    // Almacena el ID del cliente actual
