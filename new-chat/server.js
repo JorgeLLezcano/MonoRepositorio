@@ -19,6 +19,12 @@ const io=new Server(server,{
 )
 let connectedUsers = [];
 let messageHistory = [];
+const MESSAGE_LIFETIME_MS = 24 * 60 * 60 * 1000; // 24 horas en ms
+
+function cleanOldMessages() {
+  const now = Date.now();
+  messageHistory = messageHistory.filter(msg => now - msg.timestamp <= MESSAGE_LIFETIME_MS);
+}
 
 io.on('connection',(socket)=>{
 
@@ -26,8 +32,11 @@ io.on('connection',(socket)=>{
 
     socket.on('set-user-name', (name) => {
     userName = name;
+
     connectedUsers.push({ id: socket.id, name });
+    cleanOldMessages(); // limpia antes de enviar
     socket.emit('chat-history', messageHistory);
+
   });           
 
   
@@ -76,6 +85,7 @@ socket.on('stop-typing', () => {
 
     socket.on('message-read', (receiverId) => {
       io.to(receiverId).emit('message-read-confirmation', { id: socket.id, name: userName });
+      messageHistory = [];
   });
 })
 app.get('/', (req, res)=>{
