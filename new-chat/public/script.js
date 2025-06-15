@@ -51,6 +51,22 @@ window.addEventListener('focus', () => {
 
 
 // --- MANEJADORES DE EVENTOS DE SOCKET.IO ---
+socket.on('chat-history', (messages) => {
+  messages.forEach((data) => {
+    const item = document.createElement('li');
+    const messageTime = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const chat = `<div class="time">${messageTime}</div>
+    <strong>${data.id === myId ? 'Tu' : data.name}</strong>: 
+                  <p>${data.msg}</p>`;
+
+    item.innerHTML = chat;
+    item.classList.add(data.id === myId ? 'enviado' : 'recibido');
+    mensaje.appendChild(item);
+  });
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+});
+
 
 socket.on('connect', () => {
     myId = socket.id; // Almacena el ID del cliente actual
