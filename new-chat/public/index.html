@@ -6,58 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>chat</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "picmo": "https://cdn.jsdelivr.net/npm/picmo@latest/+esm"
+            }
+        }
+    </script>
 </head>
 <body>
-    
     <main>
         <header>
-        <svg viewBox="100 100 400 400" xmlns="http://www.w3.org/2000/svg"
-        height="auto"
-        >
-            <text
-              text-anchor="middle"
-              dominant-baseline="middle"
-              font-family="italic"
-              font-weight="bold"
-              x="300"
-              y="300"
-              transform-origin="400 400"
-              fill="white"
-              stroke="white"
-              stroke-width="4"
-              font-size="200"
-            > 
-           chat </text>
-          </svg>
-
-          
+            <svg viewBox="100 100 400 400" xmlns="http://www.w3.org/2000/svg" height="auto">
+                <text text-anchor="middle" dominant-baseline="middle" font-family="italic" font-weight="bold" x="300" y="300" transform-origin="400 400" fill="white" stroke="white" stroke-width="4" font-size="200">
+                    chat
+                </text>
+            </svg>
         </header>
-   
-   
-    <div id="messages">
-            <ul>
-               
-            </ul>
-     </div>
-    <form action="">
-       
-        <input type="text" placeholder="escribe mensaje...">
-        <button type="submit">enviar</button>
-        <button type="button" id="emoji-button">😀</button>
-        <div id="emoji-picker" class="hidden"></div>
-    </form>
+        
+        <div id="messages">
+            <ul></ul>
+        </div>
+        <form action="">
+            <input type="text" placeholder="escribe mensaje...">
+            <button type="submit">enviar</button>
+            <button type="button" id="emoji-button">😀</button>
+            <div id="emoji-picker"></div> <!-- Aquí se montará el picker de picmo -->
+        </form>
     </main>
 
     <div class="notificaciones">
-        
         <h2>En linea...</h2>
         <div id="user-online"></div>
-        
     </div>
-
-  
-
+    
     <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

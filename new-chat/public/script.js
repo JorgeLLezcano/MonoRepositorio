@@ -1,3 +1,6 @@
+import { createPicker } from "picmo";
+
+
 let name = localStorage.getItem('userName');
 
 // Función para obtener el nombre del usuario
@@ -32,38 +35,33 @@ const sent=document.querySelector('.sent')
 const received=document.querySelector('.received')
 const notificador=document.querySelector('.notificaciones')
 const emojiButton = document.getElementById('emoji-button');
-const emojiPicker = document.getElementById('emoji-picker');
+const emojiPiker=document.getElementById('emoji-picker')
+emojiPiker.style.display="none"
+// const emojis = ['😀', '😂', '😍', '😎', '😢', '👍', '🔥', '❤️', '🎉', '🚀'];
 
-const emojis = ['😀', '😂', '😍', '😎', '😢', '👍', '🔥', '❤️', '🎉', '🚀'];
 
-//Mostrar el selector de emojis
-emojiButton.addEventListener('click', (e) => {
-  e.stopPropagation(); 
-    emojiPicker.classList.toggle('hidden');
-    emojiPicker.innerHTML = ''; // Limpiar antes de agregar emojis
-   
 
-    emojis.forEach(emoji => {
-        const emojiElement = document.createElement('button');
-        emojiElement.textContent = emoji;
-        emojiElement.classList.add('emoji-item');
-         emojiElement.type = 'button'
+// Inicializar el selector de emojis
+const picker = createPicker({ rootElement: emojiPiker });
 
-        emojiElement.addEventListener('click', (e) => {
-          e.stopPropagation();
-            input.value += emoji; // Agregar emoji al input
-           // emojiPicker.classList.add('hidden'); // Ocultar después de seleccionar
-            input.focus();
-        });
-        emojiPicker.appendChild(emojiElement);
-    });
+// Insertar emoji en el input al seleccionarlo
+picker.addEventListener("emoji:select", event => {
+  input.value += event.emoji;
+  
 });
 
-// Ocultar el selector si el usuario hace clic fuera
+// Mostrar/ocultar el selector de emojis
+emojiButton.addEventListener("click", (event) => {
+  console.log('emojiButton')
+  event.stopPropagation();
+  emojiPiker.style.display = emojiPiker.style.display === "none" ? "block" : "none";
+});
+
 document.addEventListener('click', (event) => {
-    if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
-        emojiPicker.classList.add('hidden');
-    }
+  // Si el clic no fue en el botón de toggle NI dentro del div del picker
+  if (!emojiButton.contains(event.target) && !emojiPiker.contains(event.target)) {
+    emojiPiker.style.display = "none";
+  }
 });
    
 socket.on('connect', () => {
