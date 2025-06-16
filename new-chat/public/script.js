@@ -240,7 +240,8 @@ socket.on('chat', (data)=>{
     typingIndicator = null;
   }
     const item=document.createElement('li')
-    const chat=`
+    const messageTime = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const chat=`${messageTime}
 <strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
  item.innerHTML+=chat
 
