@@ -276,6 +276,7 @@ window.addEventListener('focus', () => {
     }
 })
 
+//verfica si el mensaje fue leido
 socket.on('message-read-confirmation', (data) => {
   
   const readIndicator = document.createElement('li');
@@ -291,5 +292,18 @@ setTimeout(() => {
   })
 });
 
+//mensajes histoircos
+socket.on('chat-history', (messages) => {
+    messages.forEach((data) => {
+      const item = document.createElement('li');
+      const messageTime = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const chat = `${messageTime}
+           <strong>${data.id === myId ? 'Tu' : data.name}</strong>: <p>${data.msg}</p>`;
+      item.innerHTML = chat;
+      item.classList.add(data.id === myId ? 'enviado' : 'recibido');
+      mensaje.appendChild(item);
+    });
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  });
 
 

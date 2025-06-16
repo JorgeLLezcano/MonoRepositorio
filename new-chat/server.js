@@ -17,6 +17,15 @@ const io=new Server(server,{
     }
     
 )
+//crea un historico
+let messageHistory = [];
+//elimina el historico cada 10 minm
+setInterval(() => {
+  const cutoff = Date.now() - 24 * 60 * 60 * 1000; // 24 horas
+  messageHistory = messageHistory.filter(msg => msg.timestamp > cutoff);
+}, 1000 * 60 * 10); 
+
+
 let connectedUsers = [];
 
 io.on('connection',(socket)=>{
@@ -26,6 +35,7 @@ io.on('connection',(socket)=>{
     socket.on('set-user-name', (name) => {
     userName = name;
     connectedUsers.push({ id: socket.id, name });
+    socket.emit('chat-history', messageHistory);
   });           
 
   
@@ -54,12 +64,15 @@ socket.on('stop-typing', () => {
     socket.on('chat', (data)=>{
   
         // const messageId = socket.id;
-        io.emit('chat', { id: socket.id, msg: data.msg, name: data.name })
+        const message = { id: socket.id, msg: data.msg, name: data.name, timestamp: Date.now()}
         
+        messageHistory.push(message); // Guardar mensaje
+         io.emit('chat', message);
     })
 
     socket.on('message-read', (receiverId) => {
       io.to(receiverId).emit('message-read-confirmation', { id: socket.id, name: userName });
+      
   });
 })
 app.get('/', (req, res)=>{
