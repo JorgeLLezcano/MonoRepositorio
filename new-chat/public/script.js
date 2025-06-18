@@ -177,6 +177,7 @@ socket.on('user-typing', (data) => {
     typingIndicator.innerHTML = `
     <i>${data.name} está escribiendo...</i>
     <div class="loader">
+    
     <svg
     xmlns="http://www.w3.org/2000/svg"
     width="32"
@@ -211,7 +212,7 @@ socket.on('user-typing', (data) => {
     ></path>
 
   
-  </svg>
+   </svg>
  
     </div>
     `;
@@ -241,8 +242,9 @@ socket.on('chat', (data)=>{
   }
     const item=document.createElement('li')
     const messageTime = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const chat=`${messageTime}
-<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
+    const chat=`
+<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>
+ <span>${messageTime}</span>`
  item.innerHTML+=chat
 
  if (data.id !== myId) {
@@ -298,13 +300,21 @@ socket.on('chat-history', (messages) => {
     messages.forEach((data) => {
       const item = document.createElement('li');
       const messageTime = new Date(data.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const chat = `${messageTime}
-           <strong>${data.id === myId ? 'Tu' : data.name}</strong>: <p>${data.msg}</p>`;
+      const chat = `
+           <strong>${data.id === myId ? 'Tu' : data.name}</strong>: <p>${data.msg}</p>
+           <span>${messageTime}</span>`;
       item.innerHTML = chat;
       item.classList.add(data.id === myId ? 'enviado' : 'recibido');
       mensaje.appendChild(item);
     });
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   });
+  const clearBtn = document.getElementById('clearHistoryBtn');
 
+  clearBtn.addEventListener('click', () => {
+    socket.emit('clear-history'); // Emitir al servidor para que borre
+  });
+  
 
+ 
+  

@@ -14,11 +14,9 @@ const io=new Server(server,{
         minTimeout: 1000, // Tiempo mínimo entre intentos de reconexión (ms)
         maxAttempts: 5 // Número máximo de intentos de reconexión
      }
-    }
-    
-)
+    })
 //crea un historico
-let messageHistory = [];
+ let messageHistory = [];
 //elimina el historico cada 10 minm
 setInterval(() => {
   const cutoff = Date.now() - 24 * 60 * 60 * 1000; // 24 horas
@@ -29,16 +27,27 @@ setInterval(() => {
 let connectedUsers = [];
 
 io.on('connection',(socket)=>{
-
     let userName;                     
 
     socket.on('set-user-name', (name) => {
     userName = name;
     connectedUsers.push({ id: socket.id, name });
     socket.emit('chat-history', messageHistory);
-  });           
+});           
 
+socket.on('clear-history', () => {
+  messageHistory = [];
+  console.log('📭 Historial de mensajes borrado por el usuario:', socket.id);
   
+  // Opcional: avisar a todos los usuarios
+  io.emit('chat-history-cleared');
+});
+socket.on('chat-history-cleared', () => {
+  const messagesContainer = document.getElementById('mensaje'); // o el contenedor correcto
+  messagesContainer.innerHTML = ''; // borrar todo visualmente
+});
+
+
 
     socket.on('disconnect', () => {
         connectedUsers = connectedUsers.filter(user => user.id !== socket.id); // Remove user on disconnect
@@ -68,13 +77,31 @@ socket.on('stop-typing', () => {
         
         messageHistory.push(message); // Guardar mensaje
          io.emit('chat', message);
+         
     })
 
-    socket.on('message-read', (receiverId) => {
-      io.to(receiverId).emit('message-read-confirmation', { id: socket.id, name: userName });
-      
-  });
-})
+    socket.on('message-read', (senderId) => {
+      io.to(senderId).emit('message-read-confirmation', { id: socket.id, name: userName });
+    messageHistory=[]
+      // Si hay solo un usuario conectado, no eliminamos nada
+      if (connectedUsers.length <= 1) return;
+    
+      // Marcar como leído o eliminar si lo leyó otro usuario
+      messageHistory = messageHistory.filter(msg => {
+       
+        // Si no es el mensaje original, lo dejamos
+        if (msg.id !== senderId) return true;
+    
+        // Si el que leyó no es el autor, eliminamos el mensaje
+        if (msg.name !== userName) {
+          return false; // Elimina el mensaje
+        }
+    
+        // Si lo leyó el autor, no hacemos nada
+        return true;
+      });
+    });
+  }) 
 app.get('/', (req, res)=>{
     res.sendFile(`${__dirname}/public/index.html`)
 })

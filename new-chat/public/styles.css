@@ -20,7 +20,7 @@ header p{
   padding: 10px
 }
 main{
-    height: 100vh;
+    height: 100dvh;
     max-width: 500px;
     width: 100%;
     /* margin: auto; */
@@ -87,6 +87,11 @@ scrollbar-width: none
 
     border-radius: 10px;    /* Bordes redondeados */
   }
+  #messages span{
+ color: #333;
+ font-family: sistem-ui;
+  }
+
   li {
     list-style-type: none;
     padding: 10px;
@@ -151,6 +156,7 @@ font-weight: 600;
 } */
 
 .enviado {
+  position: relative;
   background-color: #5b435b;
   /* background-color: #e90a0a29; */
   align-self: flex-end; /* Alinea a la derecha */
@@ -171,6 +177,12 @@ font-weight: 600;
     z-index: -1;
     border-top: solid 1px #3f363c;
   }
+  .enviado span{
+    color: #333;
+    font-family: sistem-ui;
+    
+    left: 100%;
+     }
   .recibido {
     background-color: #b87e38;
     /* background-color: #ffa50078; */
@@ -269,7 +281,7 @@ text{
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
 
-  span{
+ #user-online span{
     background-color: green;
     padding:5px;
     height: auto;
