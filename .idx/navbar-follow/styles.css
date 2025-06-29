@@ -1,0 +1,298 @@
+/* --- Estilos Generales y Reseteo Básico --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Un color de fondo suave para el cuerpo */
+}
+
+a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: inherit; /* Hereda el color del texto del padre */
+}
+
+ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Estilos de la Barra de Navegación (Navbar) --- */
+.navbar {
+    background-color: #333; /* Fondo oscuro para la barra */
+    color: #fff; /* Texto blanco */
+    padding: 10px 0; /* Relleno superior e inferior */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    width: 100%; /* Ocupa todo el ancho */
+    position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.navbar::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: chocolate;
+  height: 50px;
+  
+} 
+.nav-item::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: chocolate;
+  height: 50px;
+} 
+
+.navbar-container {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centra el contenido */
+    display: flex; /* Habilita Flexbox */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    /* padding: 0 20px; Relleno a los lados para evitar que el contenido toque los bordes */
+}
+
+.navbar-logo {
+    font-size: 1.8em; /* Tamaño de fuente más grande para el logo */
+    font-weight: bold; /* Negrita */
+    color: #00bcd4; /* Color distintivo para el logo */
+    padding: 5px 0; /* Pequeño padding para el área clickeable */
+}
+
+/* --- Menú de Navegación --- */
+.nav-menu {
+    display: flex; /* Habilita Flexbox para los elementos del menú */
+    /*gap: 30px;  Espacio entre los elementos del menú */
+}
+
+.nav-item .nav-link {
+    display: block; /* Para que el enlace ocupe todo el espacio del li */
+    padding: 10px 15px; /* Relleno para el área clickeable */
+    color: #fff; /* Color del texto del enlace */
+    font-size: 1.1em; /* Tamaño de fuente */
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transición suave */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+.nav-item .nav-link:hover {
+    color: #00bcd4; /* Cambia de color al pasar el ratón */
+    /*background-color: rgba(255, 255, 255, 0.1);  Fondo semitransparente al pasar el ratón */
+}
+
+/* --- Botón de Llamada a la Acción (CTA) --- */
+.nav-cta .button {
+    background-color: #00bcd4; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 10px 20px; /* Relleno del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out; /* Transición suave */
+    font-weight: bold;
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+.nav-cta .button:hover {
+    background-color: #0097a7; /* Color más oscuro al pasar el ratón */
+}
+
+/* --- Estilos del Menú Hamburguesa (Ocultos por defecto en escritorio) --- */
+.menu-toggle {
+    display: none; /* Oculta el checkbox */
+}
+
+.menu-icon {
+    display: none; /* Oculta el ícono de hamburguesa por defecto */
+    font-size: 2em; /* Tamaño del ícono */
+    cursor: pointer; /* Cursor de puntero */
+    color: #fff;
+}
+#menu-backdrop {
+    position: absolute;
+    background-color:chocolate;
+    backdrop-filter: blur(10px);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    top: 50%;
+  }
+  
+  #menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #menu-backdrop:after{
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    background-color: transparent;
+    border-bottom-left-radius: 1.5rem;
+    box-shadow: 0 1rem 0 chocolate;
+  
+}
+#menu-backdrop::before{
+content: '';
+    position: absolute;
+    width: 1rem;
+    height: 100%;
+    top: 0;
+    right: 100%;
+    background-color: transparent;
+    border-bottom-right-radius: 1.5rem;
+    box-shadow: 0 1rem 0 chocolate;
+
+}
+
+/* --- Media Queries para Responsividad (Dispositivos Móviles) --- */
+@media (max-width: 768px) {
+    .navbar-container {
+   
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+        justify-content: space-between; /* Asegura espacio entre logo y botón de hamburguesa */
+    }
+
+    .navbar-logo {
+        flex-grow: 1; /* Permite que el logo ocupe el espacio restante */
+        text-align: left; /* Alinea el logo a la izquierda */
+    }
+
+    .menu-icon {
+        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+        /* order: 2;Cambia el orden para que el icono esté a la derecha del logo */
+    }
+
+    .nav-menu {
+      position: relative;
+      display: none;
+        flex-direction: column; /* Apila los elementos del menú verticalmente */
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center; /* Centra el texto */
+        background-color: transparent; /* Un fondo ligeramente diferente para el menú desplegado */
+        max-height: 0; /* Oculta el menú por defecto */
+        /* overflow: hidden; Oculta el contenido que excede el max-height */
+        transition: max-height 0.3s ease-in-out; /* Animación de despliegue */
+        flex-basis: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    .nav-item {
+      position: relative;
+        margin: 10px 0; /* Espacio entre los elementos del menú apilados */
+        width: 100%;
+    }
+
+    .nav-item .nav-link {
+      position: relative;
+        padding: 15px; /* Más padding para los enlaces del menú móvil */
+         width: 100%;
+    }
+
+    .nav-cta {
+        display: none; /* Oculta el botón CTA en móvil o muévelo al menú si lo necesitas */
+        /*order: 3;  Asegura su posición si se muestra */
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .nav-cta .button {
+        display: block;
+        width: calc(100% - 40px); /* Ancho completo con padding */
+        margin: 0 20px 10px; /* Centra el botón */
+    }
+
+
+
+
+    /* Muestra el menú cuando el checkbox está marcado */
+    .menu-toggle:checked ~ .nav-menu {
+      display: block;
+        max-height: 300px; /* Ajusta este valor según la altura de tu menú */
+        /* Un valor suficientemente grande para que el menú sea visible */
+    }
+
+    /* Opcional: Muestra el CTA dentro del menú cuando el checkbox está marcado */
+    .menu-toggle:checked ~ .nav-cta {
+        display: block; /* Mostrar el CTA si está dentro del menú desplegable */
+    }
+
+    /* #menu-backdrop.active {
+   
+    visibility: visible;
+    z-index: 100000;
+  } */
+  #menu-backdrop{
+    border-radius: 8px;
+  }
+
+  #menu-backdrop:after{
+    /* display: none; */
+ content: '';
+position: absolute;
+width: 1rem;
+height: 2rem;
+top: 100%;
+right: 0;
+left: unset;
+background-color: transparent;
+border-top-right-radius: .5rem;
+box-shadow: 0 -1rem 0 chocolate;
+
+}
+#menu-backdrop::before{
+content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    bottom: 100%;
+    right: 0;
+    left: unset;
+    top: unset;
+    background-color: transparent;
+    border-bottom-right-radius: .5rem;
+    box-shadow: 0 1rem 0 chocolate;
+    opacity: 1;
+
+}
+  .nav-item::after{
+  display:none;
+}
+  .navbar::after{
+  display:none ;
+
+
+}
+}
+
+
+ 
+
+/* #menu-backdrop:after{
+content: '';
+position: absolute;
+width: 1rem;
+height: 2rem;
+top: 100%;
+right: 0;
+background-color: transparent;
+border-top-right-radius: .5rem;
+box-shadow: 0 -1rem 0 chocolate;
+border: none;
+}
+#menu-backdrop::before{
+content: '';
+position: absolute;
+width: 1rem;
+height: 2rem;
+bottom: 100%;
+right: 0;
+background-color: transparent;
+border-bottom-right-radius: .5rem;
+box-shadow: 0 1rem 0 chocolate;
+
+} */

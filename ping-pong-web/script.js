@@ -1,4 +1,4 @@
-const e = require("express")
+// const e = require("express")
 
 const table=document.getElementById('table')
 const pad1=document.getElementById('pad1')
