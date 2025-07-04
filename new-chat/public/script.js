@@ -31,8 +31,7 @@ const from =document.querySelector('form')
 const input=document.querySelector('input')
 const mensaje=document.querySelector('ul')
 const messagesContainer = document.getElementById('messages');
-const sent=document.querySelector('.sent')
-const received=document.querySelector('.received')
+
 const notificador=document.querySelector('.notificaciones')
 const emojiButton = document.getElementById('emoji-button');
 const emojiPiker=document.getElementById('emoji-picker')
@@ -63,7 +62,8 @@ document.addEventListener('click', (event) => {
     emojiPiker.style.display = "none";
   }
 });
-   
+
+
 socket.on('connect', () => {
     myId = socket.id;                    // Almacena el ID del cliente actual
     socket.emit('set-user-name', name); //Informe su nombre al servidor
@@ -267,13 +267,48 @@ window.addEventListener('focus', () => {
   
     if(data.id===myId){
         item.classList.add('enviado')
-        item.classList.remove('recivido')
+        item.classList.remove('recibido')
        
     }else{
         item.classList.add('recibido')
         item.classList.remove('enviado')
         
     }
+    const send=document.querySelectorAll('.enviado')
+   const received=document.querySelectorAll('.recibido')
+
+    send.forEach((env)=>{
+        env.addEventListener('click',()=>{
+            if (env.querySelector('.picker-reaction')) return
+            console.log('reaccion')
+          const pickerReaction=document.createElement('div')
+          pickerReaction.classList.add('picker-reaction')
+          pickerReaction.style.right='0px'
+          env.appendChild(pickerReaction)
+      
+          const emojiReaction = createPicker({ rootElement: pickerReaction });
+          emojiReaction.addEventListener("emoji:select", event => {
+              pickerReaction.textContent= event.emoji;
+              
+            });
+      })
+      })
+
+      received.forEach((rece)=>{
+        rece.addEventListener('click',()=>{
+            if (rece.querySelector('.picker-reaction')) return;
+            console.log('reaccion')
+          const pickerReaction=document.createElement('div')
+          pickerReaction.classList.add('picker-reaction')
+          rece.appendChild(pickerReaction)
+      
+          const emojiReaction = createPicker({ rootElement: pickerReaction });
+          emojiReaction.addEventListener("emoji:select", event => {
+              pickerReaction.textContent= event.emoji;
+              
+            });
+      })
+      })
 })
 
 socket.on('message-read-confirmation', (data) => {
