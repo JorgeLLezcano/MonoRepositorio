@@ -61,6 +61,8 @@ document.addEventListener('click', (event) => {
   if (!emojiButton.contains(event.target) && !emojiPiker.contains(event.target)) {
     emojiPiker.style.display = "none";
   }
+  // const reactionPicker=document.querySelector('.picker-reaction')
+  // reactionPicker.style.display = reactionPicker.style.display === "block" ? "none" : "block";
 });
 
 
@@ -275,91 +277,56 @@ window.addEventListener('focus', () => {
         item.classList.remove('enviado')
         
     }
-  //   const send=document.querySelectorAll('.enviado')
-  //  const received=document.querySelectorAll('.recibido')
 
-  //   send.forEach((env)=>{
-  //       env.addEventListener('click',()=>{
-  //           if (env.querySelector('.picker-reaction')) return
-  //           console.log('reaccion')
-  //         const pickerReaction=document.createElement('div')
-  //         pickerReaction.classList.add('picker-reaction')
-  //         pickerReaction.style.right='0px'
-  //         env.appendChild(pickerReaction)
+ //logica envio de reaccion
+const items=document.querySelectorAll('li')
+    items.forEach((env)=>{
+        env.addEventListener('click',()=>{
+            if (env.querySelector('.picker-reaction')) return
+            console.log('reaccion')
+          const pickerReaction=document.createElement('div')
+          pickerReaction.classList.add('picker-reaction')
+          pickerReaction.style.right='0px'
+          env.appendChild(pickerReaction)
       
-  //         const emojiReaction = createPicker({ rootElement: pickerReaction });
-  //         emojiReaction.addEventListener("emoji:select", event => {
-  //             pickerReaction.textContent= event.emoji;
-              
-  //           });
-  //     })
-  //     })
-
-  //     received.forEach((rece)=>{
-  //       rece.addEventListener('click',()=>{
-  //           if (rece.querySelector('.picker-reaction')) return;
-  //           console.log('reaccion')
-  //         const pickerReaction=document.createElement('div')
-  //         pickerReaction.classList.add('picker-reaction')
-
-  //         rece.appendChild(pickerReaction)
-      
-  //         const emojiReaction = createPicker({ rootElement: pickerReaction
-          
-  //          });
-  //         emojiReaction.addEventListener("emoji:select", event => {
-  //             pickerReaction.textContent= event.emoji;
-
-  //             socket.emit('reaction', {
-  //               messageId: rece.getAttribute('data-message-id'),
-  //               emoji: event.emoji
-  //             });
-  //           });
-  //     })
-  //     })
-  item.addEventListener('click', () => {
-    console.log('piker')
-    // Evitar duplicación del picker
-    if (item.contains(emojiPiker)) return;
-  
-    // Mover el picker dentro del mensaje clickeado
-    item.appendChild(emojiPiker);
-    emojiPiker.style.display = "block";
-   
-    // Evita que el picker se quede en otro mensaje
-    const allMessages = document.querySelectorAll('li');
-    allMessages.forEach(msg => {
-      if (msg !== item && msg.contains(emojiPiker)) {
-        msg.removeChild(emojiPiker);
-      }
-    });
-  
-    // Registrar el evento de selección de emoji solo una vez por click
-    const handler = (event) => {
-      emojiPiker.style.display = "none";
-      picker.removeEventListener("emoji:select", handler);
-  
-      socket.emit('reaction', {
-        messageId: item.getAttribute('data-message-id'),
-        emoji: event.emoji
-      });
-    };
-    picker.addEventListener("emoji:select", handler);
-  });
-  
-})
+          const emojiReaction = createPicker({ rootElement: pickerReaction });
+          emojiReaction.addEventListener("emoji:select", event => {
+              pickerReaction.textContent= event.emoji;
+              socket.emit('reaction', {
+                messageId: env.getAttribute('data-message-id'),
+                emoji: event.emoji
+              });
+            });
+         
+              pickerReaction.addEventListener('click',()=>{
+            const emojiReaction = createPicker({ rootElement: pickerReaction });
+            emojiReaction.addEventListener("emoji:select", event => {
+                pickerReaction.textContent= event.emoji;
+                socket.emit('reaction', {
+                  messageId: env.getAttribute('data-message-id'),
+                  emoji: event.emoji
+                });
+              });
+          })
+          });
+      })
+      })
+     
+//control envio de reaccion al servidor
 socket.on('reaction', (data) => {
   const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
   if (messageElement) {
-    let reactionElement = messageElement.querySelector('.reaction-emoji');
+    let reactionElement = messageElement.querySelector('.picker-reaction');
     if (!reactionElement) {
-      reactionElement = document.createElement('span');
-      reactionElement.classList.add('reaction-emoji');
+      reactionElement = document.createElement('div');
+      reactionElement.classList.add('picker-reaction');
       messageElement.appendChild(reactionElement);
     }
     reactionElement.textContent = data.emoji;
   }
 });
+
+///logica que verifica si el mensaje fue leido
 socket.on('message-read-confirmation', (data) => {
   
   const readIndicator = document.createElement('li');
