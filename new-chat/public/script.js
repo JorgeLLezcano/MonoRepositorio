@@ -282,7 +282,7 @@ window.addEventListener('focus', () => {
 const items=document.querySelectorAll('li')
     items.forEach((env)=>{
         env.addEventListener('click',()=>{
-            if (env.querySelector('.picker-reaction')) return
+          if (env.querySelector('.picker-reaction') && data.id===myId) return
             console.log('reaccion')
           const pickerReaction=document.createElement('div')
           pickerReaction.classList.add('picker-reaction')
@@ -291,7 +291,8 @@ const items=document.querySelectorAll('li')
       
           const emojiReaction = createPicker({ rootElement: pickerReaction });
           emojiReaction.addEventListener("emoji:select", event => {
-              pickerReaction.textContent= event.emoji;
+            //pickerReaction.textContent=''
+              // pickerReaction.textContent= event.emoji;;
               socket.emit('reaction', {
                 messageId: env.getAttribute('data-message-id'),
                 emoji: event.emoji
@@ -301,18 +302,54 @@ const items=document.querySelectorAll('li')
               pickerReaction.addEventListener('click',()=>{
             const emojiReaction = createPicker({ rootElement: pickerReaction });
             emojiReaction.addEventListener("emoji:select", event => {
-                pickerReaction.textContent= event.emoji;
+              //pickerReaction.textContent=''
+                // pickerReaction.textContent= event.emoji;
+
                 socket.emit('reaction', {
                   messageId: env.getAttribute('data-message-id'),
                   emoji: event.emoji
                 });
               });
+             
           })
           });
       })
       })
      
 //control envio de reaccion al servidor
+// socket.on('reaction', (data) => {
+//   const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
+
+//   if (messageElement) {
+//     let reactionContainer = messageElement.querySelector('.picker-reaction');
+
+//     // Si no existe el contenedor, lo creamos
+//     if (!reactionContainer) {
+//       reactionContainer = document.createElement('div');
+//       reactionContainer.classList.add('picker-reaction');
+//       messageElement.appendChild(reactionContainer);
+//     }
+
+//     // Buscar si ya existe una reacción con ese emoji
+//     let existingReaction = [...reactionContainer.children].find(child => child.dataset.emoji === data.emoji);
+
+//     if (existingReaction) {
+//       // Incrementar el contador
+//       let count = parseInt(existingReaction.dataset.count || "1", 10);
+//       count++;
+//       existingReaction.dataset.count = count;
+//       existingReaction.innerHTML = `${data.emoji} ${count}`;
+//     } else {
+//       // Crear nuevo elemento de reacción
+//       const newReaction = document.createElement('span');
+//       newReaction.dataset.emoji = data.emoji;
+//       newReaction.dataset.count = 1;
+//       newReaction.textContent = `${data.emoji} 1`;
+//       reactionContainer.appendChild(newReaction);
+//     }
+//   }
+// });
+
 socket.on('reaction', (data) => {
   const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
   if (messageElement) {
@@ -322,7 +359,11 @@ socket.on('reaction', (data) => {
       reactionElement.classList.add('picker-reaction');
       messageElement.appendChild(reactionElement);
     }
-    reactionElement.textContent = data.emoji;
+    let count =0
+    if(data.emoji===data.emoji){
+      count++
+    reactionElement.innerHTML = `${data.emoji} ${count}`;
+  }
   }
 });
 

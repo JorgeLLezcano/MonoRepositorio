@@ -120,6 +120,7 @@ scrollbar-width: none
   border-radius: 10px;
 }
 .picker-reaction{
+  display: flex;
   position: absolute;
   background: #f1f1f181;
   border: 1px solid #ccc;
@@ -128,7 +129,11 @@ scrollbar-width: none
   /* bottom: 0; */
   border-radius: 10px;
 }
-
+.picker-reaction span {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
 #emoji-picker::after{
    content: '';
     background-color: transparent;
