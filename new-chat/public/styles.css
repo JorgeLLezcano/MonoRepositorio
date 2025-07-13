@@ -129,7 +129,32 @@ scrollbar-width: none
   /* bottom: 0; */
   border-radius: 10px;
 }
+.reaction-container{
+  display: flex;
+  position: absolute;
+  background: #f1f1f181;
+  border: 1px solid #ccc;
+  padding: 10px;
+   /* right: 0;  */
+  /* bottom: 0; */
+  border-radius: 10px;
+}
 .picker-reaction span {
+  
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+  
+}
+.message-reaction span{
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
+.message-reaction{
+  display: flex;
+ color: #3f363c;
   background-color: #f0f0f0;
   border-radius: 12px;
   padding: 2px 6px;
@@ -172,6 +197,7 @@ font-weight: 600;
   text-align: right;
   color: white;
   cursor: pointer;
+  position: relative;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
   .enviado::after{
@@ -195,7 +221,7 @@ font-weight: 600;
   text-align: left;
   color: black;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
+  position: relative;
 
   }
   .recibido::before{
@@ -228,6 +254,7 @@ transform: scale(0);
     padding: 10px;
     margin: 0;
     gap: 5px;
+    position: relative;
 }
 
 

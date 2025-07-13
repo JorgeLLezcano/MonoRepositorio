@@ -41,7 +41,7 @@ emojiPiker.style.display="none"
 
 
 // Inicializar el selector de emojis
-const picker = createPicker({ rootElement: emojiPiker });
+const picker = createPicker({ rootElement: emojiPiker, showRecents: true});
 
 // Insertar emoji en el input al seleccionarlo
 picker.addEventListener("emoji:select", event => {
@@ -61,8 +61,8 @@ document.addEventListener('click', (event) => {
   if (!emojiButton.contains(event.target) && !emojiPiker.contains(event.target)) {
     emojiPiker.style.display = "none";
   }
-  // const reactionPicker=document.querySelector('.picker-reaction')
-  // reactionPicker.style.display = reactionPicker.style.display === "block" ? "none" : "block";
+  
+  pickerReaction.remove()
 });
 
 
@@ -282,90 +282,94 @@ window.addEventListener('focus', () => {
 const items=document.querySelectorAll('li')
     items.forEach((env)=>{
         env.addEventListener('click',()=>{
-          if (env.querySelector('.picker-reaction') && data.id===myId) return
             console.log('reaccion')
           const pickerReaction=document.createElement('div')
           pickerReaction.classList.add('picker-reaction')
-          pickerReaction.style.right='0px'
+          if (env.classList.contains('enviado')) {
+            pickerReaction.style.right = '10px'; 
+            pickerReaction.style.color = '#333'; // Posición 
+          } else if (env.classList.contains('recibido')) {
+            pickerReaction.style.right = ''; // Posición 
+          }
+           // Ajustado ligeramente para mejor visualización
           env.appendChild(pickerReaction)
       
-          const emojiReaction = createPicker({ rootElement: pickerReaction });
+          const emojiReaction = createPicker({ rootElement: pickerReaction, showRecents: true });
+          
           emojiReaction.addEventListener("emoji:select", event => {
-            //pickerReaction.textContent=''
-              // pickerReaction.textContent= event.emoji;;
+         
               socket.emit('reaction', {
                 messageId: env.getAttribute('data-message-id'),
                 emoji: event.emoji
+               
               });
+              pickerReaction.remove();
             });
+           
+            
+              
          
-              pickerReaction.addEventListener('click',()=>{
-            const emojiReaction = createPicker({ rootElement: pickerReaction });
-            emojiReaction.addEventListener("emoji:select", event => {
-              //pickerReaction.textContent=''
-                // pickerReaction.textContent= event.emoji;
-
-                socket.emit('reaction', {
-                  messageId: env.getAttribute('data-message-id'),
-                  emoji: event.emoji
-                });
-              });
-             
-          })
           });
       })
       })
      
-//control envio de reaccion al servidor
-// socket.on('reaction', (data) => {
-//   const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
 
-//   if (messageElement) {
-//     let reactionContainer = messageElement.querySelector('.picker-reaction');
 
-//     // Si no existe el contenedor, lo creamos
-//     if (!reactionContainer) {
-//       reactionContainer = document.createElement('div');
-//       reactionContainer.classList.add('picker-reaction');
-//       messageElement.appendChild(reactionContainer);
-//     }
-
-//     // Buscar si ya existe una reacción con ese emoji
-//     let existingReaction = [...reactionContainer.children].find(child => child.dataset.emoji === data.emoji);
-
-//     if (existingReaction) {
-//       // Incrementar el contador
-//       let count = parseInt(existingReaction.dataset.count || "1", 10);
-//       count++;
-//       existingReaction.dataset.count = count;
-//       existingReaction.innerHTML = `${data.emoji} ${count}`;
-//     } else {
-//       // Crear nuevo elemento de reacción
-//       const newReaction = document.createElement('span');
-//       newReaction.dataset.emoji = data.emoji;
-//       newReaction.dataset.count = 1;
-//       newReaction.textContent = `${data.emoji} 1`;
-//       reactionContainer.appendChild(newReaction);
-//     }
-//   }
-// });
+let messageReactions = {}; // Objeto para almacenar las reacciones por mensaje
 
 socket.on('reaction', (data) => {
   const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
+
   if (messageElement) {
-    let reactionElement = messageElement.querySelector('.picker-reaction');
-    if (!reactionElement) {
-      reactionElement = document.createElement('div');
-      reactionElement.classList.add('picker-reaction');
-      messageElement.appendChild(reactionElement);
+    // Inicializar el objeto de reacciones para este mensaje si no existe
+    if (!messageReactions[data.messageId]) {
+      messageReactions[data.messageId] = {};
     }
-    let count =0
-    if(data.emoji===data.emoji){
-      count++
-    reactionElement.innerHTML = `${data.emoji} ${count}`;
-  }
+
+    // Incrementar el contador para el emoji de reacción
+    messageReactions[data.messageId][data.emoji] = (messageReactions[data.messageId][data.emoji] || 0) + 1;
+
+    // --- Lógica de renderizado ---
+
+    // Buscar el contenedor de reacciones (usando la clase 'reaction-container')
+    let reactionContainer = messageElement.querySelector('.reaction-container');
+
+    // Si no existe el contenedor de reacciones, lo creamos y lo añadimos al mensaje
+    if (!reactionContainer) {
+      reactionContainer = document.createElement('div');
+      reactionContainer.classList.add('reaction-container'); // Usar una clase específica para el contenedor
+      messageElement.appendChild(reactionContainer);
+    }
+
+    // Limpiar el contenido actual del contenedor antes de renderizar el estado actualizado
+    reactionContainer.innerHTML = '';
+
+    // Renderizar las reacciones basadas en el estado actual (messageReactions)
+    for (const emoji in messageReactions[data.messageId]) {
+      const count = messageReactions[data.messageId][emoji];
+
+      const reactionSpan = document.createElement('span'); // Crear un span para CADA emoji
+      reactionSpan.classList.add('message-reaction'); // Clase para cada reacción individual
+      reactionSpan.dataset.emoji = emoji; // Almacenar el emoji en un data attribute
+      reactionSpan.dataset.count = count; // Almacenar el count
+       reactionSpan.addEventListener('click',()=>{
+        reactionSpan.dataset.emoji = emoji;
+       })
+      // Configurar el texto del span (emoji + contador si es > 1)
+      if (count > 1) {
+        reactionSpan.textContent = `${emoji} ${count}`;
+      } else {
+        reactionSpan.textContent = emoji;
+      }
+
+      // Añadir el span individual al CONTENEDOR de reacciones
+      reactionContainer.appendChild(reactionSpan);
+    }
   }
 });
+
+// ... (resto del código)
+
 
 ///logica que verifica si el mensaje fue leido
 socket.on('message-read-confirmation', (data) => {
