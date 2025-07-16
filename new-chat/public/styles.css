@@ -8,7 +8,7 @@ body{
     margin: 0;
 }
 header{
-  display: flex; 
+  /* display: flex; */
   position: sticky;
   height: 100px;
   top: 0;
@@ -87,6 +87,15 @@ scrollbar-width: none
 
     border-radius: 10px;    /* Bordes redondeados */
   }
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    gap: 10px;
+    position: relative;
+}
   li {
     list-style-type: none;
     padding: 10px;
@@ -119,6 +128,47 @@ scrollbar-width: none
   bottom: 100%;
   border-radius: 10px;
 }
+.picker-reaction{
+  display: flex;
+  position: absolute;
+  background: #f1f1f181;
+  border: 1px solid #ccc;
+  padding: 10px;
+   /* right: 0;  */
+  /* bottom: 0; */
+  border-radius: 10px;
+}
+.reaction-container{
+  display: flex;
+  position: absolute;
+  background: #f1f1f181;
+  border: 1px solid #ccc;
+  padding: 5px;
+  gap: 3px;
+   /* right: 0;  */
+  /* bottom: 0; */
+  border-radius: 10px;
+}
+.picker-reaction span {
+  
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+  
+}
+.message-reaction span{
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
+.message-reaction{
+  display: flex;
+ color: #3f363c;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
 #emoji-picker::after{
    content: '';
     background-color: transparent;
@@ -140,7 +190,7 @@ scrollbar-width: none
     cursor: pointer;
     border: none;
     background: transparent;
-    
+
 }
 /* li:nth-child(odd){
     background-color: rgb(66, 96, 66);
@@ -156,6 +206,8 @@ font-weight: 600;
   align-self: flex-end; /* Alinea a la derecha */
   text-align: right;
   color: white;
+  cursor: pointer;
+  position: relative;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
   .enviado::after{
@@ -174,11 +226,12 @@ font-weight: 600;
   .recibido {
     background-color: #b87e38;
     /* background-color: #ffa50078; */
+    cursor: pointer;
   align-self: flex-start; /* Alinea a la izquierda */
   text-align: left;
   color: black;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
+  position: relative;
 
   }
   .recibido::before{
@@ -204,14 +257,7 @@ transform: scale(0);
     }
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding: 10px;
-    margin: 0;
-    gap: 5px;
-}
+ 
 
 
 
@@ -252,7 +298,7 @@ text{
     right: 0;
     width: 100%;
     z-index: 1000;
-
+ pointer-events: none;
 
 }
   .modal{
@@ -269,14 +315,17 @@ text{
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
 
-  span{
+  #user-online span{
     background-color: green;
     padding:5px;
     height: auto;
     border-radius:5px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
-
+.timestamp{
+  background-color: transparent;
+  color: #e5dcdca3;
+}
   /* i{
   height: 50px;
   width: 100px;
