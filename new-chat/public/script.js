@@ -243,8 +243,12 @@ socket.on('chat', (data)=>{
   }
     const item=document.createElement('li')
     item.setAttribute('data-message-id', data.messageId);
+
+    const date = new Date(data.timestamp);
+    const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const chat=`
-<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>`
+<strong>${data.id===myId? 'Tu' :data.name}</strong>: <p>${data.msg}</p>
+<span class="timestamp">${timeString}</span>`
  item.innerHTML+=chat
 
  if (data.id !== myId) {

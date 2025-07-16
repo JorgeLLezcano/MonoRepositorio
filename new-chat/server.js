@@ -56,7 +56,8 @@ io.on('connection',(socket)=> {
       id: socket.id,
       msg: data.msg,
       name: data.name,
-      messageId: messageId
+      messageId: messageId,
+      timestamp: new Date()
     });
   });
 
