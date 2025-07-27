@@ -1,0 +1,19 @@
+article.burn-card {
+    width: 300px;
+    height: 400px;
+    background: #eee;
+    border-radius: 1rem;
+    filter: url(#noiseFilter);
+    transition: opacity 0.6s ease-out;
+    cursor: pointer;
+  }
+  body{
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  svg{
+    display: none;
+  }

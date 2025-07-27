@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar con Backdrop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav id="landing-header">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Sobre Nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+      <div id="menu-backdrop"></div>
+    </ul>
+    
+  </nav>
+
+ <!-- <svg style="display: none;">
+    <filter id="glassEffect">
+      <feGaussianBlur
+       in="SourceGraphic"
+        stdDeviation="0"
+       result="blur"/>
+      <feTurbulence 
+      type="turbulence"
+       baseFrequency="00.005"
+        numOctaves="100"
+         result="turbulence"
+         />
+      <feDisplacementMap 
+      in="blur"
+       in2="turbulence"
+       scale="10"
+        xChannelSelector="R"
+        yChannelSelector="G"/>
+    </filter>
+
+    <mask id="mask">
+      <circle cx="75" cy="75" r="75" fill="white"/>
+    </mask>
+  </svg> -->
+    <svg width="0" height="0" style="position: absolute;">
+            <defs>
+                <filter id="gooey">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="gooey"/>
+                    <feComposite in="SourceGraphic" in2="gooey" operator="atop"/>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
