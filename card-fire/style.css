@@ -1,0 +1,162 @@
+body{
+    background:#333 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+  }
+  body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden; /* Oculta el scrollbar si las estrellas se salen */
+      background-color: #000; /* Fondo negro para el espacio */
+      position: relative; /* Necesario para posicionar pseudo-elementos */
+  
+      /* Estrellas grandes y más lentas (en el body mismo) */
+      background-image:
+          radial-gradient(1.5px 1.5px at 50% 50%, #bbb, transparent); /* Un punto central */
+      background-size: 250px 250px; /* Tamaño del patrón de repetición */
+      background-repeat: repeat;
+      animation: moveStars 120s linear infinite; /* Animación de movimiento */
+      z-index: 1; /* Para controlar el orden de las capas */
+  }
+  
+  /* Pseudo-elemento ::before para estrellas medianas */
+  /*                              */
+  
+  /* Keyframes para la animación de las estrellas (común a todas las capas) */
+  @keyframes moveStars {
+      from {
+          background-position: 0 0;
+      }
+      to {
+          /* Mueve el fondo 100% de la altura del viewport hacia abajo */
+          background-position: 0 100vh;
+      }
+  }
+  
+  
+  .conteiner{
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   filter: url(#gooey);
+  }
+  .flame{
+    position: absolute;
+     top: -10px;   
+    height: 100%;
+    width: 200px;
+    background: linear-gradient(-126deg, transparent,transparent,rgb(182, 88, 12),rgba(255, 255, 0, 0.459));
+    /* animation: fire 1s linear infinite; */
+    mix-blend-mode: multiply;
+    backdrop-filter: blur(5px);
+    mask-image: linear-gradient( black 80%, transparent);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  transition: opacity .5s linear;
+    pointer-events: none;
+    animation: gradientAnimation .5s infinite;
+    opacity: 0;
+    box-shadow: 1px 1px 1px inherit;
+  }
+  .flame::after{
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    height: 100%;
+    width: 100%;
+  
+  }
+  
+  @keyframes fire{
+    0%{
+      transform: scale(1.5) translateY(-50px) translateX(20px) 
+    }
+    50%{
+      transform: translateY(-100px) translateX(-20px);
+    }
+   75%{
+    transform: translateY(-300px) scale(.2);
+    
+   }
+   100%{
+     transform: translateY(-400px) scale(.1);
+   }
+  
+  } 
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .card{
+    height: 300px;
+    width: 200px;
+    background-color: white;
+    /* background: linear-gradient(10deg, transparent, white); */
+   
+    transition: all 3s ease-in-out;
+    color: gray;
+  }
+  .card:hover{
+    /* background: radial-gradient(rgba(0, 0, 0, 0.664), transparent); */
+     /* opacity: 0;  */
+    background: linear-gradient(50deg, rgba(0, 0, 0, 0.425), transparent, rgba(255, 255, 255, 0.493));
+    /* background-color: white; */
+   
+  }
+  .card:hover .flame{
+     opacity: 1;
+     /* animation-play-state: play; */
+     animation:gradientAnimation .5s infinite, fire 3s linear both;
+   /* transform: translateY(-50px); */
+  filter: blur(5px);
+  }
+  
+  
+  .card::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+          radial-gradient(1px 1px at 20% 80%, #ccc, transparent),
+          radial-gradient(1px 1px at 70% 30%, #ccc, transparent),
+          radial-gradient(1px 1px at 40% 10%, #ccc, transparent);
+      background-size: 150px 150px;
+      background-repeat: repeat;
+      animation: moveStars 80s linear infinite; /* Velocidad intermedia */
+      z-index: 2;
+      pointer-events: none; /* Asegura que no bloquee clics */
+  }
+  .card::before{
+    content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+          radial-gradient(0.5px 0.5px at 10% 20%, #eee, transparent),
+          radial-gradient(0.5px 0.5px at 90% 50%, #eee, transparent),
+          radial-gradient(0.5px 0.5px at 30% 90%, #eee, transparent),
+          radial-gradient(0.5px 0.5px at 60% 40%, #eee, transparent);
+      background-size: 100px 100px;
+      background-repeat: repeat;
+      animation: moveStars 50s linear infinite; /* Velocidad más rápida */
+      z-index: 3;
+      pointer-events: none; /* Asegura que no bloquee clics */
+  }
