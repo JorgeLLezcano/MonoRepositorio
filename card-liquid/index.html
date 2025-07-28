@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vidrio Líquido Sin JS</title>
+ 
+</head>
+<body>
+
+  <div class="glass">
+    <p>Efecto de vidrio líquido con animación de agua, sin JavaScript 🌊</p>
+  </div>
+
+  <!-- SVG con animación líquida -->
+  <svg>
+    <filter id="liquidGlass">
+      <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" result="turb">
+        <animate
+         attributeName="baseFrequency" 
+         dur="10s" values="0.015; 0.02; 0.01; 0.015" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+</body>
+</html>

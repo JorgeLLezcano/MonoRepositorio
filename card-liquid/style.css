@@ -1,0 +1,38 @@
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+  }
+
+  .glass {
+    width: 400px;
+    height: 300px;
+    padding: 1rem;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    filter: url(#liquidGlass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
