@@ -43,6 +43,18 @@
     p {
       user-select: none;
     }
+    .mango{
+      position:absolute;
+      background:white;
+      width: 50px;
+      height: 10px;
+      bottom:0;
+      right: -20px;
+      transform: rotate(45deg);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+     box-shadow: inset 7px -4px 5px 0px #000000d6;
+    }
   </style>
 </head>
 <body>
@@ -50,7 +62,9 @@
     <p>
       Mueve la lupa sobre este texto para observar el efecto de aumento generado con SVG. Puedes arrastrarla con el mouse para ver cómo distorsiona el fondo.
     </p>
-    <div class="magnifier"></div>
+    <div class="magnifier">
+        <span class="mango"></span>
+    </div>
   </div>
 
   <!-- SVG FILTERS -->
